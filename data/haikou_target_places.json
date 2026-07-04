@@ -1,0 +1,1066 @@
+[
+  {
+    "place_id": "place_hak_airport",
+    "name": "海口美兰国际机场",
+    "city": "海口",
+    "category": "airport",
+    "area": "美兰机场/江东新区",
+    "places_query": "海口美兰国际机场 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "机场",
+      "中转",
+      "早班车"
+    ],
+    "suitable_for": [
+      "航空旅客",
+      "中转旅客",
+      "早班机旅客",
+      "晚到旅客"
+    ],
+    "trip_styles": [
+      "航空中转",
+      "中转"
+    ],
+    "travel_role": "航空出发与到达节点，进出海南岛的主要空中门户",
+    "recommended_time": [
+      "出发前",
+      "到达后"
+    ],
+    "estimated_visit_duration": "交通节点，不作为常规游览项目",
+    "weather_sensitivity": {
+      "level": "high",
+      "note": "台风和大雾天气可能导致航班延误或取消，出行前需密切关注天气预警。"
+    },
+    "hotel_decision_value": "如果用户为深夜到达、早班出发或航空中转，应优先考虑机场周边酒店，减少凌晨通勤成本和风险。",
+    "preferred_hotel_areas": [
+      "美兰机场/江东新区"
+    ],
+    "route_priority": "high",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_meilan_station",
+    "name": "美兰站",
+    "city": "海口",
+    "category": "railway_hub",
+    "area": "美兰机场/江东新区",
+    "places_query": "美兰站 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "高铁",
+      "中转",
+      "早班车"
+    ],
+    "suitable_for": [
+      "环岛铁路旅客",
+      "中转旅客",
+      "空铁联运旅客"
+    ],
+    "trip_styles": [
+      "环岛铁路旅行",
+      "中转"
+    ],
+    "travel_role": "空铁联运节点，连接机场与环岛高铁",
+    "recommended_time": [
+      "出发前",
+      "到达后"
+    ],
+    "estimated_visit_duration": "交通节点，不作为常规游览项目",
+    "weather_sensitivity": {
+      "level": "medium",
+      "note": "台风天气可能影响环岛铁路运行，需关注铁路部门公告。"
+    },
+    "hotel_decision_value": "如果用户为空铁联运或到达后需立即转乘高铁，机场周边酒店同样适用于美兰站出行需求。",
+    "preferred_hotel_areas": [
+      "美兰机场/江东新区"
+    ],
+    "route_priority": "high",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_east_station",
+    "name": "海口东站",
+    "city": "海口",
+    "category": "railway_hub",
+    "area": "海口东站周边",
+    "places_query": "海口东站 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "高铁",
+      "中转",
+      "早班车"
+    ],
+    "suitable_for": [
+      "短途旅客",
+      "中转旅客",
+      "环岛铁路旅客"
+    ],
+    "trip_styles": [
+      "短途旅行",
+      "环岛铁路旅行",
+      "中转"
+    ],
+    "travel_role": "海口市区主要铁路出发与到达节点",
+    "recommended_time": [
+      "出发前",
+      "到达后"
+    ],
+    "estimated_visit_duration": "交通节点，不作为常规游览项目",
+    "weather_sensitivity": {
+      "level": "low",
+      "note": "主要为交通换乘用途，天气影响相对较低。"
+    },
+    "hotel_decision_value": "如果用户需要早班高铁、铁路中转或到站后快速入住，应提高东站附近酒店优先级，并比较酒店到车站的真实路线时间。",
+    "preferred_hotel_areas": [
+      "海口东站周边",
+      "国兴CBD"
+    ],
+    "route_priority": "high",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_railway_station",
+    "name": "海口站",
+    "city": "海口",
+    "category": "railway_hub",
+    "area": "海口站/新海港方向",
+    "places_query": "海口站 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "中转",
+      "早班车"
+    ],
+    "suitable_for": [
+      "普速列车旅客",
+      "中转旅客"
+    ],
+    "trip_styles": [
+      "中转"
+    ],
+    "travel_role": "海口普速铁路出发与到达节点，靠近新海港",
+    "recommended_time": [
+      "出发前",
+      "到达后"
+    ],
+    "estimated_visit_duration": "交通节点，不作为常规游览项目",
+    "weather_sensitivity": {
+      "level": "low",
+      "note": "主要为交通换乘用途。"
+    },
+    "hotel_decision_value": "如果用户从海口站出发或到达，且为早班车或晚间到达，可考虑火车站周边经济型酒店短暂停留。但该区域离市区较远，不建议作为旅游住宿首选。",
+    "preferred_hotel_areas": [
+      "海口站/新海港方向",
+      "西海岸"
+    ],
+    "route_priority": "medium",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_xinhai_port",
+    "name": "新海港",
+    "city": "海口",
+    "category": "port",
+    "area": "海口站/新海港方向",
+    "places_query": "新海港 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "轮渡",
+      "中转",
+      "自驾"
+    ],
+    "suitable_for": [
+      "自驾旅客",
+      "轮渡旅客",
+      "进出岛旅客"
+    ],
+    "trip_styles": [
+      "中转",
+      "自驾"
+    ],
+    "travel_role": "进出海南岛的主要轮渡港口",
+    "recommended_time": [
+      "出发前",
+      "到达后"
+    ],
+    "estimated_visit_duration": "交通节点，不作为常规游览项目",
+    "weather_sensitivity": {
+      "level": "high",
+      "note": "台风和大雾天气可能导致轮渡停航，节假日易拥堵，需预留充足时间。"
+    },
+    "hotel_decision_value": "如果用户自驾进出岛或乘轮渡到达，需关注港口附近住宿。但港口离市区远，周边配套有限，仅建议作为应急停留方案。",
+    "preferred_hotel_areas": [
+      "海口站/新海港方向",
+      "西海岸"
+    ],
+    "route_priority": "medium",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_qilou",
+    "name": "骑楼老街",
+    "city": "海口",
+    "category": "historical_site",
+    "area": "龙华区",
+    "places_query": "骑楼老街 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "历史文化",
+      "美食",
+      "城市漫游",
+      "拍照"
+    ],
+    "suitable_for": [
+      "文化体验旅客",
+      "美食爱好者",
+      "城市漫游者"
+    ],
+    "trip_styles": [
+      "城市漫游",
+      "美食型旅行",
+      "短途旅行"
+    ],
+    "travel_role": "海口历史文化核心体验区，美食与建筑集中地",
+    "recommended_time": [
+      "上午",
+      "下午",
+      "傍晚"
+    ],
+    "estimated_visit_duration": "2-4小时，含美食体验",
+    "weather_sensitivity": {
+      "level": "medium",
+      "note": "户外步行为主，降雨时体验下降，但有骑楼廊道可遮雨。"
+    },
+    "hotel_decision_value": "如果用户强调美食、城市漫游和历史文化体验，应优先选择能减少与骑楼老街之间通勤的住宿区域，老城区内或滨海的酒店更为便利。",
+    "preferred_hotel_areas": [
+      "龙华区",
+      "骑楼老街"
+    ],
+    "route_priority": "high",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_museum",
+    "name": "海南省博物馆",
+    "city": "海口",
+    "category": "museum",
+    "area": "美兰区",
+    "places_query": "海南省博物馆 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "博物馆",
+      "历史文化",
+      "亲子"
+    ],
+    "suitable_for": [
+      "文化体验旅客",
+      "亲子家庭",
+      "雨天备选旅客"
+    ],
+    "trip_styles": [
+      "城市漫游",
+      "短途旅行",
+      "亲子旅行"
+    ],
+    "travel_role": "了解海南历史文化的核心场馆",
+    "recommended_time": [
+      "上午",
+      "下午"
+    ],
+    "estimated_visit_duration": "2-3小时",
+    "weather_sensitivity": {
+      "level": "low",
+      "note": "室内场馆，受天气影响较小，是雨天良好替代选择。"
+    },
+    "hotel_decision_value": "海南省博物馆位于国兴CBD区域，如果用户将博物馆列为重点行程，住国兴CBD或海甸岛可减少通勤。",
+    "preferred_hotel_areas": [
+      "国兴CBD",
+      "美兰区"
+    ],
+    "route_priority": "medium",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_wugongci",
+    "name": "五公祠",
+    "city": "海口",
+    "category": "historical_site",
+    "area": "龙华区",
+    "places_query": "五公祠 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "历史文化",
+      "城市漫游"
+    ],
+    "suitable_for": [
+      "文化体验旅客",
+      "历史爱好者"
+    ],
+    "trip_styles": [
+      "城市漫游",
+      "短途旅行"
+    ],
+    "travel_role": "海口历史人文景点",
+    "recommended_time": [
+      "上午",
+      "下午"
+    ],
+    "estimated_visit_duration": "1-2小时",
+    "weather_sensitivity": {
+      "level": "medium",
+      "note": "以户外参观为主，降雨影响游览体验。"
+    },
+    "hotel_decision_value": "五公祠靠近海口东站方向，如果用户将此作为主要景点之一，住国兴CBD或东站周边可兼顾交通与游览。",
+    "preferred_hotel_areas": [
+      "国兴CBD",
+      "海口东站周边"
+    ],
+    "route_priority": "low",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_clocktower",
+    "name": "海口钟楼",
+    "city": "海口",
+    "category": "urban_landmark",
+    "area": "龙华区",
+    "places_query": "海口钟楼 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "城市漫游",
+      "拍照",
+      "历史文化"
+    ],
+    "suitable_for": [
+      "城市漫游者",
+      "拍照打卡旅客"
+    ],
+    "trip_styles": [
+      "城市漫游",
+      "短途旅行"
+    ],
+    "travel_role": "海口标志性城市地标，紧邻骑楼老街",
+    "recommended_time": [
+      "上午",
+      "傍晚"
+    ],
+    "estimated_visit_duration": "15-30分钟，通常与骑楼老街联动游览",
+    "weather_sensitivity": {
+      "level": "medium",
+      "note": "户外开放空间，降雨影响拍照体验。"
+    },
+    "hotel_decision_value": "钟楼紧邻骑楼老街，住宿决策逻辑与骑楼老街一致。",
+    "preferred_hotel_areas": [
+      "龙华区",
+      "骑楼老街"
+    ],
+    "route_priority": "low",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_hairui",
+    "name": "海瑞文化公园",
+    "city": "海口",
+    "category": "historical_site",
+    "area": "龙华区",
+    "places_query": "海瑞文化公园 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "历史文化",
+      "公园",
+      "城市漫游"
+    ],
+    "suitable_for": [
+      "文化体验旅客",
+      "市民休闲"
+    ],
+    "trip_styles": [
+      "城市漫游"
+    ],
+    "travel_role": "历史文化纪念与市民休闲公园",
+    "recommended_time": [
+      "上午",
+      "下午"
+    ],
+    "estimated_visit_duration": "1-2小时",
+    "weather_sensitivity": {
+      "level": "medium",
+      "note": "户外为主，降雨影响游览。"
+    },
+    "hotel_decision_value": "作为非核心旅游景点，一般不作为酒店区域选择的主要因素。",
+    "preferred_hotel_areas": [
+      "龙华区"
+    ],
+    "route_priority": "low",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_cloud_library",
+    "name": "云洞图书馆",
+    "city": "海口",
+    "category": "urban_landmark",
+    "area": "龙华区",
+    "places_query": "云洞图书馆 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "拍照",
+      "海边",
+      "日落",
+      "城市漫游"
+    ],
+    "suitable_for": [
+      "拍照打卡旅客",
+      "情侣",
+      "城市漫游者"
+    ],
+    "trip_styles": [
+      "城市漫游",
+      "短途旅行"
+    ],
+    "travel_role": "海口湾标志性建筑，日落观景点",
+    "recommended_time": [
+      "下午",
+      "傍晚"
+    ],
+    "estimated_visit_duration": "1-2小时",
+    "weather_sensitivity": {
+      "level": "high",
+      "note": "户外及海边，降雨和大风天气严重影响体验。"
+    },
+    "hotel_decision_value": "位于海口湾，靠近国贸CBD和滨海区域。如果用户重视日落景观和海边漫步，住滨海大道沿线酒店通常更便利。",
+    "preferred_hotel_areas": [
+      "龙华区",
+      "滨海大道"
+    ],
+    "route_priority": "medium",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_bay",
+    "name": "海口湾",
+    "city": "海口",
+    "category": "seaside",
+    "area": "龙华区",
+    "places_query": "海口湾 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "海边",
+      "日落",
+      "轻松散步",
+      "城市漫游"
+    ],
+    "suitable_for": [
+      "情侣",
+      "城市漫游者",
+      "市民休闲"
+    ],
+    "trip_styles": [
+      "城市漫游",
+      "短途旅行"
+    ],
+    "travel_role": "城市中心滨海休闲带",
+    "recommended_time": [
+      "傍晚",
+      "晚间"
+    ],
+    "estimated_visit_duration": "1-2小时",
+    "weather_sensitivity": {
+      "level": "high",
+      "note": "户外开放空间，降雨和大风严重影响体验。"
+    },
+    "hotel_decision_value": "海口湾沿线酒店（如希尔顿、朗廷、威斯汀）具有较强的地理优势，下楼即可散步。如果用户看重滨海体验但预算有限，可选择靠近海口湾的非一线海景酒店。",
+    "preferred_hotel_areas": [
+      "龙华区",
+      "滨海大道"
+    ],
+    "route_priority": "medium",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_wanlvyuan",
+    "name": "万绿园",
+    "city": "海口",
+    "category": "park",
+    "area": "龙华区",
+    "places_query": "万绿园 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "公园",
+      "轻松散步",
+      "亲子",
+      "城市漫游"
+    ],
+    "suitable_for": [
+      "亲子家庭",
+      "市民休闲",
+      "城市漫游者"
+    ],
+    "trip_styles": [
+      "城市漫游",
+      "亲子旅行"
+    ],
+    "travel_role": "城市中心大型绿地公园",
+    "recommended_time": [
+      "上午",
+      "下午"
+    ],
+    "estimated_visit_duration": "1-2小时",
+    "weather_sensitivity": {
+      "level": "medium",
+      "note": "户外公园，降雨影响游览，但有树荫遮阳。"
+    },
+    "hotel_decision_value": "紧邻国贸CBD，住滨海大道或国贸区域步行可达。如果用户带小孩且需要轻松散步空间，万绿园周边酒店是加分项。",
+    "preferred_hotel_areas": [
+      "龙华区",
+      "国贸CBD"
+    ],
+    "route_priority": "low",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_baishamen",
+    "name": "白沙门公园",
+    "city": "海口",
+    "category": "park",
+    "area": "美兰区",
+    "places_query": "白沙门公园 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "公园",
+      "海边",
+      "日落",
+      "轻松散步",
+      "亲子"
+    ],
+    "suitable_for": [
+      "亲子家庭",
+      "情侣",
+      "市民休闲"
+    ],
+    "trip_styles": [
+      "城市漫游",
+      "亲子旅行"
+    ],
+    "travel_role": "海甸岛北端海滨公园，日落观景点",
+    "recommended_time": [
+      "下午",
+      "傍晚"
+    ],
+    "estimated_visit_duration": "1-2小时",
+    "weather_sensitivity": {
+      "level": "high",
+      "note": "海边户外空间，受天气影响明显。"
+    },
+    "hotel_decision_value": "位于海甸岛北端，住海甸岛内酒店（如华彩华邑）前往最为方便。如果用户将白沙门作为主要休闲地点，海甸岛住宿应优先考虑。",
+    "preferred_hotel_areas": [
+      "美兰区",
+      "海甸岛"
+    ],
+    "route_priority": "medium",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_holiday_beach",
+    "name": "假日海滩",
+    "city": "海口",
+    "category": "seaside",
+    "area": "西海岸",
+    "places_query": "假日海滩 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "海边",
+      "亲子",
+      "轻松散步",
+      "日落"
+    ],
+    "suitable_for": [
+      "亲子家庭",
+      "情侣",
+      "海滩休闲旅客"
+    ],
+    "trip_styles": [
+      "纯度假",
+      "短途旅行"
+    ],
+    "travel_role": "海口最知名的公共海滩",
+    "recommended_time": [
+      "上午",
+      "下午"
+    ],
+    "estimated_visit_duration": "2-4小时",
+    "weather_sensitivity": {
+      "level": "high",
+      "note": "海滩活动高度依赖天气，降雨、大风或低温均严重影响体验。"
+    },
+    "hotel_decision_value": "如果用户将海滩度假作为核心需求，应优先推荐西海岸酒店（万豪、喜来登等），通常更容易到达海滩。非度假需求的旅客不建议为此选择西海岸住宿。",
+    "preferred_hotel_areas": [
+      "西海岸"
+    ],
+    "route_priority": "high",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_guomao",
+    "name": "国贸商圈",
+    "city": "海口",
+    "category": "commercial_district",
+    "area": "龙华区",
+    "places_query": "国贸商圈 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "购物",
+      "美食",
+      "商务"
+    ],
+    "suitable_for": [
+      "商务旅客",
+      "购物旅客",
+      "美食爱好者"
+    ],
+    "trip_styles": [
+      "商务出差",
+      "城市漫游",
+      "购物"
+    ],
+    "travel_role": "海口核心商业与商务区",
+    "recommended_time": [
+      "全天"
+    ],
+    "estimated_visit_duration": "视需求而定",
+    "weather_sensitivity": {
+      "level": "low",
+      "note": "室内商业为主，天气影响较小。"
+    },
+    "hotel_decision_value": "如果用户以商务、购物或城市便利为核心需求，国贸CBD是优先住宿区域。区域内有多个国际品牌酒店。",
+    "preferred_hotel_areas": [
+      "龙华区",
+      "国贸CBD"
+    ],
+    "route_priority": "high",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_riyue",
+    "name": "日月广场",
+    "city": "海口",
+    "category": "shopping",
+    "area": "美兰区",
+    "places_query": "日月广场 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "购物",
+      "免税",
+      "美食"
+    ],
+    "suitable_for": [
+      "购物旅客",
+      "免税购物旅客"
+    ],
+    "trip_styles": [
+      "购物",
+      "城市漫游",
+      "短途旅行"
+    ],
+    "travel_role": "市中心免税购物与商业综合体",
+    "recommended_time": [
+      "下午",
+      "晚间"
+    ],
+    "estimated_visit_duration": "2-4小时",
+    "weather_sensitivity": {
+      "level": "low",
+      "note": "室内购物为主，天气影响小。"
+    },
+    "hotel_decision_value": "位于国兴CBD，住国兴区域通常更容易到达。如果用户将免税购物列为主要需求，国兴CBD是比西海岸更便利的选择。",
+    "preferred_hotel_areas": [
+      "国兴CBD",
+      "美兰区"
+    ],
+    "route_priority": "medium",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_dutyfree",
+    "name": "中免海口国际免税城",
+    "city": "海口",
+    "category": "shopping",
+    "area": "西海岸",
+    "places_query": "中免海口国际免税城 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "购物",
+      "免税"
+    ],
+    "suitable_for": [
+      "购物旅客",
+      "免税购物旅客",
+      "度假旅客"
+    ],
+    "trip_styles": [
+      "购物",
+      "纯度假"
+    ],
+    "travel_role": "全球最大单体免税店",
+    "recommended_time": [
+      "下午"
+    ],
+    "estimated_visit_duration": "3-5小时",
+    "weather_sensitivity": {
+      "level": "low",
+      "note": "室内购物为主，天气影响小。"
+    },
+    "hotel_decision_value": "紧邻西海岸酒店群，如果用户将免税购物与海滨度假结合，西海岸是优先选择。但纯购物旅客也可从市区打车前往，不必因此选择西海岸住宿。",
+    "preferred_hotel_areas": [
+      "西海岸"
+    ],
+    "route_priority": "medium",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_convention",
+    "name": "海南国际会展中心",
+    "city": "海口",
+    "category": "convention",
+    "area": "西海岸",
+    "places_query": "海南国际会展中心 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "商务",
+      "会展"
+    ],
+    "suitable_for": [
+      "商务旅客",
+      "会展参会人员"
+    ],
+    "trip_styles": [
+      "商务出差"
+    ],
+    "travel_role": "海南主要会展场馆",
+    "recommended_time": [
+      "全天"
+    ],
+    "estimated_visit_duration": "视会期而定",
+    "weather_sensitivity": {
+      "level": "low",
+      "note": "室内场馆为主。"
+    },
+    "hotel_decision_value": "展会期间，会展中心周边酒店（万豪、喜来登等）需求旺盛且可能涨价。参会人员应优先选择步行可达的酒店。非展期此因素不重要。",
+    "preferred_hotel_areas": [
+      "西海岸"
+    ],
+    "route_priority": "high",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_hainan_university",
+    "name": "海南大学",
+    "city": "海口",
+    "category": "campus",
+    "area": "美兰区",
+    "places_query": "海南大学 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "访校",
+      "学生"
+    ],
+    "suitable_for": [
+      "访校家长",
+      "考生",
+      "学术交流人员"
+    ],
+    "trip_styles": [
+      "访校/考试"
+    ],
+    "travel_role": "海南最高学府，海甸岛核心地标",
+    "recommended_time": [
+      "上午",
+      "下午"
+    ],
+    "estimated_visit_duration": "2-4小时",
+    "weather_sensitivity": {
+      "level": "medium",
+      "note": "校园以户外步行为主。"
+    },
+    "hotel_decision_value": "如果用户目的为访校、考试或学术交流，应优先推荐海甸岛内酒店。不需要景观或高端设施，重点是距离近、安静、价格合理。",
+    "preferred_hotel_areas": [
+      "美兰区",
+      "海甸岛"
+    ],
+    "route_priority": "high",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_missionhills",
+    "name": "观澜湖度假区",
+    "city": "海口",
+    "category": "resort",
+    "area": "观澜湖",
+    "places_query": "观澜湖度假区 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "度假",
+      "温泉",
+      "高尔夫",
+      "亲子"
+    ],
+    "suitable_for": [
+      "度假旅客",
+      "高尔夫爱好者",
+      "亲子家庭",
+      "温泉爱好者"
+    ],
+    "trip_styles": [
+      "纯度假"
+    ],
+    "travel_role": "综合型度假目的地",
+    "recommended_time": [
+      "全天"
+    ],
+    "estimated_visit_duration": "1-3天",
+    "weather_sensitivity": {
+      "level": "medium",
+      "note": "温泉和部分设施不受天气影响，高尔夫受降雨影响。"
+    },
+    "hotel_decision_value": "如果用户以观澜湖为核心目的地，应直接推荐度假区内酒店（丽思卡尔顿、观澜湖度假酒店）。此区域不适合作为市区游览的住宿基地。",
+    "preferred_hotel_areas": [
+      "观澜湖"
+    ],
+    "route_priority": "high",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_fengxiaogang",
+    "name": "冯小刚电影公社",
+    "city": "海口",
+    "category": "family_attraction",
+    "area": "观澜湖",
+    "places_query": "冯小刚电影公社 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "拍照",
+      "亲子",
+      "历史文化"
+    ],
+    "suitable_for": [
+      "拍照打卡旅客",
+      "亲子家庭",
+      "影视爱好者"
+    ],
+    "trip_styles": [
+      "短途旅行",
+      "亲子旅行"
+    ],
+    "travel_role": "影视主题景区，紧邻观澜湖度假区",
+    "recommended_time": [
+      "上午",
+      "下午"
+    ],
+    "estimated_visit_duration": "2-4小时",
+    "weather_sensitivity": {
+      "level": "medium",
+      "note": "部分户外区域，降雨影响游览。"
+    },
+    "hotel_decision_value": "通常与观澜湖度假区联动游览，住宿决策与观澜湖一致。如果仅为此景点前往观澜湖，不建议为此选择度假区内酒店。",
+    "preferred_hotel_areas": [
+      "观澜湖"
+    ],
+    "route_priority": "low",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_volcano",
+    "name": "雷琼海口火山群世界地质公园",
+    "city": "海口",
+    "category": "nature",
+    "area": "西海岸",
+    "places_query": "雷琼海口火山群世界地质公园 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "自然",
+      "亲子",
+      "拍照"
+    ],
+    "suitable_for": [
+      "自然爱好者",
+      "亲子家庭",
+      "户外旅客"
+    ],
+    "trip_styles": [
+      "短途旅行",
+      "亲子旅行"
+    ],
+    "travel_role": "海口近郊自然景区，火山地貌科普教育基地",
+    "recommended_time": [
+      "上午"
+    ],
+    "estimated_visit_duration": "3-4小时（含往返交通）",
+    "weather_sensitivity": {
+      "level": "high",
+      "note": "户外登山为主，高温或降雨均严重影响体验和安全。"
+    },
+    "hotel_decision_value": "位于海口西南郊，离市区较远。如果用户将此作为必去景点，建议住西海岸区域以减少单日车程。但不应因此将酒店选在景区附近，因为周边配套严重不足。",
+    "preferred_hotel_areas": [
+      "西海岸",
+      "龙华区"
+    ],
+    "route_priority": "medium",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  },
+  {
+    "place_id": "place_hak_zoo",
+    "name": "海南热带野生动植物园",
+    "city": "海口",
+    "category": "family_attraction",
+    "area": "西海岸",
+    "places_query": "海南热带野生动植物园 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "tags": [
+      "亲子",
+      "自然"
+    ],
+    "suitable_for": [
+      "亲子家庭",
+      "自然爱好者"
+    ],
+    "trip_styles": [
+      "亲子旅行",
+      "短途旅行"
+    ],
+    "travel_role": "海口近郊动植物园",
+    "recommended_time": [
+      "上午"
+    ],
+    "estimated_visit_duration": "4-5小时（含往返交通）",
+    "weather_sensitivity": {
+      "level": "high",
+      "note": "以户外参观为主，天气影响显著。"
+    },
+    "hotel_decision_value": "距市区较远，住宿决策参考火山群公园，不建议为动物园选择周边住宿。",
+    "preferred_hotel_areas": [
+      "西海岸",
+      "龙华区"
+    ],
+    "route_priority": "low",
+    "source_note": "用于课程项目的关键地点结构化数据。",
+    "last_verified": "2026-07"
+  }
+]

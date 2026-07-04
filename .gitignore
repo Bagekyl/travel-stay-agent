@@ -1,0 +1,20 @@
+# Local secrets
+.env
+.env.*
+!.env.example
+
+# Local backup/output artifacts
+backups/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Node/Vercel artifacts, if added later
+node_modules/
+.next/
+.vercel/
+dist/
+build/

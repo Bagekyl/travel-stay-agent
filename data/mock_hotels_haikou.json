@@ -1,0 +1,2300 @@
+[
+  {
+    "hotel_id": "mock_hk_001",
+    "name": "海口希尔顿酒店",
+    "brand": "Hilton",
+    "city": "海口",
+    "area": "龙华区",
+    "sub_area": "滨海大道",
+    "address": "海口市龙华区滨海大道109-9号",
+    "places_query": "海口希尔顿酒店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "高端型",
+    "star_rating": 5,
+    "review": {
+      "score": 4.4,
+      "count": 4520,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 980,
+    "price_range_cny": {
+      "low": 780,
+      "high": 1380
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "希尔顿客房大床房",
+        "bed_type": "King",
+        "size_m2": 38,
+        "max_guests": 2
+      },
+      {
+        "type": "希尔顿客房双床房",
+        "bed_type": "Twin",
+        "size_m2": 40,
+        "max_guests": 2
+      },
+      {
+        "type": "行政海景套房",
+        "bed_type": "King",
+        "size_m2": 80,
+        "max_guests": 3
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 148,
+      "type": "自助早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 5,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "住客免费停车"
+    },
+    "facilities": [
+      "健身房",
+      "室内恒温泳池",
+      "行政酒廊",
+      "商务中心",
+      "中餐厅",
+      "全日餐厅"
+    ],
+    "tags": [
+      "交通方便",
+      "城市便利",
+      "商务友好",
+      "近海边"
+    ],
+    "target_users": [
+      "商务旅客",
+      "情侣"
+    ],
+    "trip_styles": [
+      "商务出差",
+      "短途旅行",
+      "城市漫游"
+    ],
+    "summary": "位于海口核心滨海区域的老牌国际五星，行政酒廊出品稳定，适合商务出行和城市短途旅行。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_002",
+    "name": "海口朗廷酒店",
+    "brand": "Langham",
+    "city": "海口",
+    "area": "龙华区",
+    "sub_area": "国贸CBD",
+    "address": "海口市龙华区滨海大道77号中环国际广场",
+    "places_query": "海口朗廷酒店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "高端型",
+    "star_rating": 5,
+    "review": {
+      "score": 4.6,
+      "count": 2830,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 850,
+    "price_range_cny": {
+      "low": 650,
+      "high": 1200
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "城市景观大床房",
+        "bed_type": "King",
+        "size_m2": 42,
+        "max_guests": 2
+      },
+      {
+        "type": "海景双床房",
+        "bed_type": "Twin",
+        "size_m2": 45,
+        "max_guests": 2
+      },
+      {
+        "type": "行政套房",
+        "bed_type": "King",
+        "size_m2": 75,
+        "max_guests": 2
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 168,
+      "type": "自助早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 3,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "住客免费停车（车位有限）"
+    },
+    "facilities": [
+      "高空无边泳池",
+      "健身房",
+      "英式下午茶",
+      "中餐厅",
+      "全日餐厅",
+      "大堂酒廊"
+    ],
+    "tags": [
+      "交通方便",
+      "城市便利",
+      "购物方便",
+      "适合情侣",
+      "近海边"
+    ],
+    "target_users": [
+      "情侣",
+      "商务旅客",
+      "城市漫游者"
+    ],
+    "trip_styles": [
+      "短途旅行",
+      "商务出差",
+      "城市漫游"
+    ],
+    "summary": "市中心英伦风奢牌，占据高层可观海景，紧邻万象城与万绿园，适合注重品质的城市旅行者。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_003",
+    "name": "全季酒店海口国贸中心店",
+    "brand": "Ji Hotel",
+    "city": "海口",
+    "area": "龙华区",
+    "sub_area": "国贸CBD",
+    "address": "海口市龙华区龙昆北路51号",
+    "places_query": "全季酒店海口国贸中心店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "舒适型",
+    "star_rating": 3,
+    "review": {
+      "score": 4.3,
+      "count": 1850,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 430,
+    "price_range_cny": {
+      "low": 350,
+      "high": 560
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "标准大床房",
+        "bed_type": "Queen",
+        "size_m2": 22,
+        "max_guests": 2
+      },
+      {
+        "type": "标准双床房",
+        "bed_type": "Twin",
+        "size_m2": 25,
+        "max_guests": 2
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 28,
+      "type": "简式早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 8,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": false,
+      "fee_note": "无自用停车场"
+    },
+    "facilities": [
+      "洗衣房",
+      "免费Wi-Fi"
+    ],
+    "tags": [
+      "交通方便",
+      "城市便利",
+      "商务友好",
+      "美食方便"
+    ],
+    "target_users": [
+      "商务旅客",
+      "单人旅客",
+      "短途旅客"
+    ],
+    "trip_styles": [
+      "短途旅行",
+      "城市漫游",
+      "中转"
+    ],
+    "summary": "位于国贸中心片区的全季中端酒店，适合希望兼顾市区交通、办公和餐饮便利的短途旅客。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_004",
+    "name": "海口索菲特酒店",
+    "brand": "Sofitel",
+    "city": "海口",
+    "area": "龙华区",
+    "sub_area": "国贸CBD",
+    "address": "海口市龙华区滨海大道105号",
+    "places_query": "海口索菲特酒店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "奢华型",
+    "star_rating": 5,
+    "review": {
+      "score": 4.7,
+      "count": 1680,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 1550,
+    "price_range_cny": {
+      "low": 1200,
+      "high": 2200
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "奢华海景大床房",
+        "bed_type": "King",
+        "size_m2": 48,
+        "max_guests": 2
+      },
+      {
+        "type": "奢华海景双床房",
+        "bed_type": "Twin",
+        "size_m2": 50,
+        "max_guests": 2
+      },
+      {
+        "type": "歌剧院套房",
+        "bed_type": "King",
+        "size_m2": 95,
+        "max_guests": 3
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 198,
+      "type": "自助早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": false,
+      "available_rooms": 0,
+      "status_note": "课程演示模拟房态：该产品当前不可订"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "住客免费停车"
+    },
+    "facilities": [
+      "高空海景泳池",
+      "健身房",
+      "法式餐厅",
+      "行政酒廊",
+      "水疗中心",
+      "宴会厅"
+    ],
+    "tags": [
+      "交通方便",
+      "城市便利",
+      "近海边",
+      "适合情侣",
+      "设施丰富"
+    ],
+    "target_users": [
+      "情侣",
+      "商务旅客",
+      "高预算旅客"
+    ],
+    "trip_styles": [
+      "商务出差",
+      "短途旅行",
+      "城市漫游"
+    ],
+    "summary": "海口国贸区域的法式奢华酒店，海景客房视野开阔，适合追求高品质入住体验的旅客。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_005",
+    "name": "骑楼老街还客1921精品民宿",
+    "brand": "Independent",
+    "city": "海口",
+    "area": "龙华区",
+    "sub_area": "骑楼老街",
+    "address": "海口市龙华区中山路21号",
+    "places_query": "海口还客1921精品民宿骑楼老街店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "舒适型",
+    "star_rating": 4,
+    "review": {
+      "score": 4.4,
+      "count": 1860,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 520,
+    "price_range_cny": {
+      "low": 420,
+      "high": 700
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "老街景观大床房",
+        "bed_type": "Queen",
+        "size_m2": 22,
+        "max_guests": 2
+      },
+      {
+        "type": "民国风双床房",
+        "bed_type": "Twin",
+        "size_m2": 28,
+        "max_guests": 2
+      }
+    ],
+    "breakfast": {
+      "included": true,
+      "price_cny": 0,
+      "type": "套餐式早餐"
+    },
+    "cancellation": {
+      "free_cancellation": false,
+      "deadline_note": "课程演示模拟政策：特价产品不可免费取消"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 3,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": false,
+      "fee_note": "老街步行区，车辆需停至附近公共停车场"
+    },
+    "facilities": [
+      "天台",
+      "茶室",
+      "免费Wi-Fi",
+      "服饰租借拍照"
+    ],
+    "tags": [
+      "美食方便",
+      "适合情侣",
+      "城市便利"
+    ],
+    "target_users": [
+      "情侣",
+      "城市漫游者",
+      "文化体验旅客"
+    ],
+    "trip_styles": [
+      "城市漫游",
+      "短途旅行",
+      "美食型旅行"
+    ],
+    "summary": "骑楼老街核心区的南洋风精品民宿，下楼即达地道美食，适合追求沉浸式本地文化体验的旅客。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_006",
+    "name": "如家酒店·neo海口骑楼老街东湖路店",
+    "brand": "Home Inn Neo",
+    "city": "海口",
+    "area": "龙华区",
+    "sub_area": "骑楼老街",
+    "address": "海口市龙华区东湖路25号",
+    "places_query": "如家酒店neo海口骑楼老街东湖路店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "经济型",
+    "star_rating": 2,
+    "review": {
+      "score": 4.0,
+      "count": 2350,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 200,
+    "price_range_cny": {
+      "low": 180,
+      "high": 280
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "精选大床房",
+        "bed_type": "Queen",
+        "size_m2": 18,
+        "max_guests": 2
+      },
+      {
+        "type": "精选双床房",
+        "bed_type": "Twin",
+        "size_m2": 22,
+        "max_guests": 2
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 20,
+      "type": "简式早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 10,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": false,
+      "fee_note": "无停车场"
+    },
+    "facilities": [
+      "免费Wi-Fi",
+      "洗衣房"
+    ],
+    "tags": [
+      "预算友好",
+      "美食方便",
+      "城市便利"
+    ],
+    "target_users": [
+      "学生",
+      "预算敏感旅客",
+      "单人旅客"
+    ],
+    "trip_styles": [
+      "城市漫游",
+      "短途旅行",
+      "美食型旅行"
+    ],
+    "summary": "骑楼老街与人民公园附近的经济型连锁酒店，价格亲民，适合以逛吃为主、对住宿设施要求不高的旅客。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_007",
+    "name": "海口威斯汀酒店",
+    "brand": "Westin",
+    "city": "海口",
+    "area": "龙华区",
+    "sub_area": "骑楼老街",
+    "address": "海口市龙华区渡海路100号",
+    "places_query": "海口威斯汀酒店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "高端型",
+    "star_rating": 5,
+    "review": {
+      "score": 4.5,
+      "count": 1420,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 820,
+    "price_range_cny": {
+      "low": 680,
+      "high": 1200
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "豪华大床房",
+        "bed_type": "King",
+        "size_m2": 42,
+        "max_guests": 2
+      },
+      {
+        "type": "豪华双床房",
+        "bed_type": "Twin",
+        "size_m2": 44,
+        "max_guests": 2
+      },
+      {
+        "type": "行政套房",
+        "bed_type": "King",
+        "size_m2": 80,
+        "max_guests": 3
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 158,
+      "type": "自助早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 4,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "住客免费停车"
+    },
+    "facilities": [
+      "健身房",
+      "户外泳池",
+      "行政酒廊",
+      "中餐厅",
+      "全日餐厅",
+      "水疗中心"
+    ],
+    "tags": [
+      "近海边",
+      "交通方便",
+      "美食方便",
+      "设施丰富"
+    ],
+    "target_users": [
+      "商务旅客",
+      "情侣",
+      "城市漫游者"
+    ],
+    "trip_styles": [
+      "商务出差",
+      "短途旅行",
+      "城市漫游"
+    ],
+    "summary": "紧邻骑楼老街与海口湾的高端酒店，兼顾历史文化探索与海滨休闲，位置稀缺。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_008",
+    "name": "海口华彩华邑酒店",
+    "brand": "HUALUXE",
+    "city": "海口",
+    "area": "美兰区",
+    "sub_area": "海甸岛",
+    "address": "海口市美兰区碧海大道21号",
+    "places_query": "海口华彩华邑酒店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "高端型",
+    "star_rating": 5,
+    "review": {
+      "score": 4.5,
+      "count": 2150,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 880,
+    "price_range_cny": {
+      "low": 700,
+      "high": 1400
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "湾景大床房",
+        "bed_type": "King",
+        "size_m2": 42,
+        "max_guests": 2
+      },
+      {
+        "type": "海景双床房",
+        "bed_type": "Twin",
+        "size_m2": 45,
+        "max_guests": 2
+      },
+      {
+        "type": "亲子主题套房",
+        "bed_type": "King+Sofa",
+        "size_m2": 55,
+        "max_guests": 3
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 158,
+      "type": "自助早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 4,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "住客免费室外停车"
+    },
+    "facilities": [
+      "户外海景泳池",
+      "健身房",
+      "行政酒廊",
+      "中餐厅",
+      "全日餐厅",
+      "茶室"
+    ],
+    "tags": [
+      "近海边",
+      "适合情侣",
+      "适合亲子",
+      "设施丰富",
+      "安静"
+    ],
+    "target_users": [
+      "情侣",
+      "亲子家庭",
+      "商务旅客"
+    ],
+    "trip_styles": [
+      "短途旅行",
+      "商务出差",
+      "纯度假"
+    ],
+    "summary": "海甸岛头排海景酒店，坐拥世纪大桥夜景，中式度假美学贯穿全店，行政酒廊口碑好。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_009",
+    "name": "全季海口海南大学海甸岛酒店",
+    "brand": "Ji Hotel",
+    "city": "海口",
+    "area": "美兰区",
+    "sub_area": "海甸岛",
+    "address": "海口市美兰区海甸五西路41号",
+    "places_query": "全季海口海南大学海甸岛酒店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "经济型",
+    "star_rating": 3,
+    "review": {
+      "score": 4.5,
+      "count": 1480,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 320,
+    "price_range_cny": {
+      "low": 260,
+      "high": 390
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "高级大床房",
+        "bed_type": "Queen",
+        "size_m2": 22,
+        "max_guests": 2
+      },
+      {
+        "type": "高级双床房",
+        "bed_type": "Twin",
+        "size_m2": 25,
+        "max_guests": 2
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 35,
+      "type": "简式早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 12,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "以酒店现场车位为准"
+    },
+    "facilities": [
+      "免费Wi-Fi",
+      "洗衣房",
+      "自助早餐厅"
+    ],
+    "tags": [
+      "预算友好",
+      "城市便利",
+      "安静"
+    ],
+    "target_users": [
+      "学生",
+      "访校家长",
+      "预算敏感旅客"
+    ],
+    "trip_styles": [
+      "访校/考试",
+      "中转",
+      "短途旅行"
+    ],
+    "summary": "海甸岛海南大学周边的中端连锁酒店，适合访校、考试或希望住在安静生活区的预算型旅客。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_010",
+    "name": "海口美兰温德姆花园酒店",
+    "brand": "Wyndham Garden",
+    "city": "海口",
+    "area": "美兰区",
+    "sub_area": "海甸岛",
+    "address": "海口市美兰区和平大道18号",
+    "places_query": "海口美兰温德姆花园酒店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "高端型",
+    "star_rating": 4,
+    "review": {
+      "score": 4.2,
+      "count": 980,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 820,
+    "price_range_cny": {
+      "low": 650,
+      "high": 1100
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "园景大床房",
+        "bed_type": "King",
+        "size_m2": 35,
+        "max_guests": 2
+      },
+      {
+        "type": "园景双床房",
+        "bed_type": "Twin",
+        "size_m2": 38,
+        "max_guests": 2
+      },
+      {
+        "type": "家庭房",
+        "bed_type": "King+Single",
+        "size_m2": 48,
+        "max_guests": 3
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 68,
+      "type": "自助早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 6,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "住客免费停车"
+    },
+    "facilities": [
+      "室外泳池",
+      "健身房",
+      "会议室",
+      "免费Wi-Fi",
+      "自助洗衣"
+    ],
+    "tags": [
+      "安静",
+      "适合亲子",
+      "适合自驾",
+      "设施丰富"
+    ],
+    "target_users": [
+      "亲子家庭",
+      "情侣",
+      "自驾旅客"
+    ],
+    "trip_styles": [
+      "短途旅行",
+      "纯度假",
+      "访校/考试"
+    ],
+    "summary": "海甸岛和平大道上的高端商务休闲酒店，适合亲子、自驾和希望兼顾安静环境与城市可达性的旅客。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_011",
+    "name": "海口雅诗阁服务公寓",
+    "brand": "Ascott",
+    "city": "海口",
+    "area": "美兰区",
+    "sub_area": "国兴CBD",
+    "address": "海口市美兰区国兴大道21号",
+    "places_query": "海口雅诗阁服务公寓 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "高端型",
+    "star_rating": 5,
+    "review": {
+      "score": 4.7,
+      "count": 520,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 860,
+    "price_range_cny": {
+      "low": 650,
+      "high": 1200
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "一居室豪华公寓",
+        "bed_type": "King",
+        "size_m2": 55,
+        "max_guests": 2
+      },
+      {
+        "type": "一居室行政公寓双床",
+        "bed_type": "Twin",
+        "size_m2": 60,
+        "max_guests": 2
+      },
+      {
+        "type": "两居室家庭公寓",
+        "bed_type": "King+Twin",
+        "size_m2": 90,
+        "max_guests": 4
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 88,
+      "type": "住客餐厅早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 5,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "住客免费地下停车"
+    },
+    "facilities": [
+      "室内恒温泳池",
+      "健身房",
+      "厨房",
+      "洗衣机",
+      "住客餐厅"
+    ],
+    "tags": [
+      "交通方便",
+      "购物方便",
+      "适合亲子",
+      "设施丰富",
+      "商务友好"
+    ],
+    "target_users": [
+      "商务旅客",
+      "亲子家庭",
+      "长住旅客"
+    ],
+    "trip_styles": [
+      "商务出差",
+      "短途旅行",
+      "访校/考试"
+    ],
+    "summary": "国兴CBD的服务公寓，配备厨房和洗衣机，紧邻日月广场免税店，适合长住或家庭出行。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_012",
+    "name": "汉庭酒店海口省政府国兴大道店",
+    "brand": "Hanting",
+    "city": "海口",
+    "area": "美兰区",
+    "sub_area": "国兴CBD",
+    "address": "海口市美兰区美祥路16号",
+    "places_query": "汉庭酒店海口省政府国兴大道店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "经济型",
+    "star_rating": 2,
+    "review": {
+      "score": 4.4,
+      "count": 920,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 260,
+    "price_range_cny": {
+      "low": 220,
+      "high": 350
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "大床房",
+        "bed_type": "Queen",
+        "size_m2": 18,
+        "max_guests": 2
+      },
+      {
+        "type": "双床房",
+        "bed_type": "Twin",
+        "size_m2": 22,
+        "max_guests": 2
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 25,
+      "type": "简式早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 9,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "以酒店现场车位为准"
+    },
+    "facilities": [
+      "免费Wi-Fi",
+      "自助洗衣",
+      "机器人送物"
+    ],
+    "tags": [
+      "交通方便",
+      "预算友好",
+      "商务友好",
+      "购物方便"
+    ],
+    "target_users": [
+      "商务旅客",
+      "单人旅客",
+      "预算敏感旅客"
+    ],
+    "trip_styles": [
+      "商务出差",
+      "短途旅行",
+      "中转"
+    ],
+    "summary": "国兴大道与日月广场商圈附近的经济型连锁酒店，适合预算有限但需要靠近省府、国兴办公区或免税购物的旅客。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_013",
+    "name": "海口高铁东站学院路亚朵酒店",
+    "brand": "Atour",
+    "city": "海口",
+    "area": "海口东站周边",
+    "sub_area": "海口东站商圈",
+    "address": "海口市龙华区城西路80号",
+    "places_query": "海口高铁东站学院路亚朵酒店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "舒适型",
+    "star_rating": 4,
+    "review": {
+      "score": 4.5,
+      "count": 2100,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 420,
+    "price_range_cny": {
+      "low": 350,
+      "high": 550
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "雅致大床房",
+        "bed_type": "King",
+        "size_m2": 28,
+        "max_guests": 2
+      },
+      {
+        "type": "雅致双床房",
+        "bed_type": "Twin",
+        "size_m2": 30,
+        "max_guests": 2
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 48,
+      "type": "自助早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 7,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "住客免费停车"
+    },
+    "facilities": [
+      "免费Wi-Fi",
+      "阅读空间",
+      "洗衣房",
+      "健身房"
+    ],
+    "tags": [
+      "近铁路",
+      "交通方便",
+      "适合中转"
+    ],
+    "target_users": [
+      "中转旅客",
+      "短途旅客",
+      "商务旅客"
+    ],
+    "trip_styles": [
+      "中转",
+      "短途旅行",
+      "环岛铁路旅行"
+    ],
+    "summary": "靠近海口东站方向的中端连锁酒店，房间舒适度和服务稳定性较好，适合高铁中转和短途商务旅客。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_014",
+    "name": "格林豪泰酒店海口高铁东站凤翔东路店",
+    "brand": "GreenTree Inn",
+    "city": "海口",
+    "area": "海口东站周边",
+    "sub_area": "海口东站商圈",
+    "address": "海口市琼山区凤翔东路169号",
+    "places_query": "格林豪泰酒店海口高铁东站凤翔东路店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "经济型",
+    "star_rating": 2,
+    "review": {
+      "score": 3.8,
+      "count": 4200,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 180,
+    "price_range_cny": {
+      "low": 160,
+      "high": 240
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "标准大床房",
+        "bed_type": "Queen",
+        "size_m2": 15,
+        "max_guests": 2
+      },
+      {
+        "type": "标准双床房",
+        "bed_type": "Twin",
+        "size_m2": 18,
+        "max_guests": 2
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 15,
+      "type": "简式早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 15,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": false,
+      "fee_note": "无停车场"
+    },
+    "facilities": [
+      "免费Wi-Fi"
+    ],
+    "tags": [
+      "近铁路",
+      "预算友好",
+      "适合中转"
+    ],
+    "target_users": [
+      "中转旅客",
+      "学生",
+      "预算敏感旅客"
+    ],
+    "trip_styles": [
+      "中转",
+      "环岛铁路旅行"
+    ],
+    "summary": "凤翔东路沿线的经济型连锁酒店，适合高铁中转、学生和预算敏感旅客。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_015",
+    "name": "格林东方酒店海口高铁东站店",
+    "brand": "GreenTree Eastern",
+    "city": "海口",
+    "area": "海口东站周边",
+    "sub_area": "海口东站商圈",
+    "address": "海口市龙华区凤翔西路东站国际商业广场4号楼1楼",
+    "places_query": "格林东方酒店海口高铁东站店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "舒适型",
+    "star_rating": 4,
+    "review": {
+      "score": 4.6,
+      "count": 650,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 520,
+    "price_range_cny": {
+      "low": 420,
+      "high": 680
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "东方大床房",
+        "bed_type": "Queen",
+        "size_m2": 26,
+        "max_guests": 2
+      },
+      {
+        "type": "东方双床房",
+        "bed_type": "Twin",
+        "size_m2": 28,
+        "max_guests": 2
+      }
+    ],
+    "breakfast": {
+      "included": true,
+      "price_cny": 0,
+      "type": "自助早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 6,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "商业广场停车，以现场规则为准"
+    },
+    "facilities": [
+      "免费Wi-Fi",
+      "自助早餐厅",
+      "洗衣房",
+      "健身角"
+    ],
+    "tags": [
+      "近铁路",
+      "交通方便",
+      "适合中转",
+      "商务友好"
+    ],
+    "target_users": [
+      "中转旅客",
+      "商务旅客",
+      "短途旅客"
+    ],
+    "trip_styles": [
+      "中转",
+      "短途旅行",
+      "环岛铁路旅行",
+      "商务出差"
+    ],
+    "summary": "海口高铁东站正对面商业广场内的中端酒店，适合行李较多、早班高铁或希望减少站前换乘成本的旅客。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_016",
+    "name": "美兰机场逸唐飞行酒店",
+    "brand": "Yitang Flight",
+    "city": "海口",
+    "area": "美兰机场/江东新区",
+    "sub_area": "美兰机场",
+    "address": "海口市美兰区航安一街5号",
+    "places_query": "美兰机场逸唐飞行酒店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "舒适型",
+    "star_rating": 3,
+    "review": {
+      "score": 4.2,
+      "count": 2800,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 400,
+    "price_range_cny": {
+      "low": 350,
+      "high": 500
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "标准大床房",
+        "bed_type": "Queen",
+        "size_m2": 24,
+        "max_guests": 2
+      },
+      {
+        "type": "标准双床房",
+        "bed_type": "Twin",
+        "size_m2": 26,
+        "max_guests": 2
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 48,
+      "type": "自助早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 10,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "住客免费停车"
+    },
+    "facilities": [
+      "免费Wi-Fi",
+      "机场班车",
+      "餐厅"
+    ],
+    "tags": [
+      "近机场",
+      "适合中转",
+      "交通方便"
+    ],
+    "target_users": [
+      "中转旅客",
+      "早班机旅客",
+      "晚到旅客"
+    ],
+    "trip_styles": [
+      "中转",
+      "航空中转"
+    ],
+    "summary": "美兰机场附近的空港酒店，提供机场班车，适合深夜到达或早班出发的航空旅客。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_017",
+    "name": "海口美兰国际机场酒店",
+    "brand": "Independent",
+    "city": "海口",
+    "area": "美兰机场/江东新区",
+    "sub_area": "美兰机场",
+    "address": "海口市美兰区航安一街5号",
+    "places_query": "海口美兰国际机场酒店T1T2航站楼店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "舒适型",
+    "star_rating": 4,
+    "review": {
+      "score": 4.1,
+      "count": 1950,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 520,
+    "price_range_cny": {
+      "low": 450,
+      "high": 650
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "高级大床房",
+        "bed_type": "King",
+        "size_m2": 30,
+        "max_guests": 2
+      },
+      {
+        "type": "高级双床房",
+        "bed_type": "Twin",
+        "size_m2": 32,
+        "max_guests": 2
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 68,
+      "type": "自助早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": false,
+      "available_rooms": 0,
+      "status_note": "课程演示模拟房态：该产品当前不可订"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "住客免费停车"
+    },
+    "facilities": [
+      "免费Wi-Fi",
+      "机场接驳",
+      "餐厅",
+      "健身房"
+    ],
+    "tags": [
+      "近机场",
+      "适合中转",
+      "交通方便"
+    ],
+    "target_users": [
+      "中转旅客",
+      "早班机旅客",
+      "商务旅客"
+    ],
+    "trip_styles": [
+      "中转",
+      "航空中转",
+      "商务出差"
+    ],
+    "summary": "紧邻航站楼的机场酒店，步行可达出发厅，适合极早航班或深夜到达的旅客。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_018",
+    "name": "海口美兰星七天酒店",
+    "brand": "Independent",
+    "city": "海口",
+    "area": "美兰机场/江东新区",
+    "sub_area": "美兰机场",
+    "address": "海口市美兰区美兰墟振兴路13号",
+    "places_query": "海口美兰星七天酒店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "经济型",
+    "star_rating": 2,
+    "review": {
+      "score": 3.6,
+      "count": 5100,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 180,
+    "price_range_cny": {
+      "low": 160,
+      "high": 220
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "标准大床房",
+        "bed_type": "Queen",
+        "size_m2": 14,
+        "max_guests": 2
+      },
+      {
+        "type": "标准双床房",
+        "bed_type": "Twin",
+        "size_m2": 16,
+        "max_guests": 2
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 0,
+      "type": "不提供早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 20,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": false,
+      "fee_note": "无停车场"
+    },
+    "facilities": [
+      "免费Wi-Fi"
+    ],
+    "tags": [
+      "近机场",
+      "预算友好",
+      "适合中转"
+    ],
+    "target_users": [
+      "中转旅客",
+      "学生",
+      "预算敏感旅客"
+    ],
+    "trip_styles": [
+      "中转",
+      "航空中转"
+    ],
+    "summary": "美兰机场外围镇区的经济型中转酒店，适合预算敏感且能接受短途接驳的早晚班机旅客。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_019",
+    "name": "海口万豪酒店",
+    "brand": "Marriott",
+    "city": "海口",
+    "area": "西海岸",
+    "sub_area": "滨海大道",
+    "address": "海口市秀英区滨海大道292号",
+    "places_query": "海口万豪酒店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "奢华型",
+    "star_rating": 5,
+    "review": {
+      "score": 4.5,
+      "count": 3680,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 1680,
+    "price_range_cny": {
+      "low": 1200,
+      "high": 2600
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "园林景观大床房",
+        "bed_type": "King",
+        "size_m2": 45,
+        "max_guests": 2
+      },
+      {
+        "type": "海景双床房",
+        "bed_type": "Twin",
+        "size_m2": 48,
+        "max_guests": 2
+      },
+      {
+        "type": "豪华海景套房",
+        "bed_type": "King",
+        "size_m2": 90,
+        "max_guests": 3
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 168,
+      "type": "自助早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 3,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "住客免费室外大型停车场"
+    },
+    "facilities": [
+      "中式园林",
+      "温泉泡池",
+      "室内外双泳池",
+      "儿童乐园",
+      "健身房",
+      "中餐厅",
+      "全日餐厅"
+    ],
+    "tags": [
+      "近海边",
+      "适合亲子",
+      "适合纯度假",
+      "设施丰富",
+      "会展便利",
+      "适合自驾"
+    ],
+    "target_users": [
+      "亲子家庭",
+      "情侣",
+      "度假旅客",
+      "会展旅客"
+    ],
+    "trip_styles": [
+      "纯度假",
+      "短途旅行",
+      "商务出差"
+    ],
+    "summary": "西海岸头牌度假酒店，中式宫殿风园林紧邻假日海滩，适合亲子度假和会展商务。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_020",
+    "name": "海口喜来登酒店",
+    "brand": "Sheraton",
+    "city": "海口",
+    "area": "西海岸",
+    "sub_area": "滨海大道",
+    "address": "海口市秀英区滨海大道136号",
+    "places_query": "海口喜来登酒店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "奢华型",
+    "star_rating": 5,
+    "review": {
+      "score": 4.4,
+      "count": 2950,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 1520,
+    "price_range_cny": {
+      "low": 1100,
+      "high": 2300
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "海景大床房",
+        "bed_type": "King",
+        "size_m2": 42,
+        "max_guests": 2
+      },
+      {
+        "type": "海景双床房",
+        "bed_type": "Twin",
+        "size_m2": 44,
+        "max_guests": 2
+      },
+      {
+        "type": "家庭套房",
+        "bed_type": "King+Single",
+        "size_m2": 65,
+        "max_guests": 3
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 158,
+      "type": "自助早餐"
+    },
+    "cancellation": {
+      "free_cancellation": false,
+      "deadline_note": "课程演示模拟政策：度假套餐不可免费取消"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 4,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "住客免费停车"
+    },
+    "facilities": [
+      "户外泳池",
+      "健身房",
+      "私家沙滩通道",
+      "中餐厅",
+      "全日餐厅",
+      "儿童俱乐部"
+    ],
+    "tags": [
+      "近海边",
+      "适合亲子",
+      "适合纯度假",
+      "设施丰富",
+      "适合自驾"
+    ],
+    "target_users": [
+      "亲子家庭",
+      "情侣",
+      "度假旅客"
+    ],
+    "trip_styles": [
+      "纯度假",
+      "短途旅行"
+    ],
+    "summary": "西海岸老牌国际度假酒店，沙滩通道直达，家庭设施完善，适合海滨度假需求明确的旅客。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_021",
+    "name": "海口大华西海岸智选假日酒店",
+    "brand": "Holiday Inn Express",
+    "city": "海口",
+    "area": "西海岸",
+    "sub_area": "滨海大道",
+    "address": "海口市秀英区滨海大道197号",
+    "places_query": "海口大华西海岸智选假日酒店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "舒适型",
+    "star_rating": 3,
+    "review": {
+      "score": 4.2,
+      "count": 870,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 450,
+    "price_range_cny": {
+      "low": 380,
+      "high": 550
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "标准大床房",
+        "bed_type": "Queen",
+        "size_m2": 26,
+        "max_guests": 2
+      },
+      {
+        "type": "标准双床房",
+        "bed_type": "Twin",
+        "size_m2": 28,
+        "max_guests": 2
+      }
+    ],
+    "breakfast": {
+      "included": true,
+      "price_cny": 0,
+      "type": "自助早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 8,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "住客免费停车"
+    },
+    "facilities": [
+      "免费Wi-Fi",
+      "健身房",
+      "自助洗衣"
+    ],
+    "tags": [
+      "近海边",
+      "预算友好",
+      "适合自驾",
+      "会展便利"
+    ],
+    "target_users": [
+      "会展旅客",
+      "短途旅客",
+      "预算敏感旅客"
+    ],
+    "trip_styles": [
+      "短途旅行",
+      "商务出差"
+    ],
+    "summary": "西海岸滨海大道上的中端连锁酒店，靠近会展与西海岸休闲带，适合预算有限的会展或自驾旅客。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_022",
+    "name": "海口站前旅馆海口站店",
+    "brand": "Independent",
+    "city": "海口",
+    "area": "海口站/新海港方向",
+    "sub_area": "海口火车站周边",
+    "address": "海口市秀英区站前路海口铁路小区",
+    "places_query": "海口站前旅馆海口站店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "经济型",
+    "star_rating": 2,
+    "review": {
+      "score": 3.8,
+      "count": 260,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 200,
+    "price_range_cny": {
+      "low": 160,
+      "high": 260
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "普通大床房",
+        "bed_type": "Queen",
+        "size_m2": 15,
+        "max_guests": 2
+      },
+      {
+        "type": "普通双床房",
+        "bed_type": "Twin",
+        "size_m2": 18,
+        "max_guests": 2
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 0,
+      "type": "不提供早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 10,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": false,
+      "fee_note": "需使用周边公共停车资源"
+    },
+    "facilities": [
+      "免费Wi-Fi",
+      "基础前台服务"
+    ],
+    "tags": [
+      "近铁路",
+      "近港口",
+      "预算友好",
+      "适合中转"
+    ],
+    "target_users": [
+      "中转旅客",
+      "轮渡旅客",
+      "预算敏感旅客"
+    ],
+    "trip_styles": [
+      "中转",
+      "环岛铁路旅行"
+    ],
+    "summary": "海口站附近的基础型旅馆，主要承担普速列车、轮渡衔接和临时过夜需求，不适合作为常规旅游住宿基地。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_023",
+    "name": "海口丽思卡尔顿酒店",
+    "brand": "The Ritz-Carlton",
+    "city": "海口",
+    "area": "观澜湖",
+    "sub_area": "观澜湖度假区",
+    "address": "海口市龙华区观澜湖大道1号",
+    "places_query": "海口丽思卡尔顿酒店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "目的地型度假酒店",
+    "star_rating": 5,
+    "review": {
+      "score": 4.8,
+      "count": 1680,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 1600,
+    "price_range_cny": {
+      "low": 1400,
+      "high": 2800
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "高尔夫景观大床房",
+        "bed_type": "King",
+        "size_m2": 50,
+        "max_guests": 2
+      },
+      {
+        "type": "豪华双床房",
+        "bed_type": "Twin",
+        "size_m2": 52,
+        "max_guests": 2
+      },
+      {
+        "type": "卡尔顿套房",
+        "bed_type": "King",
+        "size_m2": 100,
+        "max_guests": 3
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 218,
+      "type": "自助早餐"
+    },
+    "cancellation": {
+      "free_cancellation": false,
+      "deadline_note": "课程演示模拟政策：高需求日期不可免费取消"
+    },
+    "availability": {
+      "available": false,
+      "available_rooms": 0,
+      "status_note": "课程演示模拟房态：该产品当前不可订"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "免费室内停车+代客泊车"
+    },
+    "facilities": [
+      "高尔夫球场",
+      "火山岩温泉",
+      "水疗中心",
+      "儿童俱乐部",
+      "中餐厅",
+      "意大利餐厅",
+      "行政酒廊"
+    ],
+    "tags": [
+      "适合纯度假",
+      "适合亲子",
+      "适合情侣",
+      "设施丰富",
+      "安静",
+      "适合自驾"
+    ],
+    "target_users": [
+      "高尔夫爱好者",
+      "亲子家庭",
+      "情侣",
+      "高预算旅客"
+    ],
+    "trip_styles": [
+      "纯度假"
+    ],
+    "summary": "国内首家高尔夫主题丽思卡尔顿，坐拥火山岩温泉和锦标赛球场，是目的地型奢华度假酒店。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  },
+  {
+    "hotel_id": "mock_hk_024",
+    "name": "海口观澜湖度假酒店",
+    "brand": "Mission Hills",
+    "city": "海口",
+    "area": "观澜湖",
+    "sub_area": "观澜湖度假区",
+    "address": "海口市龙华区观澜湖大道1号海口观澜湖旅游度假区",
+    "places_query": "海口观澜湖度假酒店 海口",
+    "google_place_id": "",
+    "location": {
+      "latitude": null,
+      "longitude": null
+    },
+    "hotel_type": "目的地型度假酒店",
+    "star_rating": 5,
+    "review": {
+      "score": 4.4,
+      "count": 3120,
+      "source_note": "展示参考数据"
+    },
+    "mock_price_per_night": 1700,
+    "price_range_cny": {
+      "low": 1200,
+      "high": 2600
+    },
+    "currency": "CNY",
+    "room_types": [
+      {
+        "type": "豪华大床房",
+        "bed_type": "King",
+        "size_m2": 48,
+        "max_guests": 2
+      },
+      {
+        "type": "豪华双床房",
+        "bed_type": "Twin",
+        "size_m2": 50,
+        "max_guests": 2
+      },
+      {
+        "type": "家庭亲子套房",
+        "bed_type": "King+Bunk",
+        "size_m2": 70,
+        "max_guests": 4
+      }
+    ],
+    "breakfast": {
+      "included": false,
+      "price_cny": 158,
+      "type": "自助早餐"
+    },
+    "cancellation": {
+      "free_cancellation": true,
+      "deadline_note": "课程演示模拟政策"
+    },
+    "availability": {
+      "available": true,
+      "available_rooms": 5,
+      "status_note": "课程演示模拟房态"
+    },
+    "parking": {
+      "available": true,
+      "fee_note": "住客免费停车"
+    },
+    "facilities": [
+      "水上乐园",
+      "火山岩温泉",
+      "高尔夫球场",
+      "儿童俱乐部",
+      "多间餐厅",
+      "健身房"
+    ],
+    "tags": [
+      "适合纯度假",
+      "适合亲子",
+      "设施丰富",
+      "安静",
+      "适合自驾"
+    ],
+    "target_users": [
+      "亲子家庭",
+      "度假旅客",
+      "温泉爱好者"
+    ],
+    "trip_styles": [
+      "纯度假"
+    ],
+    "summary": "观澜湖度假区内的综合型度假酒店，集温泉、水上乐园和高尔夫于一体，适合多代家庭度假。",
+    "source": "mock_demo_data",
+    "mock_fields": [
+      "mock_price_per_night",
+      "price_range_cny",
+      "breakfast",
+      "cancellation",
+      "availability"
+    ],
+    "mock_note": "价格、早餐政策、房态和取消政策为课程演示模拟数据，不代表真实可预订信息。",
+    "last_verified": "2026-07"
+  }
+]
