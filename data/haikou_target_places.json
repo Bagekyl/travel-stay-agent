@@ -6,10 +6,10 @@
     "category": "airport",
     "area": "美兰机场/江东新区",
     "places_query": "海口美兰国际机场 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJn8pFRiPNUzERHEd_KX0NLk8",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 19.9385399,
+      "longitude": 110.462132
     },
     "tags": [
       "机场",
@@ -95,10 +95,10 @@
     "category": "railway_hub",
     "area": "海口东站周边",
     "places_query": "海口东站 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJ5eJf1xvTUzERqm9sfi5uXd0",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.010598899999998,
+      "longitude": 110.360863
     },
     "tags": [
       "高铁",
@@ -228,10 +228,10 @@
     "category": "historical_site",
     "area": "龙华区",
     "places_query": "骑楼老街 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJ4yFY3rfSUzERUrCHhrlNQb8",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.043653,
+      "longitude": 110.341127
     },
     "tags": [
       "历史文化",
@@ -276,10 +276,10 @@
     "category": "museum",
     "area": "美兰区",
     "places_query": "海南省博物馆 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJYdEtrKrTUzERpoRKCyRtn5k",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.0159685,
+      "longitude": 110.3790801
     },
     "tags": [
       "博物馆",
@@ -322,10 +322,10 @@
     "category": "historical_site",
     "area": "龙华区",
     "places_query": "五公祠 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJRVPT4xnTUzERZM6UO-cNNhE",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.007189999999998,
+      "longitude": 110.35862
     },
     "tags": [
       "历史文化",
@@ -543,10 +543,10 @@
     "category": "park",
     "area": "龙华区",
     "places_query": "万绿园 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJgazt3yQtUjERmSPfexUwiyw",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.03373,
+      "longitude": 110.31593
     },
     "tags": [
       "公园",
@@ -636,10 +636,10 @@
     "category": "seaside",
     "area": "西海岸",
     "places_query": "假日海滩 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJxXdyvdUtUjERjWz3lwQDRac",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.036765,
+      "longitude": 110.237132
     },
     "tags": [
       "海边",
@@ -726,10 +726,10 @@
     "category": "shopping",
     "area": "美兰区",
     "places_query": "日月广场 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJP22-oUnTUzERV66din8bpgk",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.0170256,
+      "longitude": 110.3584929
     },
     "tags": [
       "购物",
@@ -940,10 +940,10 @@
     "category": "family_attraction",
     "area": "观澜湖",
     "places_query": "冯小刚电影公社 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJlygekCTVUzERXZk7dXa8h4Q",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 19.9198,
+      "longitude": 110.34793099999999
     },
     "tags": [
       "拍照",
@@ -1028,10 +1028,10 @@
     "category": "family_attraction",
     "area": "西海岸",
     "places_query": "海南热带野生动植物园 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJc_vYO5eDUTER_tlwWn8DiQ4",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 19.771486,
+      "longitude": 110.25442699999999
     },
     "tags": [
       "亲子",

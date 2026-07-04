@@ -8,10 +8,10 @@
     "sub_area": "滨海大道",
     "address": "海口市龙华区滨海大道109-9号",
     "places_query": "海口希尔顿酒店 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJaZNOQOAsUjERrG7AjtLQYTA",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.0297457,
+      "longitude": 110.31269909999999
     },
     "hotel_type": "高端型",
     "star_rating": 5,
@@ -108,10 +108,10 @@
     "sub_area": "国贸CBD",
     "address": "海口市龙华区滨海大道77号中环国际广场",
     "places_query": "海口朗廷酒店 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJs8NaJCQtUjER1Ri-UjYV80U",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.029999999999998,
+      "longitude": 110.31500199999999
     },
     "hotel_type": "高端型",
     "star_rating": 5,
@@ -585,10 +585,10 @@
     "sub_area": "骑楼老街",
     "address": "海口市龙华区渡海路100号",
     "places_query": "海口威斯汀酒店 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJG-hINUgtUjER5DR5A49pa28",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.047071,
+      "longitude": 110.32190700000001
     },
     "hotel_type": "高端型",
     "star_rating": 5,
@@ -1716,10 +1716,10 @@
     "sub_area": "滨海大道",
     "address": "海口市秀英区滨海大道292号",
     "places_query": "海口万豪酒店 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJZXBOfkouUjERsyzmfzHfYQ0",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.058882,
+      "longitude": 110.19193299999999
     },
     "hotel_type": "奢华型",
     "star_rating": 5,
@@ -1821,10 +1821,10 @@
     "sub_area": "滨海大道",
     "address": "海口市秀英区滨海大道136号",
     "places_query": "海口喜来登酒店 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJp5GknDIsUjERxX7eS4t9Gr4",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.051019,
+      "longitude": 110.21648499999999
     },
     "hotel_type": "奢华型",
     "star_rating": 5,
@@ -1922,10 +1922,10 @@
     "sub_area": "滨海大道",
     "address": "海口市秀英区滨海大道197号",
     "places_query": "海口大华西海岸智选假日酒店 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJi-e032guUjER5LMtWZDUpW0",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.050287,
+      "longitude": 110.21312200000001
     },
     "hotel_type": "舒适型",
     "star_rating": 3,
@@ -2206,10 +2206,10 @@
     "sub_area": "观澜湖度假区",
     "address": "海口市龙华区观澜湖大道1号海口观澜湖旅游度假区",
     "places_query": "海口观澜湖度假酒店 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJZ-rCSsgqUjERBC5b_0dxJP4",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 19.910733,
+      "longitude": 110.321619
     },
     "hotel_type": "目的地型度假酒店",
     "star_rating": 5,
