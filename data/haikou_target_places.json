@@ -589,10 +589,10 @@
     "category": "park",
     "area": "美兰区",
     "places_query": "白沙门公园 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJVVWWalTNUzER_sTHR5L9CLI",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.07117,
+      "longitude": 110.335245
     },
     "tags": [
       "公园",
@@ -771,10 +771,10 @@
     "category": "shopping",
     "area": "西海岸",
     "places_query": "中免海口国际免税城 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJ7zi4b6IvUjERcrkvQOyuFAw",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.049319999999998,
+      "longitude": 110.16493
     },
     "tags": [
       "购物",
@@ -813,10 +813,10 @@
     "category": "convention",
     "area": "西海岸",
     "places_query": "海南国际会展中心 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJrVykCkkuUjERAOtTYfodqoo",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.057888000000002,
+      "longitude": 110.195419
     },
     "tags": [
       "商务",
@@ -853,10 +853,10 @@
     "category": "campus",
     "area": "美兰区",
     "places_query": "海南大学 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJP19dnVQtUjERzMVh6gfXSyQ",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.061989999999998,
+      "longitude": 110.32874
     },
     "tags": [
       "访校",
