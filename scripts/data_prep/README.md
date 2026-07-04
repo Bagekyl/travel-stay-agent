@@ -52,6 +52,15 @@ python3 scripts/data_prep/enrich_places_data.py --apply
 
 Both modes call Places API sequentially with a small delay between entities. `--apply` creates a local backup under `backups/` before changing data files.
 
+Second-pass review for first-pass ambiguous records:
+
+```bash
+python3 scripts/data_prep/review_places_second_pass.py --dry-run
+python3 scripts/data_prep/review_places_second_pass.py --apply
+```
+
+The second pass reads `reports/places_validation_report.md`, classifies ambiguous records by failure reason, generates reason-specific query variants, aggregates candidates by Place ID across multiple Text Search calls, and writes only high-confidence review matches. It does not relax the strict first-pass matcher.
+
 ## Match Status
 
 - `matched`: a candidate passed name, city, address/type, and separation checks; the script may write Place ID and coordinates.
@@ -60,3 +69,5 @@ Both modes call Places API sequentially with a small delay between entities. `--
 - `error`: a request failed after retry; JSON remains empty for Places fields.
 
 The matching rules are implemented in `places_matcher.py`. Thresholds and scoring weights are centralized there.
+
+Second-pass review rules are implemented in `places_reviewer.py`. They add query-variant generation, multi-query consistency scoring, reason-specific acceptance rules, and protection against reusing a Place ID already assigned by the first pass.
