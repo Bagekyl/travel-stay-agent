@@ -61,6 +61,8 @@ python3 scripts/data_prep/review_places_second_pass.py --apply
 
 The second pass reads `reports/places_validation_report.md`, classifies ambiguous records by failure reason, generates reason-specific query variants, aggregates candidates by Place ID across multiple Text Search calls, and writes only high-confidence review matches. It does not relax the strict first-pass matcher.
 
+Pass 3 autonomous data curation is used when a record remains ambiguous because the original entity is low quality, abstract, renamed, or insufficiently verifiable. It combines internet fact checking, more precise Places queries, conservative entity correction, and same-role replacement where appropriate. Important infrastructure records are not replaced; abstract route targets are replaced with concrete POIs. The policy helpers for this pass are in `curation_rules.py`, and the process result is recorded in `reports/autonomous_data_curation_report.md`.
+
 ## Match Status
 
 - `matched`: a candidate passed name, city, address/type, and separation checks; the script may write Place ID and coordinates.
@@ -71,3 +73,5 @@ The second pass reads `reports/places_validation_report.md`, classifies ambiguou
 The matching rules are implemented in `places_matcher.py`. Thresholds and scoring weights are centralized there.
 
 Second-pass review rules are implemented in `places_reviewer.py`. They add query-variant generation, multi-query consistency scoring, reason-specific acceptance rules, and protection against reusing a Place ID already assigned by the first pass.
+
+Pass 3 curation rules are implemented in `curation_rules.py`. They encode non-replaceable infrastructure, abstract-target replacement, hotel replacement constraints, duplicate Place ID checks, and final price/area distribution policy.

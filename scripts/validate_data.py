@@ -100,6 +100,22 @@ HAIKOU_BOUNDS = {
     "max_longitude": 111.5,
 }
 
+REQUIRED_HOTEL_AREAS = {
+    "龙华区",
+    "美兰区",
+    "海口东站周边",
+    "美兰机场/江东新区",
+    "西海岸",
+    "海口站/新海港方向",
+    "观澜湖",
+}
+
+ABSTRACT_TARGET_NAMES = {
+    "海口湾",
+    "国贸商圈",
+    "观澜湖度假区",
+}
+
 
 def load_json(path: Path) -> Any:
     with path.open("r", encoding="utf-8") as f:
@@ -187,17 +203,22 @@ def validate_hotels(hotels: Any, errors: list[str]) -> None:
         require(hotel.get("currency") == "CNY", prefix + "currency must be CNY", errors)
         require(bool(hotel.get("places_query")), prefix + "places_query must be non-empty", errors)
         validate_places_fields(hotel, prefix, errors)
+        require(bool(hotel.get("google_place_id")), prefix + "google_place_id must be populated after Pass 3 curation", errors)
         require(isinstance(hotel.get("mock_price_per_night"), (int, float)), prefix + "mock_price_per_night must be numeric", errors)
         require(bool(hotel.get("room_types")), prefix + "room_types must be non-empty", errors)
         for room_index, room in enumerate(hotel.get("room_types", []), 1):
             require(isinstance(room.get("max_guests"), (int, float)), prefix + f"room_types[{room_index}].max_guests must be numeric", errors)
         bad_tags = set(hotel.get("tags", [])) - HOTEL_TAGS
         require(not bad_tags, prefix + f"unknown hotel tags: {sorted(bad_tags)}", errors)
+        require(bool(hotel.get("target_users")), prefix + "target_users must be non-empty", errors)
+        require(bool(hotel.get("trip_styles")), prefix + "trip_styles must be non-empty", errors)
         mock_fields = set(hotel.get("mock_fields", []))
         require(REQUIRED_MOCK_FIELDS <= mock_fields, prefix + f"mock_fields missing {sorted(REQUIRED_MOCK_FIELDS - mock_fields)}", errors)
 
     distribution = Counter(price_band(h["mock_price_per_night"]) for h in hotels)
     require(distribution == {"180-400": 6, "400-800": 7, "800-1500": 6, "1500+": 5}, f"price distribution mismatch: {dict(distribution)}", errors)
+    area_values = {h["area"] for h in hotels}
+    require(REQUIRED_HOTEL_AREAS <= area_values, f"hotel area coverage missing: {sorted(REQUIRED_HOTEL_AREAS - area_values)}", errors)
 
 
 def validate_places(places: Any, hotels: list[dict[str, Any]], errors: list[str]) -> None:
@@ -217,10 +238,12 @@ def validate_places(places: Any, hotels: list[dict[str, Any]], errors: list[str]
         prefix = f"place[{index}] {place.get('place_id', '<missing>')}: "
         require(tuple(place.keys()) == expected_keys, prefix + "top-level schema differs", errors)
         require(schema_shape(place) == expected_shape, prefix + "nested schema differs", errors)
+        require(place.get("name") not in ABSTRACT_TARGET_NAMES, prefix + f"abstract route target remains: {place.get('name')}", errors)
         require(place.get("city") == "海口", prefix + "city must be 海口", errors)
         require(place.get("category") in PLACE_CATEGORIES, prefix + f"invalid category {place.get('category')}", errors)
         require(bool(place.get("places_query")), prefix + "places_query must be non-empty", errors)
         validate_places_fields(place, prefix, errors)
+        require(bool(place.get("google_place_id")), prefix + "google_place_id must be populated after Pass 3 curation", errors)
         bad_tags = set(place.get("tags", [])) - PLACE_TAGS
         require(not bad_tags, prefix + f"unknown place tags: {sorted(bad_tags)}", errors)
         weather = place.get("weather_sensitivity", {})

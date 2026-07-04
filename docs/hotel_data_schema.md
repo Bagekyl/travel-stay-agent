@@ -12,9 +12,9 @@
 - `sub_area`: 片区
 - `address`: 已核验到明确地址的文本字段
 - `places_query`: 离线 Places enrichment 使用的搜索字符串，必须非空
-- `google_place_id`: 离线 Places enrichment 确认匹配后填写；未匹配、歧义或错误时保留空字符串 `""`
-- `location.latitude`: 离线 Places enrichment 确认匹配后填写数字；未匹配、歧义或错误时保留 `null`
-- `location.longitude`: 离线 Places enrichment 确认匹配后填写数字；未匹配、歧义或错误时保留 `null`
+- `google_place_id`: 离线 Places enrichment 确认匹配后填写；当前交付数据应全部非空
+- `location.latitude`: 离线 Places enrichment 确认匹配后填写数字；当前交付数据应全部为数字
+- `location.longitude`: 离线 Places enrichment 确认匹配后填写数字；当前交付数据应全部为数字
 - `hotel_type`: `经济型` / `舒适型` / `高端型` / `奢华型` / `目的地型度假酒店`
 - `star_rating`: 数字
 - `review.score`: 展示参考数据
@@ -48,8 +48,8 @@
 - `availability`
 
 ## Places 字段规范
-- matched 记录：`google_place_id` 必须非空，`location.latitude` / `location.longitude` 必须为数字
-- ambiguous / unmatched / error 记录：`google_place_id` 使用空字符串 `""`，`location.latitude` / `location.longitude` 使用 `null`
+- 当前 Pass 3 交付数据：所有记录均应有非空 `google_place_id`，`location.latitude` / `location.longitude` 均应为数字
+- 中间处理阶段如果出现 ambiguous / unmatched / error，离线脚本不得写入错误候选；应在报告中记录并继续治理或替换实体
 - 不使用 `0` 代替空值
 - 不手工猜测坐标或 Place ID，只通过离线 Places enrichment 工具写入
 

@@ -10,9 +10,9 @@
 - `category`: 地点类别枚举
 - `area`: 所属区域
 - `places_query`: 离线 Places enrichment 使用的搜索字符串，必须非空
-- `google_place_id`: 离线 Places enrichment 确认匹配后填写；未匹配、歧义或错误时保留空字符串 `""`
-- `location.latitude`: 离线 Places enrichment 确认匹配后填写数字；未匹配、歧义或错误时保留 `null`
-- `location.longitude`: 离线 Places enrichment 确认匹配后填写数字；未匹配、歧义或错误时保留 `null`
+- `google_place_id`: 离线 Places enrichment 确认匹配后填写；当前交付数据应全部非空
+- `location.latitude`: 离线 Places enrichment 确认匹配后填写数字；当前交付数据应全部为数字
+- `location.longitude`: 离线 Places enrichment 确认匹配后填写数字；当前交付数据应全部为数字
 - `tags`: 地点统一标签词表
 - `suitable_for`: 适合旅客类型
 - `trip_styles`: 适合旅行方式
@@ -73,14 +73,14 @@
 - 高尔夫
 
 ## Places 字段规范
-- matched 记录：`google_place_id` 必须非空，`location.latitude` / `location.longitude` 必须为数字
-- ambiguous / unmatched / error 记录：`google_place_id` 使用空字符串 `""`，`location.latitude` / `location.longitude` 使用 `null`
+- 当前 Pass 3 交付数据：所有记录均应有非空 `google_place_id`，`location.latitude` / `location.longitude` 均应为数字
+- 中间处理阶段如果出现 ambiguous / unmatched / error，离线脚本不得写入错误候选；应在报告中记录并继续治理或替换实体
 - 不使用 `0` 代替空值
 - 不手工猜测坐标或 Place ID，只通过离线 Places enrichment 工具写入
 
 ## 地点清单
-- 交通枢纽 5 个: 美兰国际机场、美兰站、海口东站、海口站、新海港
-- 历史文化与城市体验 5 个: 骑楼老街、海南省博物馆、五公祠、海口钟楼、海瑞文化公园
-- 海滨公园与休闲 5 个: 云洞图书馆、海口湾、万绿园、白沙门公园、假日海滩
-- 商业购物与会展 4 个: 国贸商圈、日月广场、中免海口国际免税城、海南国际会展中心
-- 特殊目的地 5 个: 海南大学、观澜湖度假区、冯小刚电影公社、雷琼海口火山群世界地质公园、海南热带野生动植物园
+- 交通枢纽 5 个: 美兰国际机场、美兰站、海口东站、海口站广场、新海港
+- 历史文化与城市体验 5 个: 骑楼老街、海南省博物馆、五公祠、海口钟楼、海瑞墓
+- 海滨公园与休闲 5 个: 世纪大桥、海口湾公园、万绿园、白沙门公园、假日海滩
+- 商业购物与会展 4 个: 上邦百汇城、日月广场、中免海口国际免税城、海南国际会展中心
+- 特殊目的地 5 个: 海南大学、观澜湖高尔夫球会·海口、冯小刚电影公社、海口石山火山群国家地质公园、海南热带野生动植物园

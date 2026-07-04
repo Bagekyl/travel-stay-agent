@@ -9,7 +9,7 @@ The project keeps the data responsibilities separate:
 - `knowledge_base/` stores rule-oriented RAG material about how to judge tradeoffs.
 - `scripts/validate_data.py` validates the JSON data.
 
-Hotel and target-place records use a unified Places enrichment boundary. Google Places API (New) is used offline during data preparation to validate entities and fill stable `google_place_id` and coordinate fields. The runtime Mock Hotel API does not call Places API.
+Hotel and target-place records use a unified Places enrichment boundary. Google Places API (New) is used offline during data preparation to validate entities and fill stable `google_place_id` and coordinate fields. The data passed through strict automatic matching, reason-aware second-pass review, and autonomous fact-checking/data curation. The runtime Mock Hotel API does not call Places API.
 
 Routes API and weather APIs are later runtime sources for live route time, distance, and weather-sensitive decisions. Those dynamic facts are not hard-coded into the RAG files.
 

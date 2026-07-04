@@ -51,10 +51,10 @@
     "category": "railway_hub",
     "area": "美兰机场/江东新区",
     "places_query": "美兰站 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJca_4OMPWUzER4HUl40YdHrQ",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 19.942359,
+      "longitude": 110.461026
     },
     "tags": [
       "高铁",
@@ -70,7 +70,7 @@
       "环岛铁路旅行",
       "中转"
     ],
-    "travel_role": "空铁联运节点，连接机场与环岛高铁",
+    "travel_role": "美兰机场旁的环岛铁路客运节点，承担空铁联运换乘功能。",
     "recommended_time": [
       "出发前",
       "到达后"
@@ -136,19 +136,20 @@
   },
   {
     "place_id": "place_hak_railway_station",
-    "name": "海口站",
+    "name": "海口站广场",
     "city": "海口",
     "category": "railway_hub",
     "area": "海口站/新海港方向",
-    "places_query": "海口站 海口",
-    "google_place_id": "",
+    "places_query": "海口站广场 海口",
+    "google_place_id": "ChIJHRHC2GwvUjERkWAUKArrH9U",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.027526,
+      "longitude": 110.163057
     },
     "tags": [
       "中转",
-      "早班车"
+      "早班车",
+      "高铁"
     ],
     "suitable_for": [
       "普速列车旅客",
@@ -157,7 +158,7 @@
     "trip_styles": [
       "中转"
     ],
-    "travel_role": "海口普速铁路出发与到达节点，靠近新海港",
+    "travel_role": "海口站进出站广场，可作为普速铁路出发、到达和接送站路线终点。",
     "recommended_time": [
       "出发前",
       "到达后"
@@ -167,7 +168,7 @@
       "level": "low",
       "note": "主要为交通换乘用途。"
     },
-    "hotel_decision_value": "如果用户从海口站出发或到达，且为早班车或晚间到达，可考虑火车站周边经济型酒店短暂停留。但该区域离市区较远，不建议作为旅游住宿首选。",
+    "hotel_decision_value": "如果用户从海口站出发或到达，且为早班车或晚间到达，可考虑海口站/新海港方向或西海岸酒店短暂停留。但该区域离市区较远，不建议作为旅游住宿首选。",
     "preferred_hotel_areas": [
       "海口站/新海港方向",
       "西海岸"
@@ -182,11 +183,11 @@
     "city": "海口",
     "category": "port",
     "area": "海口站/新海港方向",
-    "places_query": "新海港 海口",
-    "google_place_id": "",
+    "places_query": "新海港 客运港 海口",
+    "google_place_id": "ChIJWWi36JAvUjERhgfrBfvrV20",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.0560799,
+      "longitude": 110.15631
     },
     "tags": [
       "轮渡",
@@ -202,7 +203,7 @@
       "中转",
       "自驾"
     ],
-    "travel_role": "进出海南岛的主要轮渡港口",
+    "travel_role": "进出海南岛的主要汽车客货滚装和轮渡港口。",
     "recommended_time": [
       "出发前",
       "到达后"
@@ -365,10 +366,10 @@
     "category": "urban_landmark",
     "area": "龙华区",
     "places_query": "海口钟楼 海口",
-    "google_place_id": "",
+    "google_place_id": "ChIJvUiS67fSUzERqtkBJoFXQUk",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.0445399,
+      "longitude": 110.3416242
     },
     "tags": [
       "城市漫游",
@@ -383,7 +384,7 @@
       "城市漫游",
       "短途旅行"
     ],
-    "travel_role": "海口标志性城市地标，紧邻骑楼老街",
+    "travel_role": "骑楼老街和长堤路附近的历史地标，适合老城漫游和拍照打卡。",
     "recommended_time": [
       "上午",
       "傍晚"
@@ -404,20 +405,20 @@
   },
   {
     "place_id": "place_hak_hairui",
-    "name": "海瑞文化公园",
+    "name": "海瑞墓",
     "city": "海口",
     "category": "historical_site",
     "area": "龙华区",
-    "places_query": "海瑞文化公园 海口",
-    "google_place_id": "",
+    "places_query": "海瑞墓 海口",
+    "google_place_id": "ChIJheOoTe0sUjER0JSIWymg4Vs",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.005623,
+      "longitude": 110.2955
     },
     "tags": [
       "历史文化",
-      "公园",
-      "城市漫游"
+      "城市漫游",
+      "拍照"
     ],
     "suitable_for": [
       "文化体验旅客",
@@ -426,7 +427,7 @@
     "trip_styles": [
       "城市漫游"
     ],
-    "travel_role": "历史文化纪念与市民休闲公园",
+    "travel_role": "丘海大道上的全国重点文物保护单位，适合作为历史文化路线节点。",
     "recommended_time": [
       "上午",
       "下午"
@@ -436,7 +437,7 @@
       "level": "medium",
       "note": "户外为主，降雨影响游览。"
     },
-    "hotel_decision_value": "作为非核心旅游景点，一般不作为酒店区域选择的主要因素。",
+    "hotel_decision_value": "位于龙华区西侧，适合作为市区历史文化支线；住宿仍应结合骑楼老街、国贸CBD或滨海大道等综合需求判断。",
     "preferred_hotel_areas": [
       "龙华区"
     ],
@@ -446,15 +447,15 @@
   },
   {
     "place_id": "place_hak_cloud_library",
-    "name": "云洞图书馆",
+    "name": "世纪大桥",
     "city": "海口",
     "category": "urban_landmark",
     "area": "龙华区",
-    "places_query": "云洞图书馆 海口",
-    "google_place_id": "",
+    "places_query": "海口世纪大桥",
+    "google_place_id": "ChIJD1UcXkgtUjERSqEGSTe3qeI",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.048591,
+      "longitude": 110.3198529
     },
     "tags": [
       "拍照",
@@ -471,17 +472,17 @@
       "城市漫游",
       "短途旅行"
     ],
-    "travel_role": "海口湾标志性建筑，日落观景点",
+    "travel_role": "海口湾跨海城市地标，可作为滨海拍照和城市漫游路线节点。",
     "recommended_time": [
       "下午",
       "傍晚"
     ],
-    "estimated_visit_duration": "1-2小时",
+    "estimated_visit_duration": "30分钟-1小时",
     "weather_sensitivity": {
       "level": "high",
-      "note": "户外及海边，降雨和大风天气严重影响体验。"
+      "note": "桥梁和滨海开放空间，降雨和大风天气会明显影响步行与拍照体验。"
     },
-    "hotel_decision_value": "位于海口湾，靠近国贸CBD和滨海区域。如果用户重视日落景观和海边漫步，住滨海大道沿线酒店通常更便利。",
+    "hotel_decision_value": "位于海口湾和滨海大道动线附近。如果用户重视日落、拍照和城市滨海漫步，滨海大道、国贸CBD和龙华区酒店优先级提高。",
     "preferred_hotel_areas": [
       "龙华区",
       "滨海大道"
@@ -492,21 +493,22 @@
   },
   {
     "place_id": "place_hak_bay",
-    "name": "海口湾",
+    "name": "海口湾公园",
     "city": "海口",
-    "category": "seaside",
+    "category": "park",
     "area": "龙华区",
-    "places_query": "海口湾 海口",
-    "google_place_id": "",
+    "places_query": "海口湾公园",
+    "google_place_id": "ChIJoZFfTBktUjERSZ2ri7fVkmk",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.03122,
+      "longitude": 110.30211
     },
     "tags": [
       "海边",
       "日落",
       "轻松散步",
-      "城市漫游"
+      "城市漫游",
+      "公园"
     ],
     "suitable_for": [
       "情侣",
@@ -517,7 +519,7 @@
       "城市漫游",
       "短途旅行"
     ],
-    "travel_role": "城市中心滨海休闲带",
+    "travel_role": "海口湾核心滨海公园，适合作为海边散步、日落和短途城市漫游路线终点。",
     "recommended_time": [
       "傍晚",
       "晚间"
@@ -527,7 +529,7 @@
       "level": "high",
       "note": "户外开放空间，降雨和大风严重影响体验。"
     },
-    "hotel_decision_value": "海口湾沿线酒店（如希尔顿、朗廷、威斯汀）具有较强的地理优势，下楼即可散步。如果用户看重滨海体验但预算有限，可选择靠近海口湾的非一线海景酒店。",
+    "hotel_decision_value": "海口湾公园可代表滨海休闲需求。若用户看重海边步行和日落体验，滨海大道、国贸CBD和龙华区酒店优先级提高。",
     "preferred_hotel_areas": [
       "龙华区",
       "滨海大道"
@@ -620,7 +622,7 @@
       "level": "high",
       "note": "海边户外空间，受天气影响明显。"
     },
-    "hotel_decision_value": "位于海甸岛北端，住海甸岛内酒店（如华彩华邑）前往最为方便。如果用户将白沙门作为主要休闲地点，海甸岛住宿应优先考虑。",
+    "hotel_decision_value": "位于海甸岛北端，住海甸岛或美兰区北部酒店前往更方便。如果用户将白沙门作为主要休闲地点，海甸岛住宿应优先考虑。",
     "preferred_hotel_areas": [
       "美兰区",
       "海甸岛"
@@ -676,15 +678,15 @@
   },
   {
     "place_id": "place_hak_guomao",
-    "name": "国贸商圈",
+    "name": "上邦百汇城",
     "city": "海口",
-    "category": "commercial_district",
+    "category": "shopping",
     "area": "龙华区",
-    "places_query": "国贸商圈 海口",
-    "google_place_id": "",
+    "places_query": "上邦百汇城 海口",
+    "google_place_id": "ChIJ15NLMdYsUjERoZepkMhw-cQ",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 20.021898,
+      "longitude": 110.322396
     },
     "tags": [
       "购物",
@@ -701,16 +703,17 @@
       "城市漫游",
       "购物"
     ],
-    "travel_role": "海口核心商业与商务区",
+    "travel_role": "国贸核心区代表性商业综合体，可作为购物、美食和商务便利性的具体路线终点。",
     "recommended_time": [
-      "全天"
+      "下午",
+      "晚间"
     ],
-    "estimated_visit_duration": "视需求而定",
+    "estimated_visit_duration": "1-3小时",
     "weather_sensitivity": {
       "level": "low",
       "note": "室内商业为主，天气影响较小。"
     },
-    "hotel_decision_value": "如果用户以商务、购物或城市便利为核心需求，国贸CBD是优先住宿区域。区域内有多个国际品牌酒店。",
+    "hotel_decision_value": "上邦百汇城位于国贸CBD核心生活圈。如果用户以商务、购物、餐饮和城市便利为核心需求，国贸CBD和龙华区酒店优先级提高。",
     "preferred_hotel_areas": [
       "龙华区",
       "国贸CBD"
@@ -891,41 +894,43 @@
   },
   {
     "place_id": "place_hak_missionhills",
-    "name": "观澜湖度假区",
+    "name": "观澜湖高尔夫球会·海口",
     "city": "海口",
     "category": "resort",
     "area": "观澜湖",
-    "places_query": "观澜湖度假区 海口",
-    "google_place_id": "",
+    "places_query": "观澜湖高尔夫球会 海口",
+    "google_place_id": "ChIJ____L8oqUjERao6a46unf80",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 19.9110857,
+      "longitude": 110.3256685
     },
     "tags": [
       "度假",
-      "温泉",
       "高尔夫",
-      "亲子"
+      "亲子",
+      "自驾"
     ],
     "suitable_for": [
       "度假旅客",
       "高尔夫爱好者",
       "亲子家庭",
-      "温泉爱好者"
+      "自驾旅客"
     ],
     "trip_styles": [
-      "纯度假"
+      "纯度假",
+      "自驾"
     ],
-    "travel_role": "综合型度假目的地",
+    "travel_role": "观澜湖片区内独立高尔夫休闲 POI，代表度假、高尔夫和目的地型休闲需求。",
     "recommended_time": [
-      "全天"
+      "上午",
+      "下午"
     ],
-    "estimated_visit_duration": "1-3天",
+    "estimated_visit_duration": "半天-1天",
     "weather_sensitivity": {
       "level": "medium",
-      "note": "温泉和部分设施不受天气影响，高尔夫受降雨影响。"
+      "note": "高尔夫和户外活动受降雨影响，室内配套可作为备选。"
     },
-    "hotel_decision_value": "如果用户以观澜湖为核心目的地，应直接推荐度假区内酒店（丽思卡尔顿、观澜湖度假酒店）。此区域不适合作为市区游览的住宿基地。",
+    "hotel_decision_value": "如果用户以高尔夫、观澜湖片区度假或目的地型休闲为核心，应优先考虑观澜湖片区酒店；若主要游览市区，则不建议因该点选择观澜湖住宿。",
     "preferred_hotel_areas": [
       "观澜湖"
     ],
@@ -979,15 +984,15 @@
   },
   {
     "place_id": "place_hak_volcano",
-    "name": "雷琼海口火山群世界地质公园",
+    "name": "海口石山火山群国家地质公园",
     "city": "海口",
     "category": "nature",
     "area": "西海岸",
-    "places_query": "雷琼海口火山群世界地质公园 海口",
-    "google_place_id": "",
+    "places_query": "海口石山火山群国家地质公园",
+    "google_place_id": "ChIJVx9ElJEpUjERb35kJYfeDXI",
     "location": {
-      "latitude": null,
-      "longitude": null
+      "latitude": 19.9282065,
+      "longitude": 110.2219173
     },
     "tags": [
       "自然",
@@ -1003,7 +1008,7 @@
       "短途旅行",
       "亲子旅行"
     ],
-    "travel_role": "海口近郊自然景区，火山地貌科普教育基地",
+    "travel_role": "海口西南方向的火山地质自然景区，适合自然、亲子和自驾行程。",
     "recommended_time": [
       "上午"
     ],
@@ -1012,7 +1017,7 @@
       "level": "high",
       "note": "户外登山为主，高温或降雨均严重影响体验和安全。"
     },
-    "hotel_decision_value": "位于海口西南郊，离市区较远。如果用户将此作为必去景点，建议住西海岸区域以减少单日车程。但不应因此将酒店选在景区附近，因为周边配套严重不足。",
+    "hotel_decision_value": "距离市区核心区较远，更适合作为自驾或包车日游目的地。若用户重点安排火山景区，可提高西海岸或自驾友好酒店优先级。",
     "preferred_hotel_areas": [
       "西海岸",
       "龙华区"
