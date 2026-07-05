@@ -1,5 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
 
 const { createInitialChatState, reduceChatEvent } = require('../lib/client/chat_event_state');
 const { buildChatViewModel, dimensionPresentation } = require('../lib/client/chat_ui_model');
@@ -84,7 +85,61 @@ test('weather unavailable produces degraded weather view model', () => {
 
   const view = buildChatViewModel(state);
   assert.equal(view.weather.available, false);
-  assert.equal(view.weather.coverageMode, 'unavailable');
+  assert.equal(view.weather.statusLabel, '当前旅行日期暂不在可用天气范围内');
+  assert.equal(view.weather.sourceLabel, '天气信息：降级说明');
+  assert.equal(Object.hasOwn(view.weather, 'coverageMode'), false);
+  assert.equal(Object.hasOwn(view.weather, 'source'), false);
+});
+
+test('weather full and partial coverage are mapped to user-facing labels', () => {
+  const baseFactFrame = {
+    schema_version: '1.0',
+    hotels: [],
+    target_places: [],
+    route_matrix: {},
+  };
+  const fullView = buildChatViewModel(applyEvents([{
+    type: 'fact_frame',
+    payload: {
+      ...baseFactFrame,
+      weather: {
+        available: true,
+        coverage_mode: 'full',
+        context: '天气可用。',
+        source: 'open_meteo',
+      },
+    },
+  }]));
+  const partialView = buildChatViewModel(applyEvents([{
+    type: 'fact_frame',
+    payload: {
+      ...baseFactFrame,
+      weather: {
+        available: true,
+        coverage_mode: 'partial',
+        context: '部分天气可用。',
+        source: 'open_meteo',
+      },
+    },
+  }]));
+
+  assert.equal(fullView.weather.statusLabel, '旅行日期范围内天气数据完整');
+  assert.equal(fullView.weather.sourceLabel, '天气数据：Open-Meteo');
+  assert.equal(partialView.weather.statusLabel, '部分旅行日期可提供天气信息');
+});
+
+test('normal view model does not expose raw implementation field names', () => {
+  const view = buildChatViewModel(applyEvents(normalFixtureEvents()));
+  const serialized = JSON.stringify(view);
+
+  assert.equal(serialized.includes('route_matrix'), false);
+  assert.equal(serialized.includes('fact_frame'), false);
+  assert.equal(serialized.includes('business event'), false);
+  assert.equal(serialized.includes('coverage_mode'), false);
+  assert.equal(serialized.includes('source: open_meteo'), false);
+  assert.equal(view.route.description, '比较候选酒店前往主要活动地点的车程与距离。');
+  assert.ok(view.route.stats.length > 0);
+  assert.ok(view.weather.context);
 });
 
 test('recommendation reasons keep arrival order', () => {
@@ -159,7 +214,18 @@ test('protocol error keeps already successful content in view model', () => {
 
   assert.equal(view.primaryRecommendation.hotel.name, '海口观澜湖度假酒店');
   assert.equal(view.recommendationReasons.length, 1);
-  assert.equal(view.protocolErrors.length, 1);
+  assert.equal(view.protocolErrorNotice.title, '内容生成提示');
+  assert.equal(view.protocolErrorNotice.diagnostics[0].code, 'MALFORMED_EVENT');
+});
+
+test('user-facing app copy avoids demo-only implementation wording by default', () => {
+  const source = fs.readFileSync('lib/client/chat_ui_app.js', 'utf8');
+
+  assert.match(source, /演示信息/);
+  assert.match(source, /组件级流式渲染/);
+  assert.doesNotMatch(source, /每条理由来自独立业务事件/);
+  assert.doesNotMatch(source, /route_matrix/);
+  assert.doesNotMatch(source, /流式协议提示/);
 });
 
 test('normal fixture reaches done and exposes data notice', () => {
