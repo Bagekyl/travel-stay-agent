@@ -383,6 +383,37 @@ textarea {
   margin: 6px 0 0;
 }
 
+.weather-daily-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.weather-day-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fffdf9;
+  padding: 14px;
+}
+
+.weather-day-card h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.weather-metric {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.weather-risk-list {
+  margin: 8px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+
 .section-heading {
   margin-bottom: 14px;
 }
@@ -630,6 +661,7 @@ textarea {
   .reason-grid,
   .alternative-grid,
   .route-stats-grid,
+  .weather-daily-grid,
   .suggestion-grid {
     grid-template-columns: 1fr;
   }

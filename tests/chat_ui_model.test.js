@@ -16,6 +16,23 @@ function applyEvents(events) {
   return events.reduce((state, event) => reduceChatEvent(state, event), createInitialChatState());
 }
 
+function internalWeatherContext() {
+  return [
+    '天气覆盖模式：full',
+    '具体天气覆盖至：2026-07-21',
+    '',
+    '旅行日期天气：',
+    '2026-07-10：最高 30.7°C，最低 25.5°C，最大降雨概率 96%，降水量 1.2 mm，最大风速 10.5 km/h。',
+    '2026-07-11：最高 31.5°C，最低 26.3°C，最大降雨概率 86%，降水量 2.4 mm，最大风速 19.0 km/h。',
+    '2026-07-12：最高 29.5°C，最低 26.5°C，最大降雨概率 93%，降水量 4.8 mm，最大风速 11.1 km/h。',
+    '',
+    '天气风险等级：high',
+    '天气风险提示：',
+    '- 存在较高降雨概率，应准备室内备选地点。',
+    '- 旅行期间存在降水，应携带雨具并关注户外活动安排。',
+  ].join('\n');
+}
+
 test('primary hotel ID is resolved from factFrame hotel facts', () => {
   const state = applyEvents(normalFixtureEvents().slice(0, 2));
   const view = buildChatViewModel(state);
@@ -87,11 +104,14 @@ test('weather unavailable produces degraded weather view model', () => {
   assert.equal(view.weather.available, false);
   assert.equal(view.weather.statusLabel, '当前旅行日期暂不在可用天气范围内');
   assert.equal(view.weather.sourceLabel, '天气信息：降级说明');
+  assert.equal(view.weather.summary, '当前旅行日期暂不在可用天气预报范围内，住宿建议仍基于预算、位置、路线和旅行偏好生成。');
+  assert.deepEqual(view.weather.dailyForecasts, []);
   assert.equal(Object.hasOwn(view.weather, 'coverageMode'), false);
   assert.equal(Object.hasOwn(view.weather, 'source'), false);
+  assert.equal(Object.hasOwn(view.weather, 'context'), false);
 });
 
-test('weather full and partial coverage are mapped to user-facing labels', () => {
+test('weather full context is mapped to user-facing daily forecast and risk labels', () => {
   const baseFactFrame = {
     schema_version: '1.0',
     hotels: [],
@@ -105,11 +125,34 @@ test('weather full and partial coverage are mapped to user-facing labels', () =>
       weather: {
         available: true,
         coverage_mode: 'full',
-        context: '天气可用。',
+        context: internalWeatherContext(),
         source: 'open_meteo',
       },
     },
   }]));
+
+  assert.equal(fullView.weather.statusLabel, '旅行日期范围内天气数据完整');
+  assert.equal(fullView.weather.sourceLabel, '天气数据：Open-Meteo');
+  assert.equal(fullView.weather.dailyForecasts.length, 3);
+  assert.equal(fullView.weather.dailyForecasts[0].dateLabel, '7 月 10 日');
+  assert.equal(fullView.weather.dailyForecasts[0].tempMaxC, 30.7);
+  assert.equal(fullView.weather.dailyForecasts[0].tempMinC, 25.5);
+  assert.equal(fullView.weather.dailyForecasts[0].precipitationProbabilityPct, 96);
+  assert.equal(fullView.weather.dailyForecasts[0].precipitationSumMm, 1.2);
+  assert.equal(fullView.weather.dailyForecasts[0].windSpeedMaxKmh, 10.5);
+  assert.equal(fullView.weather.riskLabel, '降雨或天气影响风险较高');
+  assert.equal(fullView.weather.riskMessages.length, 2);
+  assert.equal(JSON.stringify(fullView.weather).includes('天气覆盖模式：full'), false);
+  assert.equal(JSON.stringify(fullView.weather).includes('天气风险等级：high'), false);
+});
+
+test('weather partial coverage is mapped to user-facing label', () => {
+  const baseFactFrame = {
+    schema_version: '1.0',
+    hotels: [],
+    target_places: [],
+    route_matrix: {},
+  };
   const partialView = buildChatViewModel(applyEvents([{
     type: 'fact_frame',
     payload: {
@@ -123,9 +166,40 @@ test('weather full and partial coverage are mapped to user-facing labels', () =>
     },
   }]));
 
-  assert.equal(fullView.weather.statusLabel, '旅行日期范围内天气数据完整');
-  assert.equal(fullView.weather.sourceLabel, '天气数据：Open-Meteo');
   assert.equal(partialView.weather.statusLabel, '部分旅行日期可提供天气信息');
+});
+
+test('structured weather daily data is preferred when present', () => {
+  const view = buildChatViewModel(applyEvents([{
+    type: 'fact_frame',
+    payload: {
+      schema_version: '1.0',
+      hotels: [],
+      target_places: [],
+      route_matrix: {},
+      weather: {
+        available: true,
+        coverage_mode: 'full',
+        source: 'open_meteo',
+        context: '天气覆盖模式：full\n天气风险等级：high',
+        daily: [{
+          date: '2026-07-10',
+          temp_max_c: 30,
+          temp_min_c: 25,
+          precip_probability_max_pct: 80,
+          precipitation_sum_mm: 2,
+          wind_speed_max_kmh: 12,
+        }],
+        risk_level: 'medium',
+        risk_messages: ['午后可能有阵雨。'],
+      },
+    },
+  }]));
+
+  assert.equal(view.weather.dailyForecasts.length, 1);
+  assert.equal(view.weather.dailyForecasts[0].tempMaxC, 30);
+  assert.equal(view.weather.riskLabel, '需要关注天气变化');
+  assert.deepEqual(view.weather.riskMessages, ['午后可能有阵雨。']);
 });
 
 test('normal view model does not expose raw implementation field names', () => {
@@ -137,9 +211,12 @@ test('normal view model does not expose raw implementation field names', () => {
   assert.equal(serialized.includes('business event'), false);
   assert.equal(serialized.includes('coverage_mode'), false);
   assert.equal(serialized.includes('source: open_meteo'), false);
+  assert.equal(serialized.includes('天气覆盖模式'), false);
+  assert.equal(serialized.includes('天气风险等级'), false);
   assert.equal(view.route.description, '比较候选酒店前往主要活动地点的车程与距离。');
   assert.ok(view.route.stats.length > 0);
-  assert.ok(view.weather.context);
+  assert.equal(Object.hasOwn(view.weather, 'context'), false);
+  assert.ok(view.weather.summary || view.weather.dailyForecasts.length >= 0);
 });
 
 test('recommendation reasons keep arrival order', () => {
