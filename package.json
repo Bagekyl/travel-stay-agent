@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build:client": "node scripts/build_client_bundle.js",
     "test": "node --test"
   },
   "engines": {
