@@ -138,11 +138,64 @@ test('NDJSON parser reports malformed complete JSON lines', () => {
   assert.throws(() => parser.push('{"type":\n'), NdjsonProtocolError);
 });
 
+test('NDJSON parser parses final valid event without trailing newline', () => {
+  const parser = new NdjsonEventParser();
+  assert.deepEqual(parser.push('{"type":"done","payload":{}}'), []);
+
+  const events = parser.end();
+
+  assert.deepEqual(events.map((event) => event.type), ['done']);
+});
+
+test('NDJSON parser parses final valid event with trailing spaces and no newline', () => {
+  const parser = new NdjsonEventParser();
+  parser.push('{"type":"done","payload":{}}   ');
+
+  const events = parser.end();
+
+  assert.deepEqual(events.map((event) => event.type), ['done']);
+});
+
+test('NDJSON parser keeps normal final newline behavior unchanged', () => {
+  const parser = new NdjsonEventParser();
+  const events = parser.push('{"type":"done","payload":{}}\n');
+
+  assert.deepEqual(events.map((event) => event.type), ['done']);
+  assert.deepEqual(parser.end(), []);
+});
+
 test('NDJSON parser reports truncated non-empty line at stream end', () => {
   const parser = new NdjsonEventParser();
   parser.push('{"type":"primary_recommendation"');
 
-  assert.throws(() => parser.end(), /incomplete NDJSON line/);
+  assert.throws(() => parser.end(), (error) => (
+    error instanceof NdjsonProtocolError
+    && error.code === 'TRUNCATED_NDJSON'
+  ));
+});
+
+test('NDJSON parser still reports malformed complete line before stream end', () => {
+  const parser = new NdjsonEventParser();
+
+  assert.throws(() => parser.push('{"type":"done","payload":{}}\n{"type":\n'), (error) => (
+    error instanceof NdjsonProtocolError
+    && error.code === 'MALFORMED_NDJSON_LINE'
+  ));
+});
+
+test('NDJSON parser parses multiple events when final event has no newline', () => {
+  const parser = new NdjsonEventParser();
+  const firstEvents = parser.push(
+    eventLine('fact_frame', minimalFactFrame())
+    + eventLine('primary_recommendation', { hotel_id: 'mock_hk_002', summary: '主推', tradeoff: '取舍' })
+    + '{"type":"done","payload":{}}',
+  );
+  const finalEvents = parser.end();
+
+  assert.deepEqual(
+    [...firstEvents, ...finalEvents].map((event) => event.type),
+    ['fact_frame', 'primary_recommendation', 'done'],
+  );
 });
 
 test('normal flow reducer records all business event state', () => {
@@ -281,6 +334,21 @@ test('streamChat captures conversation_id and parses answer NDJSON', async () =>
   assert.deepEqual(seenEvents, ['done']);
   assert.equal(finalState.conversationId, 'conv-123');
   assert.equal(finalState.streamStatus, 'done');
+});
+
+test('streamChat accepts final business event without trailing newline', async () => {
+  const seenEvents = [];
+  const finalState = await streamChat({
+    query: 'hello',
+    fetchImpl: async () => responseFromChunks([
+      sseFrame({ event: 'message', answer: '{"type":"done","payload":{}}' }),
+    ]),
+    onBusinessEvent: (event) => seenEvents.push(event.type),
+  });
+
+  assert.deepEqual(seenEvents, ['done']);
+  assert.equal(finalState.streamStatus, 'done');
+  assert.equal(finalState.protocolErrors.length, 0);
 });
 
 test('streamChat records malformed SSE JSON as protocol error', async () => {
