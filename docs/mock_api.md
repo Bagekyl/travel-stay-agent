@@ -38,18 +38,25 @@ POST /api/hotels/search
 
 Optional request fields:
 
+Hard filters:
+
 - `budget.min`: number
 - `budget.max`: number
 - `areas`: string array, matched against hotel `area`
 - `sub_areas`: string array, matched against hotel `sub_area`
 - `guests`: positive integer, matched against `room_types[].max_guests`
-- `trip_styles`: string array
-- `target_users`: string array
-- `tags`: string array
 - `availability_only`: boolean, matched against `availability.available`
 - `parking_required`: boolean, matched against `parking.available`
 - `free_cancellation_required`: boolean, matched against `cancellation.free_cancellation`
 - `limit`: positive integer, default `5`, max `24`
+
+Soft preferences:
+
+- `preferred_areas`: string array, scored against hotel `area`
+- `preferred_sub_areas`: string array, scored against hotel `sub_area`
+- `trip_styles`: string array
+- `target_users`: string array
+- `tags`: string array
 
 Example request:
 
@@ -59,6 +66,7 @@ Example request:
     "min": 400,
     "max": 1200
   },
+  "preferred_sub_areas": ["观澜湖"],
   "trip_styles": ["商务出差"],
   "target_users": ["商务旅客"],
   "tags": ["交通方便"],
@@ -74,6 +82,7 @@ Example response shape:
   "count": 5,
   "total_candidates": 10,
   "applied_filters": {},
+  "applied_preferences": {},
   "data": [
     {
       "hotel_id": "mock_hk_001",
@@ -84,6 +93,8 @@ Example response shape:
   ]
 }
 ```
+
+`areas` and `sub_areas` are hard filters. `preferred_areas` and `preferred_sub_areas` only affect score and ordering; they do not remove hotels from the candidate set.
 
 Hotel sorting is deterministic:
 
