@@ -15,8 +15,8 @@
 - `google_place_id` 和 `location` 由离线 Places enrichment 工具统一校验、消歧和补齐；运行时 Mock API 不调用 Places API。
 - Pass 3 交付数据已完成互联网事实核验、自主替换和 Places 补全；如后续离线处理再次出现歧义、未匹配或 API 错误，不得强行写入错误候选，应在报告中记录并继续治理或替换实体。
 - 实时路线时间和距离由 Routes API 提供，知识库不写固定路线耗时。
-- 实时天气由天气 API 提供，知识库只写天气影响策略。
-- 酒店实时房价、房态、取消政策由真实酒店 API 或 Mock API 提供，RAG 不维护这些事实。
+- 行程天气预报由 Open-Meteo 提供，知识库只写天气影响策略。
+- 当前项目的酒店价格、房态和取消政策只来自 Mock API；真实酒店库存 API 尚未实现，RAG 不维护这些动态事实。
 
 ## Mock 数据说明
 - `mock_price_per_night` 用于预算硬过滤。

@@ -15,10 +15,10 @@ TravelStay Agent turns a conversational request into structured requirements, as
 - Haikou-only accommodation decision workflow.
 - Multi-turn clarification backed by Dify conversation variables.
 - Structured extraction of city, dates, travelers, budget, trip style, and preferences.
-- Retrieval over eight accommodation decision knowledge documents.
+- One Dify knowledge-retrieval node plus eight versioned Markdown sources intended to populate its workspace-specific dataset.
 - Deterministic JSON-backed APIs for 24 hotels and 24 decision-relevant places.
 - Candidate filtering and preference scoring before final LLM reasoning.
-- Open-Meteo forecast retrieval with full, partial, and unavailable-data handling.
+- Open-Meteo forecast retrieval with date-coverage branching and structured weather context.
 - Google Routes matrix requests with an existing degradation path when route input is unavailable.
 - Evidence assembly followed by primary and alternative accommodation recommendations.
 - Streaming Dify proxy, SSE parsing, NDJSON business events, incremental state reduction, and browser rendering.
@@ -38,7 +38,7 @@ Hotel commercial fields such as prices, room availability, breakfast, and cancel
 
 The browser consumes two nested protocols: Dify SSE transport and project-specific NDJSON events carried in incremental `answer` text. Chunk boundaries, UTF-8 fragmentation, malformed events, cancellation, partial rendering, and conversation IDs are covered by tests.
 
-### Reproducible workflow source
+### Versioned workflow source
 
 The repository includes the exported Dify Chatflow at [`dify/travelstay-chatflow.yml`](dify/travelstay-chatflow.yml). The audited DSL is an `advanced-chat` application with 39 nodes and 44 edges.
 
@@ -50,13 +50,15 @@ flowchart LR
     UI -->|POST /api/chat| PX[Vercel Node streaming proxy]
     PX -->|Dify chat-messages SSE| DF[Dify Chatflow]
 
-    DF --> RAG[Accommodation decision knowledge]
+    DF --> RAG[Workspace-specific Dify dataset]
     DF --> PA[Place Mock API]
     DF --> HA[Hotel Mock API]
     PA --> PD[(24 curated places)]
     HA --> HD[(24 mock hotel records)]
     DF --> OM[Open-Meteo Forecast API]
     DF --> GR[Google Routes API]
+
+    KS[8 versioned knowledge documents] -. uploaded and rebound .-> RAG
 
     DF -->|SSE with NDJSON answer deltas| PX
     PX --> UI
@@ -87,7 +89,7 @@ flowchart TD
 
     F --> K[RAG retrieval]
     F --> P[Load place catalog]
-    F --> W[Load or degrade weather context]
+    F --> W[Load weather or date-coverage fallback]
     K --> S[Select target places]
     P --> S
     W --> S
@@ -95,7 +97,7 @@ flowchart TD
     H --> J{Candidates available?}
     J -->|No| N[Structured zero-candidate output]
     J -->|Yes| R[Build Routes matrix request]
-    R --> G[Route results or degradation]
+    R --> G[Route results or input-unavailable fallback]
     G --> X[Assemble evidence package]
     X --> FF[Emit fact frame]
     FF --> L[Generate explainable decision]
@@ -109,7 +111,7 @@ flowchart TD
 | --- | --- |
 | Agent orchestration | Dify advanced Chatflow DSL |
 | LLM configuration | Google Gemini provider in Dify |
-| Retrieval | Dify knowledge retrieval over repository Markdown sources |
+| Retrieval | Dify knowledge retrieval with eight versioned Markdown sources for dataset setup |
 | Server API | Vercel Node functions using CommonJS |
 | Frontend | Static HTML, CSS, and framework-free JavaScript |
 | Streaming | Dify SSE plus NDJSON business events |
@@ -130,7 +132,7 @@ flowchart TD
 
 ### Knowledge base
 
-[`knowledge_base/`](knowledge_base/) contains eight rule-oriented Markdown documents. They describe how to reason about budgets, areas, transport, weather, trip planning, hotel selection, hotel terminology, and local food context. They intentionally avoid duplicating dynamic route times, forecasts, and mock availability.
+[`knowledge_base/`](knowledge_base/) contains eight rule-oriented Markdown documents intended for upload to the Dify knowledge dataset. They describe how to reason about budgets, areas, transport, weather, trip planning, hotel selection, hotel terminology, and local food context. They intentionally avoid duplicating dynamic route times, forecasts, and mock availability. The DSL references one workspace-specific dataset but does not embed that dataset's indexed contents, so the exact remote contents cannot be verified from the export alone.
 
 ### Runtime endpoints
 
@@ -166,7 +168,7 @@ See [`docs/mock_api.md`](docs/mock_api.md), [`docs/chat_streaming_proxy.md`](doc
 ### Prerequisites
 
 - Node.js 20 or newer.
-- Python 3.9 or newer for data validation and offline tooling.
+- Python 3.10 or newer for data validation and offline tooling.
 - Vercel CLI for serving the static site and Node functions together.
 - A Dify workspace and LLM provider credential for the complete agent path.
 - A Google Maps Platform key with Routes API access for live route matrices.
@@ -237,15 +239,15 @@ Run the local non-credential verification suite:
 npm run verify
 ```
 
-This command rebuilds the client bundle, runs 109 Node test cases across seven files, validates all 48 data records, and runs 29 Python data-preparation unit tests.
+This command rebuilds the client bundle, runs seven Node test files containing 109 named `test(...)` definitions, validates all 48 local data records, and runs 29 Python data-preparation unit tests.
 
 Audited on 2026-09-03:
 
 | Check | Result |
 | --- | --- |
-| Client production bundle | Passed; rebuild was byte-identical to the tracked bundle |
-| Node tests | Passed; 109 test cases across seven files |
-| Hotel/place data validation | Passed; 24 hotels, 24 places, 48 populated Place IDs |
+| Browser bundle | Passed; rebuild was byte-identical to the tracked bundle |
+| Node tests | Passed; seven discovered files containing 109 named test definitions |
+| Hotel/place schema and internal consistency | Passed; 24 hotels, 24 places, 48 populated Place IDs |
 | Python data-preparation tests | Passed; 29 tests |
 | Dify DSL static parse and graph reachability | Passed; 39/39 nodes reachable, 44 edges |
 | Deployed Mock API smoke requests | Passed for both endpoints configured in the DSL |
@@ -262,15 +264,17 @@ Credential-dependent checks must be rerun in the reader's own environment. Repos
 - Review scores and counts are display references rather than a live review feed.
 - There is no payment, booking, account, or durable cross-device conversation system.
 - Dify dataset, model-provider, and credential bindings are workspace-specific.
+- Numeric conversation variables are stored as `integer` while their upstream code outputs are declared as `number`; multi-turn assignment compatibility must be verified against the target Dify version.
+- The place-extraction node filters and reports catalog IDs invented by the LLM, but the current graph does not retry or branch on `extraction_valid: false`.
 - Route and weather availability depends on third-party services and configured credentials.
+- HTTP nodes retry failed requests, but the exported workflow does not define explicit node error strategies; upstream failures after retries are not verified to degrade gracefully.
 - The exported Mock API URLs are prototype deployment endpoints and should be replaced for a fork or independent deployment.
+- Hotel and place records carry `last_verified: 2026-07`; the 2026-09-03 release audit checked structure and internal consistency, not renewed real-world accuracy.
 - This is an educational prototype, not travel, safety, financial, or booking advice.
 
 ## Team Project And My Role
 
-TravelStay Agent was developed by a four-person course team. Bowen Xing served as project lead and primary engineer, with responsibility for system architecture, module contracts, the principal Dify workflow, API integration, frontend/backend integration, testing, and demonstration preparation. Other team members contributed to product and requirements research, initial data preparation, early workflow exploration, and testing.
-
-The Git history in this repository records the implementation under the author identities Bowen Xing and Bryce Xing, which share the same project email address.
+TravelStay Agent was developed by a four-person course team. Bowen Xing (English name: Bryce Xing) served as project lead and primary engineer, with responsibility for system architecture, module contracts, the principal Dify workflow, API integration, frontend/backend integration, testing, and demonstration preparation. Other team members contributed to product and requirements research, initial data preparation, early workflow exploration, and testing.
 
 ## Responsible Use And Data Disclaimer
 

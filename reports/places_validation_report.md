@@ -1,5 +1,7 @@
 # Places Validation Report
 
+> Historical first-pass report. Its matched/ambiguous counts are not the status of the current dataset. See `reports/places_second_pass_review.md` and then `reports/autonomous_data_curation_report.md` for the later stages; the final local data validator currently reports 48 populated Place IDs.
+
 - Execution time: 2026-07-04 17:06:47 UTC
 - Mode: apply
 - Data files: `data/mock_hotels_haikou.json`, `data/haikou_target_places.json`

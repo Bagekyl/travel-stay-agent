@@ -128,5 +128,6 @@ When a Dify SSE event includes a non-empty `conversation_id`, `streamChat` store
 
 - The browser validates event shapes but does not generate recommendations or repair semantically incorrect workflow output.
 - The Dify Chatflow owns clarification, retrieval, tool calls, evidence assembly, and business-event generation.
+- The client does not repair out-of-catalog place IDs or Dify conversation-variable type mismatches; those are workflow/runtime concerns.
 - The interface is static, framework-free JavaScript rather than React.
 - The browser retains only a lightweight user ID and the current Dify `conversation_id`; it does not provide accounts or durable cross-device history.

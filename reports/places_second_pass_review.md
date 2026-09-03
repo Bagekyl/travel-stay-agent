@@ -1,5 +1,7 @@
 # Places Second-pass Review
 
+> Historical intermediate report. The "final" counts below refer only to the end of the second pass, before autonomous curation. See `reports/autonomous_data_curation_report.md` for the subsequent 48/48 completion state.
+
 - Execution time: 2026-07-04 17:30:09 UTC
 - Mode: apply
 - First-pass report: `reports/places_validation_report.md`

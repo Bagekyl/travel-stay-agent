@@ -1,12 +1,14 @@
 # Dify Chatflow Setup
 
-The reproducible workflow export is stored at:
+The versioned workflow export is stored at:
 
 ```text
 dify/travelstay-chatflow.yml
 ```
 
-It is a Dify `advanced-chat` application export using DSL version `0.7.0`. The audited export contains 39 nodes and 44 edges. All nodes are reachable from the start node.
+It is a Dify `advanced-chat` application export using DSL version `0.7.0`. A static audit found 39 nodes and 44 edges, with all nodes reachable from the start node. A clean import into a second Dify workspace was not performed during the release audit.
+
+The export's internal Dify application name is `旅游决策`. The repository-facing project name is `旅策 / TravelStay Agent`; these names refer to the same project.
 
 ## Import
 
@@ -28,6 +30,8 @@ The workflow contains four HTTP request nodes:
 | `Google Routes 路线矩阵获取` | Calls Google Routes matrix API | `GOOGLE_MAPS_API_KEY` |
 
 The exported Mock API URLs are the endpoints used by the audited prototype and were reachable on 2026-09-03. They are not a guaranteed public service. After deploying a fork, update the two Mock API nodes to that deployment's HTTPS origin while preserving the paths above.
+
+All four HTTP nodes enable retries, but the export does not define explicit Dify node error strategies. The existing weather and route branches cover date-coverage and route-input conditions; they should not be described as verified fallbacks for every upstream HTTP failure.
 
 Google Places API is not called by the runtime Chatflow. It is used only by the offline scripts under `scripts/data_prep/` to prepare Place IDs and coordinates.
 
@@ -67,6 +71,9 @@ The browser first parses Dify SSE, then parses NDJSON from the `answer` deltas. 
 - All three LLM nodes have an available provider credential.
 - `GOOGLE_MAPS_API_KEY` is configured as a Dify secret.
 - Both Mock API nodes point to the deployment being tested.
-- Open-Meteo and Routes requests return data or follow their existing degradation branches.
+- Date ranges outside forecast coverage and route inputs that cannot form a matrix follow their existing branches.
+- Test upstream HTTP failure behavior separately; do not assume it degrades gracefully.
+- Verify that numeric `number` outputs can be assigned to `integer` conversation variables in the target Dify version.
+- Confirm that selected place IDs exist in the returned catalog; the current graph records invalid IDs but does not retry the selection node.
 - An incomplete request returns `clarification_required` and preserves `conversation_id`.
 - A complete request ends with a valid `done` event.
