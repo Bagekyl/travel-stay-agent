@@ -1,0 +1,3947 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: advanced-chat
+  name: 旅游决策
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/gemini:0.9.7@c6aacc0e8fe8a9e2b3622c094370c16c2bb2e5bb53b287f532644a4f27af862f
+    version: null
+kind: app
+version: 0.7.0
+workflow:
+  conversation_variables:
+  - description: 主要旅行类型
+    id: 934edd93-8771-4b39-9963-9c391ff4dc59
+    name: trip_style
+    selector:
+    - conversation
+    - trip_style
+    value: ''
+    value_type: string
+  - description: 用户偏好列表
+    id: 09c93272-9def-4704-ab3a-7ce0f30e547e
+    name: preferences
+    selector:
+    - conversation
+    - preferences
+    value: []
+    value_type: array[string]
+  - description: 预算来源口径
+    id: 23a0b2d1-cf97-4c27-aa8f-ddbc4351fae6
+    name: budget_basis
+    selector:
+    - conversation
+    - budget_basis
+    value: unknown
+    value_type: string
+  - description: 整段住宿总预算
+    id: a0e03e69-db70-4b6f-9fcf-f3802b0c19b8
+    name: budget_total
+    selector:
+    - conversation
+    - budget_total
+    value: 0
+    value_type: integer
+  - description: 每晚住宿预算上限
+    id: 5acc589c-12a6-4ed8-b5bf-c87c71f29ac4
+    name: budget_max_per_night
+    selector:
+    - conversation
+    - budget_max_per_night
+    value: 0
+    value_type: integer
+  - description: 总旅行人数
+    id: a05f1a45-6df8-4ddd-8082-c8f5f7471a3d
+    name: traveler_count
+    selector:
+    - conversation
+    - traveler_count
+    value: 0
+    value_type: integer
+  - description: 住宿晚数
+    id: 69f6242e-8f59-4ba5-89da-c6b9d8bdc87e
+    name: nights
+    selector:
+    - conversation
+    - nights
+    value: 0
+    value_type: integer
+  - description: 旅行总天数
+    id: 32a69ab3-4f12-406b-a53e-deac6265ad1a
+    name: duration_days
+    selector:
+    - conversation
+    - duration_days
+    value: 0
+    value_type: integer
+  - description: 标准化旅行结束日期
+    id: 1729bd53-90c5-46f4-8f36-516effe5ec37
+    name: trip_end_date
+    selector:
+    - conversation
+    - trip_end_date
+    value: ''
+    value_type: string
+  - description: 标准化旅行开始日期
+    id: d5b4f8b5-93c4-499b-b6ad-77884bf7618a
+    name: trip_start_date
+    selector:
+    - conversation
+    - trip_start_date
+    value: ''
+    value_type: string
+  - description: 用户原始日期表达
+    id: 3a6f5444-dbe3-4f45-92fa-8735e75a52e5
+    name: trip_date_text
+    selector:
+    - conversation
+    - trip_date_text
+    value: ''
+    value_type: string
+  - description: 当前目的地城市
+    id: 5eed1244-9fb5-4c18-b283-34e6b59cc541
+    name: destination_city
+    selector:
+    - conversation
+    - destination_city
+    value: ''
+    value_type: string
+  environment_variables:
+  - description: Google Maps Platform API Key，用于 Google Routes API 路线矩阵请求。
+    id: c2881573-f8d6-4c23-afa3-9f900626b121
+    name: GOOGLE_MAPS_API_KEY
+    selector:
+    - env
+    - GOOGLE_MAPS_API_KEY
+    value: ''
+    value_type: secret
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        knowledge_file_size_limit: 15
+        single_chunk_attachment_limit: 10
+        skill_file_size_limit: 50
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: code
+      id: 1783132674319-source-1783165504136-target
+      selected: false
+      source: '1783132674319'
+      sourceHandle: source
+      target: '1783165504136'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: parameter-extractor
+      id: 1783165504136-source-1783164358787-target
+      selected: false
+      source: '1783165504136'
+      sourceHandle: source
+      target: '1783164358787'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: parameter-extractor
+        targetType: code
+      id: 1783164358787-source-1783165904516-target
+      selected: false
+      source: '1783164358787'
+      sourceHandle: source
+      target: '1783165904516'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: assigner
+      id: 1783165904516-source-1783168591160-target
+      selected: false
+      source: '1783165904516'
+      sourceHandle: source
+      target: '1783168591160'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: if-else
+      id: 1783168591160-source-1783168974362-target
+      selected: false
+      source: '1783168591160'
+      sourceHandle: source
+      target: '1783168974362'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1783168974362-6da2c241-0e29-4917-bd7d-c491e7e87704-1783169414130-target
+      selected: false
+      source: '1783168974362'
+      sourceHandle: 6da2c241-0e29-4917-bd7d-c491e7e87704
+      target: '1783169414130'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1783168974362-false-1783170208303-target
+      selected: false
+      source: '1783168974362'
+      sourceHandle: 'false'
+      target: '1783170208303'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: knowledge-retrieval
+      id: 1783170208303-source-1783187943837-target
+      selected: false
+      source: '1783170208303'
+      sourceHandle: source
+      target: '1783187943837'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: http-request
+      id: 1783170208303-source-1783188421380-target
+      selected: false
+      source: '1783170208303'
+      sourceHandle: source
+      target: '1783188421380'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: if-else
+      id: 1783170208303-source-1783212804952-target
+      selected: false
+      source: '1783170208303'
+      sourceHandle: source
+      target: '1783212804952'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1783212804952-true-1783212951307-target
+      selected: false
+      source: '1783212804952'
+      sourceHandle: 'true'
+      target: '1783212951307'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1783212804952-1b90589e-8a7a-4bf9-9bf0-5cdbdd91f385-1783212951307-target
+      selected: false
+      source: '1783212804952'
+      sourceHandle: 1b90589e-8a7a-4bf9-9bf0-5cdbdd91f385
+      target: '1783212951307'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 1783212951307-source-1783213468821-target
+      selected: false
+      source: '1783212951307'
+      sourceHandle: source
+      target: '1783213468821'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1783212804952-false-1783215609946-target
+      selected: false
+      source: '1783212804952'
+      sourceHandle: 'false'
+      target: '1783215609946'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: variable-aggregator
+      id: 1783215609946-source-1783216078012-target
+      selected: false
+      source: '1783215609946'
+      sourceHandle: source
+      target: '1783216078012'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 1783213468821-source-1783216078012-target
+      selected: false
+      source: '1783213468821'
+      sourceHandle: source
+      target: '1783216078012'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: llm
+      id: 1783216078012-source-1783217575028-target
+      selected: false
+      source: '1783216078012'
+      sourceHandle: source
+      target: '1783217575028'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1783187943837-source-1783217575028-target
+      selected: false
+      source: '1783187943837'
+      sourceHandle: source
+      target: '1783217575028'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: llm
+      id: 1783188421380-source-1783217575028-target
+      selected: false
+      source: '1783188421380'
+      sourceHandle: source
+      target: '1783217575028'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1783217575028-source-1783219513343-target
+      selected: false
+      source: '1783217575028'
+      sourceHandle: source
+      target: '1783219513343'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: 1783219513343-source-1783220045308-target
+      selected: false
+      source: '1783219513343'
+      sourceHandle: source
+      target: '1783220045308'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: http-request
+      id: 1783220045308-source-1783221399421-target
+      selected: false
+      source: '1783220045308'
+      sourceHandle: source
+      target: '1783221399421'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 1783221399421-source-1783232136509-target
+      selected: false
+      source: '1783221399421'
+      sourceHandle: source
+      target: '1783232136509'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 1783232813560-source-1783234122521-target
+      selected: false
+      source: '1783232813560'
+      sourceHandle: source
+      target: '1783234122521'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1783235118783-source-1783236963949-target
+      selected: false
+      source: '1783235118783'
+      sourceHandle: source
+      target: '1783236963949'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1783232534636-source-1783240066707-target
+      selected: false
+      source: '1783232534636'
+      sourceHandle: source
+      target: '1783240066707'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1783240066707-true-1783232813560-target
+      selected: false
+      source: '1783240066707'
+      sourceHandle: 'true'
+      target: '1783232813560'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1783240066707-false-1783240172798-target
+      selected: false
+      source: '1783240066707'
+      sourceHandle: 'false'
+      target: '1783240172798'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 1783240172798-source-1783240265219-target
+      selected: false
+      source: '1783240172798'
+      sourceHandle: source
+      target: '1783240265219'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: template-transform
+      id: 1783240265219-source-1783234744010-target
+      selected: false
+      source: '1783240265219'
+      sourceHandle: source
+      target: '1783234744010'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: variable-aggregator
+      id: 1783234122521-source-1783240265219-target
+      selected: false
+      source: '1783234122521'
+      sourceHandle: source
+      target: '1783240265219'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1783232136509-source-1783242302810-target
+      selected: false
+      source: '1783232136509'
+      sourceHandle: source
+      target: '1783242302810'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1783242302810-true-1783232534636-target
+      selected: false
+      source: '1783242302810'
+      sourceHandle: 'true'
+      target: '1783232534636'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1783242302810-false-1783242366403-target
+      selected: false
+      source: '1783242302810'
+      sourceHandle: 'false'
+      target: '1783242366403'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1783242366403-source-1783242514377-target
+      selected: false
+      source: '1783242366403'
+      sourceHandle: source
+      target: '1783242514377'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: code
+      id: 1783234744010-source-1783254024385-target
+      selected: false
+      source: '1783234744010'
+      sourceHandle: source
+      target: '1783254024385'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1783254024385-source-1783235118783-target
+      selected: false
+      source: '1783254024385'
+      sourceHandle: source
+      target: '1783235118783'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1783168974362-true-1783260593454-target
+      selected: false
+      source: '1783168974362'
+      sourceHandle: 'true'
+      target: '1783260593454'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1783260593454-source-1783169267810-target
+      selected: false
+      source: '1783260593454'
+      sourceHandle: source
+      target: '1783169267810'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1783168974362-6ff0164c-ee52-4332-9703-69bea466df84-1783261043421-target
+      source: '1783168974362'
+      sourceHandle: 6ff0164c-ee52-4332-9703-69bea466df84
+      target: '1783261043421'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: code
+      id: 1783168974362-565f7388-a348-415b-aae6-1abe8428c2df-1783261043421-target
+      source: '1783168974362'
+      sourceHandle: 565f7388-a348-415b-aae6-1abe8428c2df
+      target: '1783261043421'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1783261043421-source-1783169327179-target
+      source: '1783261043421'
+      sourceHandle: source
+      target: '1783169327179'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1783169414130-source-1783261384992-target
+      source: '1783169414130'
+      sourceHandle: source
+      target: '1783261384992'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: answer
+      id: 1783261384992-source-1783170104634-target
+      source: '1783261384992'
+      sourceHandle: source
+      target: '1783170104634'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: 接收用户本轮输入的自然语言旅行需求或补充信息，作为旅行需求参数提取和多轮会话状态更新的原始输入。
+        selected: false
+        title: 旅行需求输入
+        type: start
+        variables: []
+      height: 132
+      id: '1783132674319'
+      position:
+        x: 0
+        y: 46.33333333333337
+      positionAbsolute:
+        x: 0
+        y: 46.33333333333337
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        desc: 解析用户本轮自然语言输入，提取目的地、旅行起止日期、行程时长、人数、住宿预算、偏好和旅行类型等结构化参数。只提取或合理归一化用户本轮提供的信息，缺失字段保持为空，不负责酒店推荐、目标地点选择或行程生成。
+        instruction: "请从用户本轮输入中提取旅行需求参数。\n\n当前日期：\n{{#1783165504136.current_date#}}\n\
+          \n请基于当前日期解析用户输入中的日期表达。\n\n规则：\n1. 只处理本轮输入，不引用或猜测历史信息。\n2. 用户未提供的信息保持为空，不得编造。\n\
+          3. 允许进行直接且可靠的语义归一化，例如：\n   - “我和女朋友” → traveler_count = 2\n   - “一家三口” →\
+          \ traveler_count = 3\n   - “两天一晚” → duration_days = 2，nights = 1\n   - “想吃东西、看看海、不想太累”\
+          \ → preferences = [\"美食\", \"海边\", \"低强度\"]\n4. 区分每晚预算和住宿总预算，不得混淆。\n5. 不推荐酒店，不选择目标地点，不规划行程。\n\
+          6. 不确定的信息保持为空。\n\n【日期解析规则】\n\n1. 所有明确或可可靠推断的日期统一输出为 YYYY-MM-DD。\n\n2. 用户只提供月、日但未提供年份时，不要直接视为缺失。\n\
+          结合当前日期，推断最近的合理未来日期。\n\n例如：\n当前日期为 2026-07-06，\n用户说“7 月 10 日到 12 日”，\n应输出：\n\
+          new_trip_start_date = \"2026-07-10\"\nnew_trip_end_date = \"2026-07-12\"\
+          \n\n3. 对“7 月 10 日到 12 日”“7/10-7/12”这类范围，\n结束日期未重复月份时，应继承开始日期的月份和年份。\n\n\
+          4. 若无年份日期在当前年份已经过去，则推断为下一自然年的该日期。\n\n5. 跨年范围必须保证结束日期不早于开始日期。\n例如当前日期为 2026-12-20，\n\
+          “12 月 30 日到 1 月 2 日”\n应解析为：\n2026-12-30 至 2027-01-02。\n\n6. “明天”“后天”“下周五”等相对日期，应基于当前日期解析为具体日期。\n\
+          \n7. 只有确实无法可靠推断日期时，日期字段才保持为空。\n\n8. 不要仅仅因为缺少年份而追问用户年份。\n\n9. 用户明确提供完整年份时，严格保留该年份。\n\
+          \n10. 用户只说“住两晚”而完全没有日期信息时，不得虚构日期。"
+        model:
+          completion_params:
+            max_output_tokens: 4096
+            temperature: 0.7
+          mode: chat
+          name: gemini-3.5-flash
+          provider: langgenius/gemini/google
+        parameters:
+        - description: 用户本轮输入中提到的旅行目的地城市。例如“去海口玩”提取为“海口”。未提及则留空。
+          name: new_destination_city
+          required: false
+          type: string
+        - description: 用户本轮关于旅行日期或时间范围的原始自然语言表达。例如“下周末”“7月10日到12日”“国庆期间”。未提及则留空。
+          name: new_trip_date_text
+          required: false
+          type: string
+        - description: 已能明确确定的旅行开始日期，格式为 YYYY-MM-DD。仅在日期能够可靠确定时填写，否则留空。
+          name: new_trip_start_date
+          required: false
+          type: string
+        - description: 已能明确确定的旅行结束日期，格式为 YYYY-MM-DD。仅在日期能够可靠确定时填写，否则留空。
+          name: new_trip_end_date
+          required: false
+          type: string
+        - description: 旅行总天数。例如“两天一晚”提取为 2。
+          name: new_duration_days
+          required: false
+          type: number
+        - description: 住宿晚数。例如“两天一晚”提取为 1，“住两晚”提取为 2。
+          name: new_nights
+          required: false
+          type: number
+        - description: 总旅行人数。例如“我和女朋友”提取为 2，“一家三口”提取为 3。
+          name: new_traveler_count
+          required: false
+          type: number
+        - description: 用户明确表达的每晚住宿预算上限，单位为人民币元。例如“一晚不超过800”提取为 800。
+          name: new_budget_max_per_night
+          required: false
+          type: number
+        - description: 用户明确表达的整个住宿期间总预算，单位为人民币元。例如“两晚住宿总共1500以内”提取为 1500。
+          name: new_budget_total
+          required: false
+          type: number
+        - description: 用户明确表达或可直接归一化的旅行与住宿偏好数组。例如“想吃东西、看看海、不想太累”可提取为 ["美食", "海边",
+            "低强度"]。
+          name: new_preferences
+          required: false
+          type: array[string]
+        - description: 根据用户本轮描述归纳的主要旅行类型，例如“情侣短途旅行”“亲子旅行”“商务出差”“中转住宿”“纯度假”。
+          name: new_trip_style
+          required: false
+          type: string
+        query:
+        - sys
+        - query
+        reasoning_mode: prompt
+        selected: false
+        title: 旅行需求参数提取
+        type: parameter-extractor
+        vision:
+          enabled: false
+      height: 195
+      id: '1783164358787'
+      position:
+        x: 683
+        y: 58
+      positionAbsolute:
+        x: 683
+        y: 58
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "from datetime import datetime, timedelta, timezone\n\n\ndef main()\
+          \ -> dict:\n    china_tz = timezone(timedelta(hours=8))\n    now = datetime.now(china_tz)\n\
+          \n    current_date = now.date()\n    forecast_last_date = current_date +\
+          \ timedelta(days=15)\n\n    return {\n        \"current_date\": current_date.isoformat(),\n\
+          \        \"current_datetime\": now.isoformat(),\n        \"timezone\": \"\
+          Asia/Shanghai\",\n        \"forecast_last_date\": forecast_last_date.isoformat(),\n\
+          \    }"
+        code_language: python3
+        desc: 获取当前北京时间，并生成 Open-Meteo 预报窗口的最后可用日期，为相对日期解析和天气能力边界判断提供统一时间基准。
+        outputs:
+          current_date:
+            children: null
+            type: string
+          current_datetime:
+            children: null
+            type: string
+          forecast_last_date:
+            children: null
+            type: string
+          timezone:
+            children: null
+            type: string
+        selected: false
+        title: 当前日期上下文
+        type: code
+        variables: []
+      height: 127
+      id: '1783165504136'
+      position:
+        x: 342
+        y: 70.83333333333337
+      positionAbsolute:
+        x: 342
+        y: 70.83333333333337
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "from datetime import datetime, timedelta\n\n\ndef main(\n    current_date,\n\
+          \    forecast_last_date,\n\n    new_destination_city=None,\n    new_trip_date_text=None,\n\
+          \    new_trip_start_date=None,\n    new_trip_end_date=None,\n    new_duration_days=None,\n\
+          \    new_nights=None,\n    new_traveler_count=None,\n    new_budget_max_per_night=None,\n\
+          \    new_budget_total=None,\n    new_preferences=None,\n    new_trip_style=None,\n\
+          \n    old_destination_city=None,\n    old_trip_date_text=None,\n    old_trip_start_date=None,\n\
+          \    old_trip_end_date=None,\n    old_duration_days=None,\n    old_nights=None,\n\
+          \    old_traveler_count=None,\n    old_budget_max_per_night=None,\n    old_budget_total=None,\n\
+          \    old_preferences=None,\n    old_trip_style=None,\n    old_budget_basis=None,\n\
+          ):\n    \"\"\"Merge current-turn parameters with conversation state and\
+          \ normalize them.\"\"\"\n\n    def has_value(value):\n        if value is\
+          \ None:\n            return False\n        if isinstance(value, str):\n\
+          \            return bool(value.strip())\n        if isinstance(value, list):\n\
+          \            return len(value) > 0\n        return True\n\n    def choose(new_value,\
+          \ old_value, default=None):\n        return new_value if has_value(new_value)\
+          \ else (\n            old_value if has_value(old_value) else default\n \
+          \       )\n\n    def parse_date(value):\n        if not has_value(value):\n\
+          \            return None\n        try:\n            return datetime.strptime(str(value),\
+          \ \"%Y-%m-%d\").date()\n        except ValueError:\n            return None\n\
+          \n    def clean_number(value):\n        if value is None or value == \"\"\
+          :\n            return 0\n        try:\n            return float(value)\n\
+          \        except (TypeError, ValueError):\n            return 0\n\n    #\
+          \ --------------------------------------------------\n    # 1. Merge current\
+          \ turn and old conversation state\n    # --------------------------------------------------\n\
+          \n    destination_city = choose(\n        new_destination_city,\n      \
+          \  old_destination_city,\n        \"\"\n    )\n\n    trip_date_text = choose(\n\
+          \        new_trip_date_text,\n        old_trip_date_text,\n        \"\"\n\
+          \    )\n\n    trip_start_date = choose(\n        new_trip_start_date,\n\
+          \        old_trip_start_date,\n        \"\"\n    )\n\n    trip_end_date\
+          \ = choose(\n        new_trip_end_date,\n        old_trip_end_date,\n  \
+          \      \"\"\n    )\n\n    duration_days = clean_number(\n        choose(new_duration_days,\
+          \ old_duration_days, 0)\n    )\n\n    nights = clean_number(\n        choose(new_nights,\
+          \ old_nights, 0)\n    )\n\n    traveler_count = clean_number(\n        choose(new_traveler_count,\
+          \ old_traveler_count, 0)\n    )\n\n    preferences = choose(\n        new_preferences,\n\
+          \        old_preferences,\n        []\n    )\n\n    trip_style = choose(\n\
+          \        new_trip_style,\n        old_trip_style,\n        \"\"\n    )\n\
+          \n    # --------------------------------------------------\n    # 2. Normalize\
+          \ date relationships\n    # --------------------------------------------------\n\
+          \n    start = parse_date(trip_start_date)\n    end = parse_date(trip_end_date)\n\
+          \n    if start and end and end >= start:\n        duration_days = (end -\
+          \ start).days + 1\n        nights = (end - start).days\n\n    elif start\
+          \ and nights > 0:\n        end = start + timedelta(days=int(nights))\n \
+          \       trip_end_date = end.isoformat()\n        duration_days = int(nights)\
+          \ + 1\n\n    elif start and duration_days > 0:\n        end = start + timedelta(days=int(duration_days)\
+          \ - 1)\n        trip_end_date = end.isoformat()\n        nights = max(int(duration_days)\
+          \ - 1, 0)\n\n    # --------------------------------------------------\n\
+          \    # 3. Normalize budget basis\n    # --------------------------------------------------\n\
+          \n    budget_basis = choose(\n        None,\n        old_budget_basis,\n\
+          \        \"unknown\"\n    )\n\n    budget_max_per_night = clean_number(\n\
+          \        old_budget_max_per_night\n    )\n\n    budget_total = clean_number(\n\
+          \        old_budget_total\n    )\n\n    # Current-turn per-night budget\
+          \ has highest priority.\n    if clean_number(new_budget_max_per_night) >\
+          \ 0:\n        budget_max_per_night = clean_number(\n            new_budget_max_per_night\n\
+          \        )\n        budget_basis = \"per_night\"\n\n        if nights >\
+          \ 0:\n            budget_total = budget_max_per_night * nights\n\n    #\
+          \ Otherwise, current-turn total budget takes priority.\n    elif clean_number(new_budget_total)\
+          \ > 0:\n        budget_total = clean_number(new_budget_total)\n        budget_basis\
+          \ = \"total\"\n\n        if nights > 0:\n            budget_max_per_night\
+          \ = round(\n                budget_total / nights,\n                2\n\
+          \            )\n\n    # Recalculate derived value if trip length changed.\n\
+          \    elif budget_basis == \"total\" and budget_total > 0 and nights > 0:\n\
+          \        budget_max_per_night = round(\n            budget_total / nights,\n\
+          \            2\n        )\n\n    elif (\n        budget_basis == \"per_night\"\
+          \n        and budget_max_per_night > 0\n        and nights > 0\n    ):\n\
+          \        budget_total = budget_max_per_night * nights\n\n    # --------------------------------------------------\n\
+          \    # 4. City support state\n    # --------------------------------------------------\n\
+          \n    if not destination_city:\n        city_supported = False\n       \
+          \ city_status = \"missing\"\n    elif destination_city.strip() == \"海口\"\
+          :\n        city_supported = True\n        city_status = \"supported\"\n\
+          \    else:\n        city_supported = False\n        city_status = \"unsupported\"\
+          \n\n    # --------------------------------------------------\n    # 5. Date\
+          \ validation\n    # --------------------------------------------------\n\
+          \n    today = parse_date(current_date)\n    forecast_last = parse_date(forecast_last_date)\n\
+          \n    if not trip_start_date:\n        date_status = \"missing\"\n\n   \
+          \ elif not start:\n        date_status = \"invalid\"\n\n    elif start <\
+          \ today:\n        date_status = \"past\"\n\n    elif trip_end_date and not\
+          \ end:\n        date_status = \"invalid\"\n\n    elif end and end < start:\n\
+          \        date_status = \"invalid\"\n\n    else:\n        date_status = \"\
+          valid\"\n\n    # --------------------------------------------------\n  \
+          \  # 6. Weather coverage mode\n    # --------------------------------------------------\n\
+          \n    weather_mode = \"not_ready\"\n\n    if date_status == \"valid\" and\
+          \ start:\n        effective_end = end if end else start\n\n        if effective_end\
+          \ <= forecast_last:\n            weather_mode = \"full\"\n\n        elif\
+          \ start <= forecast_last < effective_end:\n            weather_mode = \"\
+          partial\"\n\n        elif start > forecast_last:\n            weather_mode\
+          \ = \"unavailable\"\n\n    # --------------------------------------------------\n\
+          \    # 7. Missing field detection\n    # --------------------------------------------------\n\
+          \n    missing_fields = []\n\n    if not destination_city:\n        missing_fields.append(\"\
+          destination_city\")\n\n    if not trip_start_date:\n        missing_fields.append(\"\
+          trip_start_date\")\n\n    if not trip_end_date and duration_days <= 0 and\
+          \ nights <= 0:\n        missing_fields.append(\"trip_duration\")\n\n   \
+          \ if traveler_count <= 0:\n        missing_fields.append(\"traveler_count\"\
+          )\n\n    if budget_max_per_night <= 0 and budget_total <= 0:\n        missing_fields.append(\"\
+          budget\")\n\n    if not preferences and not trip_style:\n        missing_fields.append(\"\
+          preferences_or_trip_style\")\n\n    info_complete = (\n        len(missing_fields)\
+          \ == 0\n        and date_status == \"valid\"\n        and city_supported\n\
+          \    )\n\n    return {\n        \"destination_city\": destination_city,\n\
+          \        \"trip_date_text\": trip_date_text,\n        \"trip_start_date\"\
+          : trip_start_date,\n        \"trip_end_date\": trip_end_date,\n\n      \
+          \  \"duration_days\": int(duration_days),\n        \"nights\": int(nights),\n\
+          \        \"traveler_count\": int(traveler_count),\n\n        \"budget_max_per_night\"\
+          : float(budget_max_per_night),\n        \"budget_total\": float(budget_total),\n\
+          \        \"budget_basis\": budget_basis,\n\n        \"preferences\": preferences,\n\
+          \        \"trip_style\": trip_style,\n\n        \"city_supported\": city_supported,\n\
+          \        \"city_status\": city_status,\n\n        \"date_status\": date_status,\n\
+          \        \"weather_mode\": weather_mode,\n\n        \"missing_fields\":\
+          \ missing_fields,\n        \"info_complete\": info_complete,\n    }"
+        code_language: python3
+        desc: 合并本轮提取的旅行需求参数与已有会话状态，补全和校验日期关系，统一住宿预算口径，并生成城市支持状态、日期状态、天气覆盖模式和缺失字段列表，为后续会话变量保存与条件分支提供标准化需求状态。
+        outputs:
+          budget_basis:
+            children: null
+            type: string
+          budget_max_per_night:
+            children: null
+            type: number
+          budget_total:
+            children: null
+            type: number
+          city_status:
+            children: null
+            type: string
+          city_supported:
+            children: null
+            type: boolean
+          date_status:
+            children: null
+            type: string
+          destination_city:
+            children: null
+            type: string
+          duration_days:
+            children: null
+            type: number
+          info_complete:
+            children: null
+            type: boolean
+          missing_fields:
+            children: null
+            type: array[string]
+          nights:
+            children: null
+            type: number
+          preferences:
+            children: null
+            type: array[string]
+          traveler_count:
+            children: null
+            type: number
+          trip_date_text:
+            children: null
+            type: string
+          trip_end_date:
+            children: null
+            type: string
+          trip_start_date:
+            children: null
+            type: string
+          trip_style:
+            children: null
+            type: string
+          weather_mode:
+            children: null
+            type: string
+        selected: false
+        title: 需求状态规范化
+        type: code
+        variables:
+        - value_selector:
+          - '1783165504136'
+          - current_date
+          value_type: string
+          variable: current_date
+        - value_selector:
+          - '1783165504136'
+          - forecast_last_date
+          value_type: string
+          variable: forecast_last_date
+        - value_selector:
+          - '1783164358787'
+          - new_destination_city
+          value_type: string
+          variable: new_destination_city
+        - value_selector:
+          - '1783164358787'
+          - new_trip_date_text
+          value_type: string
+          variable: new_trip_date_text
+        - value_selector:
+          - '1783164358787'
+          - new_trip_start_date
+          value_type: string
+          variable: new_trip_start_date
+        - value_selector:
+          - '1783164358787'
+          - new_trip_end_date
+          value_type: string
+          variable: new_trip_end_date
+        - value_selector:
+          - '1783164358787'
+          - new_duration_days
+          value_type: number
+          variable: new_duration_days
+        - value_selector:
+          - '1783164358787'
+          - new_nights
+          value_type: number
+          variable: new_nights
+        - value_selector:
+          - '1783164358787'
+          - new_traveler_count
+          value_type: number
+          variable: new_traveler_count
+        - value_selector:
+          - '1783164358787'
+          - new_budget_max_per_night
+          value_type: number
+          variable: new_budget_max_per_night
+        - value_selector:
+          - '1783164358787'
+          - new_budget_total
+          value_type: number
+          variable: new_budget_total
+        - value_selector:
+          - '1783164358787'
+          - new_preferences
+          value_type: array[string]
+          variable: new_preferences
+        - value_selector:
+          - '1783164358787'
+          - new_trip_style
+          value_type: string
+          variable: new_trip_style
+        - value_selector:
+          - conversation
+          - destination_city
+          value_type: string
+          variable: old_destination_city
+        - value_selector:
+          - conversation
+          - trip_date_text
+          value_type: string
+          variable: old_trip_date_text
+        - value_selector:
+          - conversation
+          - trip_start_date
+          value_type: string
+          variable: old_trip_start_date
+        - value_selector:
+          - conversation
+          - trip_end_date
+          value_type: string
+          variable: old_trip_end_date
+        - value_selector:
+          - conversation
+          - duration_days
+          value_type: number
+          variable: old_duration_days
+        - value_selector:
+          - conversation
+          - nights
+          value_type: number
+          variable: old_nights
+        - value_selector:
+          - conversation
+          - traveler_count
+          value_type: number
+          variable: old_traveler_count
+        - value_selector:
+          - conversation
+          - budget_max_per_night
+          value_type: number
+          variable: old_budget_max_per_night
+        - value_selector:
+          - conversation
+          - budget_total
+          value_type: number
+          variable: old_budget_total
+        - value_selector:
+          - conversation
+          - budget_basis
+          value_type: string
+          variable: old_budget_basis
+        - value_selector:
+          - conversation
+          - preferences
+          value_type: array[string]
+          variable: old_preferences
+        - value_selector:
+          - conversation
+          - trip_style
+          value_type: string
+          variable: old_trip_style
+      height: 159
+      id: '1783165904516'
+      position:
+        x: 1024
+        y: 108.5
+      positionAbsolute:
+        x: 1024
+        y: 108.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        desc: 将规范化后的旅行需求状态写入会话变量，使用户在后续多轮补充或修改需求时能够继续使用已有信息。
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1783165904516'
+          - destination_city
+          variable_selector:
+          - conversation
+          - destination_city
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1783165904516'
+          - trip_date_text
+          variable_selector:
+          - conversation
+          - trip_date_text
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1783165904516'
+          - trip_start_date
+          variable_selector:
+          - conversation
+          - trip_start_date
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1783165904516'
+          - trip_end_date
+          variable_selector:
+          - conversation
+          - trip_end_date
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1783165904516'
+          - duration_days
+          variable_selector:
+          - conversation
+          - duration_days
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1783165904516'
+          - nights
+          variable_selector:
+          - conversation
+          - nights
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1783165904516'
+          - traveler_count
+          variable_selector:
+          - conversation
+          - traveler_count
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1783165904516'
+          - budget_max_per_night
+          variable_selector:
+          - conversation
+          - budget_max_per_night
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1783165904516'
+          - budget_total
+          variable_selector:
+          - conversation
+          - budget_total
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1783165904516'
+          - budget_basis
+          variable_selector:
+          - conversation
+          - budget_basis
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1783165904516'
+          - preferences
+          variable_selector:
+          - conversation
+          - preferences
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1783165904516'
+          - trip_style
+          variable_selector:
+          - conversation
+          - trip_style
+        selected: false
+        title: 会话状态保存
+        type: assigner
+        version: '2'
+      height: 429
+      id: '1783168591160'
+      position:
+        x: 1365
+        y: 0
+      positionAbsolute:
+        x: 1365
+        y: 0
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 4ae0f318-da92-41e0-a990-c1a4faf3d699
+            value: unsupported
+            varType: string
+            variable_selector:
+            - '1783165904516'
+            - city_status
+          id: 'true'
+          logical_operator: and
+        - case_id: 6ff0164c-ee52-4332-9703-69bea466df84
+          conditions:
+          - comparison_operator: is
+            id: 7145da5d-45fd-414d-bfca-d5a8c92f6d29
+            value: past
+            varType: string
+            variable_selector:
+            - '1783165904516'
+            - date_status
+          id: 6ff0164c-ee52-4332-9703-69bea466df84
+          logical_operator: and
+        - case_id: 565f7388-a348-415b-aae6-1abe8428c2df
+          conditions:
+          - comparison_operator: contains
+            id: 29a709a1-3d29-465c-8ff3-6b10faa7ab95
+            value: invalid
+            varType: string
+            variable_selector:
+            - '1783165904516'
+            - date_status
+          id: 565f7388-a348-415b-aae6-1abe8428c2df
+          logical_operator: and
+        - case_id: 6da2c241-0e29-4917-bd7d-c491e7e87704
+          conditions:
+          - comparison_operator: is
+            id: c1201c60-ea7c-4c51-89da-6c6a532b6581
+            value: false
+            varType: boolean
+            variable_selector:
+            - '1783165904516'
+            - info_complete
+          id: 6da2c241-0e29-4917-bd7d-c491e7e87704
+          logical_operator: and
+        desc: 根据城市支持状态、日期有效性和信息完整程度，将用户请求分流到城市限制提示、日期纠正、缺失信息追问或正式规划流程。
+        selected: false
+        title: 需求状态判定与分流
+        type: if-else
+      height: 439
+      id: '1783168974362'
+      position:
+        x: 1706
+        y: 66.5
+      positionAbsolute:
+        x: 1706
+        y: 66.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        answer: '{{#1783260593454.output#}}'
+        desc: 输出 unsupported_city 与 done 事件，向用户或前端明确返回当前版本不支持的目的地城市及现有支持范围。
+        selected: false
+        title: 城市不支持输出
+        type: answer
+        variables: []
+      height: 161
+      id: '1783169267810'
+      position:
+        x: 2408
+        y: 13.265151515151501
+      positionAbsolute:
+        x: 2408
+        y: 13.265151515151501
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        answer: '{{#1783261043421.output#}}'
+        desc: 输出 invalid_trip_date 与 done 事件，提示用户当前旅行日期已过期或日期范围无效，并要求重新提供有效日期。
+        selected: false
+        title: 日期错误输出
+        type: answer
+        variables: []
+      height: 161
+      id: '1783169327179'
+      position:
+        x: 2408
+        y: 255.2651515151515
+      positionAbsolute:
+        x: 2408
+        y: 255.2651515151515
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: 根据缺失字段和当前已知旅行需求，生成一条简洁自然的中文补充问题。只询问仍缺失的信息，不重复询问已有内容，不进行酒店推荐或行程规划。
+        model:
+          completion_params:
+            max_output_tokens: 65501
+          mode: chat
+          name: gemini-3.5-flash
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 83cc4537-c8cd-4378-9bfc-1b6a7b47474a
+          role: system
+          text: '你是旅行住宿决策助手中的信息补全模块。
+
+
+            你的唯一任务是：根据缺失字段和当前已知旅行需求，生成一条简洁、自然的中文追问。
+
+
+            规则：
+
+            1. 只询问缺失的信息。
+
+            2. 不重复询问已经明确的信息。
+
+            3. 多个相关缺失项可以合并在同一句问题中。
+
+            4. 优先询问最影响后续规划的信息。
+
+            5. 不推荐酒店，不选择景点，不规划行程。
+
+            6. 不解释系统流程，不提及字段名、变量名或内部状态。
+
+            7. 输出最多两句话。
+
+            8. 语气自然、简洁，像正常的旅行规划助手。
+
+            9. 只输出追问内容，不添加标题、说明、JSON 或前后缀。'
+        - id: 56a6b3e2-b30c-48d2-943b-d18d930c42fe
+          role: user
+          text: '缺失信息：
+
+            {{#1783165904516.missing_fields#}}
+
+
+            当前已知需求：
+
+            目的地：{{#1783165904516.destination_city#}}
+
+            旅行开始日期：{{#1783165904516.trip_start_date#}}
+
+            旅行结束日期：{{#1783165904516.trip_end_date#}}
+
+            旅行天数：{{#1783165904516.duration_days#}}
+
+            住宿晚数：{{#1783165904516.nights#}}
+
+            人数：{{#1783165904516.traveler_count#}}
+
+            每晚预算：{{#1783165904516.budget_max_per_night#}}
+
+            总住宿预算：{{#1783165904516.budget_total#}}
+
+            偏好：{{#1783165904516.preferences#}}
+
+            旅行类型：{{#1783165904516.trip_style#}}
+
+
+            请根据缺失信息生成追问。'
+        retry_config:
+          max_retries: 1
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: 缺失信息追问生成
+        type: llm
+        vision:
+          enabled: false
+      height: 192
+      id: '1783169414130'
+      position:
+        x: 2067
+        y: 458.5984848484849
+      positionAbsolute:
+        x: 2067
+        y: 458.5984848484849
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        answer: '{{#1783261384992.output#}}'
+        desc: 输出 clarification_required 与 done 事件，将当前追问内容返回给用户或前端，并等待用户在后续消息中补充缺失信息。
+        selected: false
+        title: 缺失信息追问输出
+        type: answer
+        variables: []
+      height: 177
+      id: '1783170104634'
+      position:
+        x: 2749
+        y: 518.7651515151515
+      positionAbsolute:
+        x: 2749
+        y: 518.7651515151515
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        desc: 将已补全并规范化的旅行需求整理为统一文本格式，供后续 RAG 检索、目标地点选择、天气判断、酒店筛选和最终推荐节点共同使用。
+        selected: false
+        template: "【旅行需求】\r\n\r\n目的地：{{ destination_city }}\r\n\r\n旅行日期：{{ trip_start_date\
+          \ }} 至 {{ trip_end_date }}\r\n\r\n旅行时长：{{ duration_days }} 天，{{ nights }}\
+          \ 晚\r\n\r\n旅行人数：{{ traveler_count }} 人\r\n\r\n住宿预算：\r\n- 每晚预算上限：{{ budget_max_per_night\
+          \ }} 元\r\n- 总住宿预算：{{ budget_total }} 元\r\n- 预算口径：{{ budget_basis }}\r\n\r\
+          \n用户偏好：\r\n{% for item in preferences %}\r\n- {{ item }}\r\n{% endfor %}\r\
+          \n\r\n旅行类型：\r\n{{ trip_style }}\r\n\r\n天气覆盖模式：\r\n{{ weather_mode }}\r\n\
+          \r\n请基于以上信息进行酒店选择规则检索、目标地点选择、候选酒店筛选、路线便利性分析、天气影响判断与最终推荐。"
+        title: 标准旅行需求构造
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1783165904516'
+          - destination_city
+          value_type: string
+          variable: destination_city
+        - value_selector:
+          - '1783165904516'
+          - trip_start_date
+          value_type: string
+          variable: trip_start_date
+        - value_selector:
+          - '1783165904516'
+          - trip_end_date
+          value_type: string
+          variable: trip_end_date
+        - value_selector:
+          - '1783165904516'
+          - duration_days
+          value_type: number
+          variable: duration_days
+        - value_selector:
+          - '1783165904516'
+          - nights
+          value_type: number
+          variable: nights
+        - value_selector:
+          - '1783165904516'
+          - traveler_count
+          value_type: number
+          variable: traveler_count
+        - value_selector:
+          - '1783165904516'
+          - budget_max_per_night
+          value_type: number
+          variable: budget_max_per_night
+        - value_selector:
+          - '1783165904516'
+          - budget_total
+          value_type: number
+          variable: budget_total
+        - value_selector:
+          - '1783165904516'
+          - budget_basis
+          value_type: string
+          variable: budget_basis
+        - value_selector:
+          - '1783165904516'
+          - preferences
+          value_type: array[string]
+          variable: preferences
+        - value_selector:
+          - '1783165904516'
+          - trip_style
+          value_type: string
+          variable: trip_style
+        - value_selector:
+          - '1783165904516'
+          - weather_mode
+          value_type: string
+          variable: weather_mode
+      height: 127
+      id: '1783170208303'
+      position:
+        x: 2067
+        y: 920.1352813852814
+      positionAbsolute:
+        x: 2067
+        y: 920.1352813852814
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - brBsh0oBrWbMkKgrzrHfe8VGL6QEIXAhNqBpyl/xCS6q35Qj0hlJT4bqmJ+jG5H9
+        desc: 根据标准化后的完整旅行需求，从住宿决策知识库中检索相关的酒店选择规则、区域策略、交通决策、预算策略、行程规划和天气调整规则，为后续目标地点选择和最终推荐提供决策依据。
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: weighted_score
+          score_threshold: null
+          top_k: 6
+          weights:
+            keyword_setting:
+              keyword_weight: 0.3
+            vector_setting:
+              embedding_model_name: gemini-embedding-001
+              embedding_provider_name: langgenius/gemini/google
+              vector_weight: 0.7
+            weight_type: customized
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1783170208303'
+        - output
+        retrieval_mode: multiple
+        selected: false
+        title: 住宿决策知识检索
+        type: knowledge-retrieval
+      height: 181
+      id: '1783187943837'
+      position:
+        x: 3090
+        y: 656.2651515151515
+      positionAbsolute:
+        x: 3090
+        y: 656.2651515151515
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-1112
+            key: ''
+            type: text
+            value: "{\n  \"limit\": 24\n}"
+          type: json
+        desc: 从项目服务端获取当前目的地的标准化关键地点目录，为目标地点选择模型提供受控候选集合。返回地点 ID、名称、类型、区域、标签、适用人群、旅行类型、天气敏感性和住宿决策属性等信息。
+        headers: ''
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 2
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        ssl_verify: true
+        timeout:
+          connect: 5
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+          read: 15
+          write: 5
+        title: 关键地点目录获取
+        type: http-request
+        url: https://travel-stay-agent-1wbgwsa8k-bagekyl.vercel.app/api/places/search
+        variables: []
+      height: 260
+      id: '1783188421380'
+      position:
+        x: 3431
+        y: 827.9318181818182
+      positionAbsolute:
+        x: 3431
+        y: 827.9318181818182
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 8fe4398f-6356-4f34-ab1c-9fab5ab803d0
+            value: full
+            varType: string
+            variable_selector:
+            - '1783165904516'
+            - weather_mode
+          id: 'true'
+          logical_operator: and
+        - case_id: 1b90589e-8a7a-4bf9-9bf0-5cdbdd91f385
+          conditions:
+          - comparison_operator: is
+            id: a816c635-8cae-47d1-853e-5957e79d1e91
+            value: partial
+            varType: string
+            variable_selector:
+            - '1783165904516'
+            - weather_mode
+          id: 1b90589e-8a7a-4bf9-9bf0-5cdbdd91f385
+          logical_operator: and
+        desc: 根据旅行日期与 Open-Meteo 具体天气预报窗口的覆盖关系，将请求分为完整覆盖、部分覆盖和不可用三种模式，为后续天气 API 调用与降级处理提供分支控制。
+        selected: false
+        title: 天气覆盖模式判断
+        type: if-else
+      height: 311
+      id: '1783212804952'
+      position:
+        x: 2428
+        y: 1111.538961038961
+      positionAbsolute:
+        x: 2428
+        y: 1111.538961038961
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: []
+          type: none
+        desc: 调用 Open-Meteo Forecast API 获取海口未来天气预报，为旅行日期范围内的目标地点选择、天气风险判断和行程调整提供温度、降水概率、降水量和风速数据。
+        headers: ''
+        method: get
+        params: 'latitude:20.044
+
+          longitude:110.199
+
+          timezone:Asia/Shanghai
+
+          forecast_days:16
+
+          daily:weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max,precipitation_sum,wind_speed_10m_max'
+        retry_config:
+          max_retries: 2
+          retry_enabled: true
+          retry_interval: 1500
+        selected: false
+        ssl_verify: true
+        timeout:
+          connect: 5
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+          read: 20
+          write: 5
+        title: 海口天气预报获取
+        type: http-request
+        url: https://api.open-meteo.com/v1/forecast
+        variables: []
+      height: 228
+      id: '1783212951307'
+      position:
+        x: 2789
+        y: 1070.1818181818182
+      positionAbsolute:
+        x: 2789
+        y: 1070.1818181818182
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "import json\nfrom datetime import datetime\n\n\ndef main(\n    weather_body:\
+          \ str,\n    trip_start_date: str,\n    trip_end_date: str,\n    weather_mode:\
+          \ str,\n) -> dict:\n    \"\"\"\n    Extract weather data overlapping with\
+          \ the user's trip dates\n    and generate a compact weather context.\n \
+          \   \"\"\"\n\n    try:\n        data = json.loads(weather_body)\n    except\
+          \ Exception as exc:\n        return {\n            \"weather_context\":\
+          \ (\n                \"天气数据解析失败，后续不得生成具体天气结论。\"\n            ),\n      \
+          \      \"weather_days_json\": \"[]\",\n            \"weather_covered_until\"\
+          : \"\",\n            \"weather_data_valid\": False,\n            \"weather_risk_level\"\
+          : \"unknown\",\n            \"weather_risk_summary\": \"天气数据解析失败\",\n  \
+          \      }\n\n    daily = data.get(\"daily\", {})\n\n    dates = daily.get(\"\
+          time\", [])\n    weather_codes = daily.get(\"weather_code\", [])\n    temp_max\
+          \ = daily.get(\"temperature_2m_max\", [])\n    temp_min = daily.get(\"temperature_2m_min\"\
+          , [])\n    rain_prob = daily.get(\"precipitation_probability_max\", [])\n\
+          \    precipitation = daily.get(\"precipitation_sum\", [])\n    wind_max\
+          \ = daily.get(\"wind_speed_10m_max\", [])\n\n    required_lengths = [\n\
+          \        len(dates),\n        len(weather_codes),\n        len(temp_max),\n\
+          \        len(temp_min),\n        len(rain_prob),\n        len(precipitation),\n\
+          \        len(wind_max),\n    ]\n\n    if not dates or len(set(required_lengths))\
+          \ != 1:\n        return {\n            \"weather_context\": (\n        \
+          \        \"天气数据字段缺失或长度不一致，\"\n                \"后续不得生成具体天气结论。\"\n      \
+          \      ),\n            \"weather_days_json\": \"[]\",\n            \"weather_covered_until\"\
+          : \"\",\n            \"weather_data_valid\": False,\n            \"weather_risk_level\"\
+          : \"unknown\",\n            \"weather_risk_summary\": \"天气数据不完整\",\n   \
+          \     }\n\n    try:\n        trip_start = datetime.strptime(\n         \
+          \   trip_start_date,\n            \"%Y-%m-%d\"\n        ).date()\n\n   \
+          \     trip_end = datetime.strptime(\n            trip_end_date,\n      \
+          \      \"%Y-%m-%d\"\n        ).date()\n\n    except ValueError:\n      \
+          \  return {\n            \"weather_context\": (\n                \"旅行日期格式无效，无法匹配具体天气数据。\"\
+          \n            ),\n            \"weather_days_json\": \"[]\",\n         \
+          \   \"weather_covered_until\": \"\",\n            \"weather_data_valid\"\
+          : False,\n            \"weather_risk_level\": \"unknown\",\n           \
+          \ \"weather_risk_summary\": \"旅行日期格式无效\",\n        }\n\n    selected_days\
+          \ = []\n\n    for i, date_str in enumerate(dates):\n        current_date\
+          \ = datetime.strptime(\n            date_str,\n            \"%Y-%m-%d\"\n\
+          \        ).date()\n\n        if trip_start <= current_date <= trip_end:\n\
+          \            selected_days.append({\n                \"date\": date_str,\n\
+          \                \"weather_code\": weather_codes[i],\n                \"\
+          temperature_max_c\": temp_max[i],\n                \"temperature_min_c\"\
+          : temp_min[i],\n                \"precipitation_probability_max_pct\": rain_prob[i],\n\
+          \                \"precipitation_sum_mm\": precipitation[i],\n         \
+          \       \"wind_speed_max_kmh\": wind_max[i],\n            })\n\n    if not\
+          \ selected_days:\n        return {\n            \"weather_context\": (\n\
+          \                \"没有找到与旅行日期重合的具体天气数据，\"\n                \"后续不得生成具体天气结论。\"\
+          \n            ),\n            \"weather_days_json\": \"[]\",\n         \
+          \   \"weather_covered_until\": dates[-1],\n            \"weather_data_valid\"\
+          : False,\n            \"weather_risk_level\": \"unknown\",\n           \
+          \ \"weather_risk_summary\": \"无旅行日期对应天气数据\",\n        }\n\n    # -----------------------------\n\
+          \    # Risk analysis\n    # -----------------------------\n\n    max_temp\
+          \ = max(\n        day[\"temperature_max_c\"]\n        for day in selected_days\n\
+          \    )\n\n    max_rain_prob = max(\n        day[\"precipitation_probability_max_pct\"\
+          ]\n        for day in selected_days\n    )\n\n    total_precipitation =\
+          \ sum(\n        day[\"precipitation_sum_mm\"]\n        for day in selected_days\n\
+          \    )\n\n    max_wind = max(\n        day[\"wind_speed_max_kmh\"]\n   \
+          \     for day in selected_days\n    )\n\n    risk_notes = []\n\n    if max_temp\
+          \ >= 33:\n        risk_notes.append(\n            \"存在高温天气，建议减少中午至下午时段的户外活动。\"\
+          \n        )\n\n    if max_rain_prob >= 60:\n        risk_notes.append(\n\
+          \            \"存在较高降雨概率，应准备室内备选地点。\"\n        )\n\n    if total_precipitation\
+          \ > 0:\n        risk_notes.append(\n            \"旅行期间存在降水，应携带雨具并关注户外活动安排。\"\
+          \n        )\n\n    if max_wind >= 30:\n        risk_notes.append(\n    \
+          \        \"存在较明显大风，应谨慎安排海滨和开放区域活动。\"\n        )\n\n    if not risk_notes:\n\
+          \        risk_notes.append(\n            \"当前预报未显示明显高温、强降雨或大风风险。\"\n   \
+          \     )\n\n    if (\n        max_rain_prob >= 80\n        or max_wind >=\
+          \ 40\n        or max_temp >= 36\n    ):\n        weather_risk_level = \"\
+          high\"\n\n    elif (\n        max_rain_prob >= 60\n        or max_wind >=\
+          \ 30\n        or max_temp >= 33\n    ):\n        weather_risk_level = \"\
+          medium\"\n\n    else:\n        weather_risk_level = \"low\"\n\n    # -----------------------------\n\
+          \    # Build compact context\n    # -----------------------------\n\n  \
+          \  lines = [\n        f\"天气覆盖模式：{weather_mode}\",\n        f\"具体天气覆盖至：{dates[-1]}\"\
+          ,\n        \"\",\n        \"旅行日期天气：\",\n    ]\n\n    for day in selected_days:\n\
+          \        lines.append(\n            (\n                f\"{day['date']}：\"\
+          \n                f\"最高 {day['temperature_max_c']}°C，\"\n              \
+          \  f\"最低 {day['temperature_min_c']}°C，\"\n                f\"最大降雨概率 \"\n\
+          \                f\"{day['precipitation_probability_max_pct']}%，\"\n   \
+          \             f\"降水量 {day['precipitation_sum_mm']} mm，\"\n             \
+          \   f\"最大风速 {day['wind_speed_max_kmh']} km/h。\"\n            )\n       \
+          \ )\n\n    lines.extend([\n        \"\",\n        f\"天气风险等级：{weather_risk_level}\"\
+          ,\n        \"天气风险提示：\",\n        *[f\"- {note}\" for note in risk_notes],\n\
+          \    ])\n\n    if weather_mode == \"partial\":\n        lines.extend([\n\
+          \            \"\",\n            \"注意：本次旅行只有部分日期处于具体天气预报范围内。\",\n       \
+          \     \"超出预报范围的日期不得生成具体天气结论。\",\n        ])\n\n    return {\n        \"\
+          weather_context\": \"\\n\".join(lines),\n        \"weather_days_json\":\
+          \ json.dumps(\n            selected_days,\n            ensure_ascii=False\n\
+          \        ),\n        \"weather_covered_until\": dates[-1],\n        \"weather_data_valid\"\
+          : True,\n        \"weather_risk_level\": weather_risk_level,\n        \"\
+          weather_risk_summary\": \" \".join(risk_notes),\n    }"
+        code_language: python3
+        desc: 从 Open-Meteo 返回的未来天气数据中提取与本次旅行日期重合的部分，整理为精简天气上下文，并标记天气覆盖范围，为目标地点选择和最终推荐提供天气事实。
+        outputs:
+          weather_context:
+            children: null
+            type: string
+          weather_covered_until:
+            children: null
+            type: string
+          weather_data_valid:
+            children: null
+            type: boolean
+          weather_days_json:
+            children: null
+            type: string
+          weather_risk_level:
+            children: null
+            type: string
+          weather_risk_summary:
+            children: null
+            type: string
+        selected: false
+        title: 旅行天气数据整理
+        type: code
+        variables:
+        - value_selector:
+          - '1783212951307'
+          - body
+          value_type: string
+          variable: weather_body
+        - value_selector:
+          - '1783165904516'
+          - trip_start_date
+          value_type: string
+          variable: trip_start_date
+        - value_selector:
+          - '1783165904516'
+          - trip_end_date
+          value_type: string
+          variable: trip_end_date
+        - value_selector:
+          - '1783165904516'
+          - weather_mode
+          value_type: string
+          variable: weather_mode
+      height: 143
+      id: '1783213468821'
+      position:
+        x: 3130
+        y: 1150.6818181818182
+      positionAbsolute:
+        x: 3130
+        y: 1150.6818181818182
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        desc: 当旅行日期完全超出 Open-Meteo 具体天气预报范围时，生成统一的天气能力边界说明，要求后续模型不编造具体天气数据，仅依据一般天气规则提供非具体性提醒。
+        selected: false
+        template: "【天气信息】\r\n\r\n天气覆盖模式：unavailable\r\n\r\n旅行日期：\r\n{{ trip_start_date\
+          \ }} 至 {{ trip_end_date }}\r\n\r\n当前具体天气预报可用截止日期：\r\n{{ forecast_last_date\
+          \ }}\r\n\r\n本次旅行日期完全超出具体天气预报范围。\r\n\r\n后续处理规则：\r\n1. 不得生成具体温度、降雨概率、降水量或风速数据；\r\
+          \n2. 不得假装已获得本次旅行日期的实际天气预报；\r\n3. 可以结合 RAG 中的季节性天气特点和一般天气应对规则提供非具体性提醒；\r\n\
+          4. 酒店推荐、关键地点选择和路线分析仍应正常进行；\r\n5. 最终回答中应说明具体天气预报暂不可用。"
+        title: 天气降级上下文
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1783165904516'
+          - trip_start_date
+          value_type: string
+          variable: trip_start_date
+        - value_selector:
+          - '1783165904516'
+          - trip_end_date
+          value_type: string
+          variable: trip_end_date
+        - value_selector:
+          - '1783165504136'
+          - forecast_last_date
+          value_type: string
+          variable: forecast_last_date
+      height: 143
+      id: '1783215609946'
+      position:
+        x: 3130
+        y: 1373.6818181818182
+      positionAbsolute:
+        x: 3130
+        y: 1373.6818181818182
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        desc: 汇合具体天气预报分支与天气降级分支的文本输出，向后续目标地点选择和最终推荐节点提供统一的天气上下文变量。
+        output_type: string
+        selected: false
+        title: 天气上下文聚合
+        type: variable-aggregator
+        variables:
+        - - '1783213468821'
+          - weather_context
+        - - '1783215609946'
+          - output
+      height: 211
+      id: '1783216078012'
+      position:
+        x: 3491
+        y: 1253.0151515151515
+      positionAbsolute:
+        x: 3491
+        y: 1253.0151515151515
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1783187943837'
+          - result
+        desc: 综合标准旅行需求、住宿决策知识、受控关键地点候选集合和天气上下文，从候选集合中选择 2–3 个与本次旅行最相关的目标地点，并输出标准化地点
+          ID 及简要选择依据。
+        model:
+          completion_params:
+            max_output_tokens: 65501
+          mode: chat
+          name: gemini-3.5-flash
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 861184f7-3fdc-4266-8c1e-e6e4a34f16cd
+          role: system
+          text: "你是旅行住宿决策智能体中的目标地点选择模块。\n\n你的唯一任务是根据用户的标准化旅行需求、住宿决策知识、系统提供的受控关键地点候选集合和天气上下文，从候选集合中选择\
+            \ 2 至 3 个最值得纳入本次住宿决策与后续路线分析的目标地点。\n\n必须遵守以下规则：\n\n1. 只能选择候选地点集合中真实存在的\
+            \ place_id，不得创造、修改、缩写或猜测地点 ID。\n2. 通常选择 2 至 3 个地点：\n   - 短途、低强度或需求较单一的旅行优先选择\
+            \ 2 个；\n   - 行程较长或需求较丰富时可以选择 3 个。\n3. 优先考虑用户明确表达的旅行偏好、旅行类型和实际需求。\n4. 结合住宿决策知识中的区域策略、交通策略、预算策略和旅行节奏规则进行判断。\n\
+            5. 结合天气上下文调整地点优先级：\n   - 天气条件不利时，应适当降低高天气敏感性户外地点的优先级；\n   - 天气仅部分覆盖时，只能根据已有日期的具体天气数据进行判断；\n\
+            \   - 天气不可用时，不得编造具体天气条件。\n6. 应考虑地点组合是否能够代表本次旅行的主要活动需求，并兼顾合理的旅行节奏。\n7.\
+            \ 避免无充分理由选择空间上过于分散、旅行逻辑明显冲突的地点组合。\n8. 机场、火车站、港口等交通节点只有在与用户行程需求明显相关时才应优先选择，不得仅因为\
+            \ route_priority 较高就自动选择。\n9. 不推荐酒店，不筛选酒店，不计算路线，不生成完整行程，不输出酒店名称。\n10.\
+            \ selection_reason 应简洁说明所选地点为什么能够代表本次旅行的主要住宿决策需求。\n11. 输出必须符合指定结构，不得添加额外字段、Markdown\
+            \ 标记、代码块或其他说明。\n\n【显式地点保留与 ID 严格约束】\n\n1. selected_place_ids 中的每一个 ID\
+            \ 都必须逐字复制自输入的关键地点目录。\n\n严禁：\n- 根据地点名称自行生成 ID；\n- 猜测 ID；\n- 缩写 ID；\n- 修改已有\
+            \ ID；\n- 根据拼音、英文名或地点含义创造新的 ID。\n\n2. 用户在旅行需求中明确提及的具体地点具有最高选择优先级。\n\n例如用户明确说：\n\
+            - 要去某个景点；\n- 要到某个车站乘车；\n- 要从某个机场离开；\n- 要参加某个地点的活动；\n\n如果关键地点目录中存在对应地点，必须将该地点纳入\
+            \ selected_place_ids。\n\n3. 不得用语义相近、区域相近或功能相近的其他地点替换用户明确提到的地点。\n\n例如：\n\
+            用户明确提到“海口东站”，如果目录中存在海口东站，则必须选择海口东站的真实 place_id，不得选择其他铁路站点、商圈或附近地点代替。\n\
+            \n4. 选择地点时按以下顺序处理：\n\n第一优先级：\n用户明确点名且目录中存在的地点。\n\n第二优先级：\n用户明确提出的活动对应地点，例如高尔夫球会、景区、会展中心等。\n\
+            \n第三优先级：\n根据旅行风格和偏好补充的候选地点。\n\n不得因为第三优先级的推断地点而遗漏第一优先级的显式地点。\n\n5. 输出前逐一检查\
+            \ selected_place_ids：\n\n- 每个 ID 必须能在关键地点目录中找到完全一致的条目；\n- 用户明确提到且目录中存在的地点不得遗漏；\n\
+            - 不得输出目录外 ID。\n\n6. 如果无法在目录中找到用户明确提到的地点：\n\n宁可不选择该地点，也不得创造新的 place_id。\n\
+            \n7. selected_place_ids 只负责从已有目录中选择地点，不承担地点 ID 生成职责。"
+        - id: 35815a9c-b923-4b4f-94a6-90d0c6f7fea1
+          role: user
+          text: '【标准旅行需求】
+
+
+            {{#1783170208303.output#}}
+
+
+
+            【住宿决策知识】
+
+
+            {{#context#}}
+
+
+
+            【受控关键地点候选集合】
+
+
+            {{#1783188421380.body#}}
+
+
+
+            【天气上下文】
+
+
+            {{#1783216078012.output#}}
+
+
+
+            请从受控候选地点集合中选择 2 至 3 个最适合作为本次住宿决策与后续路线分析依据的目标地点。
+
+
+            选择结果必须严格来自候选集合。'
+        retry_config:
+          max_retries: 1
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            additionalProperties: false
+            properties:
+              selected_place_ids:
+                description: 从候选地点集合中选择的 2 至 3 个标准 place_id，只能使用候选数据中真实存在的 ID。
+                items:
+                  type: string
+                type: array
+              selection_reason:
+                description: 简要说明这些目标地点为什么能够代表本次旅行的主要需求，并成为住宿决策与路线分析的依据。  如果界面要求直接填写
+                  JSON Schema，则使用：
+                type: string
+            required:
+            - selection_reason
+            - selected_place_ids
+            type: object
+        structured_output_enabled: true
+        title: 目标地点选择
+        type: llm
+        vision:
+          enabled: false
+      height: 208
+      id: '1783217575028'
+      position:
+        x: 3852
+        y: 967.6333333333334
+      positionAbsolute:
+        x: 3852
+        y: 967.6333333333334
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "import json\n\n\ndef main(selected_place_ids: list, places_body: str)\
+          \ -> dict:\n    \"\"\"\n    Extract the full place objects selected by the\
+          \ LLM\n    from the Places Mock API response.\n    \"\"\"\n\n    try:\n\
+          \        payload = json.loads(places_body)\n    except Exception:\n    \
+          \    return {\n            \"selected_places_json\": \"[]\",\n         \
+          \   \"selected_place_names\": [],\n            \"selected_place_areas\"\
+          : [],\n            \"preferred_hotel_areas\": [],\n            \"missing_place_ids\"\
+          : selected_place_ids or [],\n            \"selected_place_count\": 0,\n\
+          \            \"extraction_valid\": False,\n        }\n\n    data = payload.get(\"\
+          data\", [])\n\n    if not isinstance(data, list):\n        return {\n  \
+          \          \"selected_places_json\": \"[]\",\n            \"selected_place_names\"\
+          : [],\n            \"selected_place_areas\": [],\n            \"preferred_hotel_areas\"\
+          : [],\n            \"missing_place_ids\": selected_place_ids or [],\n  \
+          \          \"selected_place_count\": 0,\n            \"extraction_valid\"\
+          : False,\n        }\n\n    place_map = {\n        item.get(\"place_id\"\
+          ): item\n        for item in data\n        if isinstance(item, dict) and\
+          \ item.get(\"place_id\")\n    }\n\n    selected_places = []\n    missing_place_ids\
+          \ = []\n\n    # Preserve the LLM-selected order\n    for place_id in selected_place_ids\
+          \ or []:\n        place = place_map.get(place_id)\n\n        if place is\
+          \ not None:\n            selected_places.append(place)\n        else:\n\
+          \            missing_place_ids.append(place_id)\n\n    selected_place_names\
+          \ = [\n        place.get(\"name\", \"\")\n        for place in selected_places\n\
+          \        if place.get(\"name\")\n    ]\n\n    selected_place_areas = []\n\
+          \n    for place in selected_places:\n        area = place.get(\"area\")\n\
+          \n        if area and area not in selected_place_areas:\n            selected_place_areas.append(area)\n\
+          \n    preferred_hotel_areas = []\n\n    for place in selected_places:\n\
+          \        areas = place.get(\"preferred_hotel_areas\", [])\n\n        if\
+          \ isinstance(areas, list):\n            for area in areas:\n           \
+          \     if area and area not in preferred_hotel_areas:\n                 \
+          \   preferred_hotel_areas.append(area)\n\n    extraction_valid = (\n   \
+          \     len(selected_places) >= 2\n        and len(missing_place_ids) == 0\n\
+          \    )\n\n    return {\n        \"selected_places_json\": json.dumps(\n\
+          \            selected_places,\n            ensure_ascii=False\n        ),\n\
+          \        \"selected_place_names\": selected_place_names,\n        \"selected_place_areas\"\
+          : selected_place_areas,\n        \"preferred_hotel_areas\": preferred_hotel_areas,\n\
+          \        \"missing_place_ids\": missing_place_ids,\n        \"selected_place_count\"\
+          : len(selected_places),\n        \"extraction_valid\": extraction_valid,\n\
+          \    }"
+        code_language: python3
+        desc: 根据目标地点选择模型输出的标准地点 ID，从关键地点 API 返回的完整候选数据中提取对应地点对象，并整理地点名称、区域及住宿区域偏好等结构化信息，为酒店候选筛选和后续路线分析提供可靠数据。
+        outputs:
+          extraction_valid:
+            children: null
+            type: boolean
+          missing_place_ids:
+            children: null
+            type: array[string]
+          preferred_hotel_areas:
+            children: null
+            type: array[string]
+          selected_place_areas:
+            children: null
+            type: array[string]
+          selected_place_count:
+            children: null
+            type: number
+          selected_place_names:
+            children: null
+            type: array[string]
+          selected_places_json:
+            children: null
+            type: string
+        selected: false
+        title: 选中地点数据提取
+        type: code
+        variables:
+        - value_selector:
+          - '1783217575028'
+          - structured_output
+          - selected_place_ids
+          value_type: object
+          variable: selected_place_ids
+        - value_selector:
+          - '1783188421380'
+          - body
+          value_type: string
+          variable: places_body
+      height: 159
+      id: '1783219513343'
+      position:
+        x: 4193
+        y: 1026.8
+      positionAbsolute:
+        x: 4193
+        y: 1026.8
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "import json\nimport re\n\n\nAREA_VOCAB = {\n    \"龙华区\",\n    \"美兰区\"\
+          ,\n    \"秀英区\",\n    \"琼山区\",\n}\n\n\nTRIP_STYLE_ALIASES = {\n    \"商务\"\
+          : \"商务出差\",\n    \"商务旅行\": \"商务出差\",\n    \"商务出差\": \"商务出差\",\n\n    \"\
+          亲子\": \"亲子旅行\",\n    \"亲子游\": \"亲子旅行\",\n    \"亲子旅行\": \"亲子旅行\",\n\n   \
+          \ \"度假\": \"纯度假\",\n    \"休闲度假\": \"纯度假\",\n    \"纯度假\": \"纯度假\",\n\n  \
+          \  \"访校\": \"访校/考试\",\n    \"考试\": \"访校/考试\",\n    \"访校/考试\": \"访校/考试\"\
+          ,\n\n    \"自驾\": \"自驾\",\n    \"短途旅行\": \"短途旅行\",\n    \"城市漫游\": \"城市漫游\"\
+          ,\n    \"中转\": \"中转\",\n    \"环岛铁路旅行\": \"环岛铁路旅行\",\n}\n\n\nPREFERENCE_MAP\
+          \ = {\n    \"美食\": {\n        \"tags\": [\"美食方便\"],\n    },\n\n    \"海边\"\
+          : {\n        \"tags\": [\"近海边\"],\n    },\n\n    \"亲子\": {\n        \"tags\"\
+          : [\"适合亲子\"],\n        \"target_users\": [\"亲子家庭\"],\n        \"trip_styles\"\
+          : [\"亲子旅行\"],\n    },\n\n    \"商务\": {\n        \"tags\": [\"商务友好\"],\n\
+          \        \"target_users\": [\"商务旅客\"],\n        \"trip_styles\": [\"商务出差\"\
+          ],\n    },\n\n    \"度假\": {\n        \"tags\": [\"适合纯度假\"],\n        \"\
+          target_users\": [\"度假旅客\"],\n        \"trip_styles\": [\"纯度假\"],\n    },\n\
+          \n    \"访校\": {\n        \"target_users\": [\"访校旅客\"],\n        \"trip_styles\"\
+          : [\"访校/考试\"],\n    },\n}\n\n\ndef main(\n    budget_max_per_night,\n  \
+          \  budget_total,\n    nights,\n    traveler_count,\n    preferences,\n \
+          \   trip_style,\n    selected_places_json,\n) -> dict:\n\n    # --------------------------------------------------\n\
+          \    # Helpers\n    # --------------------------------------------------\n\
+          \n    def positive_number(value):\n        return (\n            isinstance(value,\
+          \ (int, float))\n            and not isinstance(value, bool)\n         \
+          \   and value > 0\n        )\n\n    def unique_strings(values):\n      \
+          \  result = []\n        seen = set()\n\n        for value in values:\n \
+          \           if not isinstance(value, str):\n                continue\n\n\
+          \            value = value.strip()\n\n            if not value or value\
+          \ in seen:\n                continue\n\n            seen.add(value)\n  \
+          \          result.append(value)\n\n        return result\n\n    def parse_json_list(value):\n\
+          \        if isinstance(value, list):\n            return value\n\n     \
+          \   if not isinstance(value, str):\n            return []\n\n        try:\n\
+          \            data = json.loads(value)\n        except Exception:\n     \
+          \       return []\n\n        return data if isinstance(data, list) else\
+          \ []\n\n    def split_trip_styles(value):\n        if not isinstance(value,\
+          \ str):\n            return []\n\n        # 不按 \"/\" 切割，因为“访校/考试”本身是合法标准值\n\
+          \        parts = re.split(\n            r\"[,，、;；|]+\",\n            value\n\
+          \        )\n\n        result = []\n\n        for part in parts:\n      \
+          \      part = part.strip()\n\n            if not part:\n               \
+          \ continue\n\n            result.append(\n                TRIP_STYLE_ALIASES.get(part,\
+          \ part)\n            )\n\n        return unique_strings(result)\n\n    #\
+          \ --------------------------------------------------\n    # 1. Budget normalization\n\
+          \    # --------------------------------------------------\n\n    effective_budget\
+          \ = 0\n    budget_source = \"unknown\"\n\n    if positive_number(budget_max_per_night):\n\
+          \        effective_budget = float(\n            budget_max_per_night\n \
+          \       )\n        budget_source = \"per_night\"\n\n    elif (\n       \
+          \ positive_number(budget_total)\n        and positive_number(nights)\n \
+          \   ):\n        effective_budget = round(\n            float(budget_total)\
+          \ / float(nights),\n            2\n        )\n        budget_source = \"\
+          total_divided_by_nights\"\n\n    # --------------------------------------------------\n\
+          \    # 2. Preference normalization\n    # --------------------------------------------------\n\
+          \n    raw_preferences = (\n        preferences\n        if isinstance(preferences,\
+          \ list)\n        else []\n    )\n\n    normalized_trip_styles = split_trip_styles(\n\
+          \        trip_style\n    )\n\n    normalized_tags = []\n    normalized_target_users\
+          \ = []\n    unmapped_preferences = []\n\n    for preference in raw_preferences:\n\
+          \        if not isinstance(preference, str):\n            continue\n\n \
+          \       preference = preference.strip()\n\n        if not preference:\n\
+          \            continue\n\n        mapping = PREFERENCE_MAP.get(preference)\n\
+          \n        if mapping is None:\n            unmapped_preferences.append(preference)\n\
+          \            continue\n\n        normalized_trip_styles.extend(\n      \
+          \      mapping.get(\"trip_styles\", [])\n        )\n\n        normalized_tags.extend(\n\
+          \            mapping.get(\"tags\", [])\n        )\n\n        normalized_target_users.extend(\n\
+          \            mapping.get(\"target_users\", [])\n        )\n\n    normalized_trip_styles\
+          \ = unique_strings(\n        normalized_trip_styles\n    )\n\n    normalized_tags\
+          \ = unique_strings(\n        normalized_tags\n    )\n\n    normalized_target_users\
+          \ = unique_strings(\n        normalized_target_users\n    )\n\n    unmapped_preferences\
+          \ = unique_strings(\n        unmapped_preferences\n    )\n\n    # --------------------------------------------------\n\
+          \    # 3. Extract soft hotel-area preferences\n    # --------------------------------------------------\n\
+          \n    selected_places = parse_json_list(\n        selected_places_json\n\
+          \    )\n\n    preferred_area_values = []\n\n    for place in selected_places:\n\
+          \        if not isinstance(place, dict):\n            continue\n\n     \
+          \   place_preferences = place.get(\n            \"preferred_hotel_areas\"\
+          ,\n            []\n        )\n\n        if not isinstance(\n           \
+          \ place_preferences,\n            list\n        ):\n            continue\n\
+          \n        preferred_area_values.extend(\n            place_preferences\n\
+          \        )\n\n    preferred_area_values = unique_strings(\n        preferred_area_values\n\
+          \    )\n\n    normalized_preferred_areas = []\n    normalized_preferred_sub_areas\
+          \ = []\n\n    for area_value in preferred_area_values:\n        if area_value\
+          \ in AREA_VOCAB:\n            normalized_preferred_areas.append(\n     \
+          \           area_value\n            )\n        else:\n            normalized_preferred_sub_areas.append(\n\
+          \                area_value\n            )\n\n    normalized_preferred_areas\
+          \ = unique_strings(\n        normalized_preferred_areas\n    )\n\n    normalized_preferred_sub_areas\
+          \ = unique_strings(\n        normalized_preferred_sub_areas\n    )\n\n \
+          \   # --------------------------------------------------\n    # 4. Construct\
+          \ Hotel API request body\n    # --------------------------------------------------\n\
+          \n    request_body = {\n        \"availability_only\": True,\n        \"\
+          limit\": 5,\n    }\n\n    if effective_budget > 0:\n        request_body[\"\
+          budget\"] = {\n            \"min\": 0,\n            \"max\": effective_budget,\n\
+          \        }\n\n    if positive_number(traveler_count):\n        request_body[\"\
+          guests\"] = int(\n            traveler_count\n        )\n\n    # Important:\n\
+          \    # selected-place-derived areas are SOFT preferences.\n    # Do NOT\
+          \ write them into areas / sub_areas.\n\n    if normalized_preferred_areas:\n\
+          \        request_body[\"preferred_areas\"] = (\n            normalized_preferred_areas\n\
+          \        )\n\n    if normalized_preferred_sub_areas:\n        request_body[\"\
+          preferred_sub_areas\"] = (\n            normalized_preferred_sub_areas\n\
+          \        )\n\n    if normalized_trip_styles:\n        request_body[\"trip_styles\"\
+          ] = (\n            normalized_trip_styles\n        )\n\n    if normalized_tags:\n\
+          \        request_body[\"tags\"] = (\n            normalized_tags\n     \
+          \   )\n\n    if normalized_target_users:\n        request_body[\"target_users\"\
+          ] = (\n            normalized_target_users\n        )\n\n    # --------------------------------------------------\n\
+          \    # 5. Human-readable strategy summary\n    # --------------------------------------------------\n\
+          \n    summary_parts = [\n        \"仅返回模拟房态可用酒店\",\n        \"候选上限 5 家\"\
+          ,\n    ]\n\n    if effective_budget > 0:\n        summary_parts.append(\n\
+          \            f\"每晚上限 {effective_budget} 元\"\n        )\n\n    if positive_number(traveler_count):\n\
+          \        summary_parts.append(\n            f\"{int(traveler_count)} 位住客\"\
+          \n        )\n\n    if normalized_preferred_areas:\n        summary_parts.append(\n\
+          \            \"偏好区域=\"\n            + str(normalized_preferred_areas)\n\
+          \            + \"（软偏好）\"\n        )\n\n    if normalized_preferred_sub_areas:\n\
+          \        summary_parts.append(\n            \"偏好片区=\"\n            + str(normalized_preferred_sub_areas)\n\
+          \            + \"（软偏好）\"\n        )\n\n    if normalized_trip_styles:\n\
+          \        summary_parts.append(\n            \"旅行类型=\"\n            + str(normalized_trip_styles)\n\
+          \        )\n\n    search_strategy_summary = \"；\".join(\n        summary_parts\n\
+          \    )\n\n    return {\n        \"hotel_search_body\": json.dumps(\n   \
+          \         request_body,\n            ensure_ascii=False\n        ),\n\n\
+          \        \"effective_budget_max_per_night\": (\n            effective_budget\n\
+          \        ),\n\n        \"budget_source\": budget_source,\n\n        \"normalized_preferred_areas\"\
+          : (\n            normalized_preferred_areas\n        ),\n\n        \"normalized_preferred_sub_areas\"\
+          : (\n            normalized_preferred_sub_areas\n        ),\n\n        \"\
+          normalized_trip_styles\": (\n            normalized_trip_styles\n      \
+          \  ),\n\n        \"normalized_tags\": normalized_tags,\n\n        \"normalized_target_users\"\
+          : (\n            normalized_target_users\n        ),\n\n        \"unmapped_preferences\"\
+          : (\n            unmapped_preferences\n        ),\n\n        \"search_strategy_summary\"\
+          : (\n            search_strategy_summary\n        ),\n    }"
+        code_language: python3
+        desc: 将预算、人数、旅行风格、用户偏好及选中地点的住宿区域建议规范化为 Hotel API 搜索请求。目标地点推导出的住宿区域使用 preferred_areas
+          和 preferred_sub_areas 作为软偏好参与评分，不作为硬筛选条件。
+        outputs:
+          budget_source:
+            children: null
+            type: string
+          effective_budget_max_per_night:
+            children: null
+            type: number
+          hotel_search_body:
+            children: null
+            type: string
+          normalized_preferred_areas:
+            children: null
+            type: array[string]
+          normalized_preferred_sub_areas:
+            children: null
+            type: array[string]
+          normalized_tags:
+            children: null
+            type: array[string]
+          normalized_target_users:
+            children: null
+            type: array[string]
+          normalized_trip_styles:
+            children: null
+            type: array[string]
+          search_strategy_summary:
+            children: null
+            type: string
+          unmapped_preferences:
+            children: null
+            type: array[string]
+        selected: false
+        title: 酒店搜索参数规范化与构造
+        type: code
+        variables:
+        - value_selector:
+          - '1783165904516'
+          - budget_max_per_night
+          value_type: number
+          variable: budget_max_per_night
+        - value_selector:
+          - '1783165904516'
+          - budget_total
+          value_type: number
+          variable: budget_total
+        - value_selector:
+          - '1783165904516'
+          - nights
+          value_type: number
+          variable: nights
+        - value_selector:
+          - '1783165904516'
+          - traveler_count
+          value_type: number
+          variable: traveler_count
+        - value_selector:
+          - '1783165904516'
+          - trip_style
+          value_type: string
+          variable: trip_style
+        - value_selector:
+          - '1783219513343'
+          - selected_places_json
+          value_type: string
+          variable: selected_places_json
+        - value_selector:
+          - '1783165904516'
+          - preferences
+          value_type: array[string]
+          variable: preferences
+      height: 159
+      id: '1783220045308'
+      position:
+        x: 4534
+        y: 1053.3
+      positionAbsolute:
+        x: 4534
+        y: 1053.3
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-112
+            key: ''
+            type: text
+            value: '{{#1783220045308.hotel_search_body#}}'
+          type: raw-text
+        desc: 调用项目 Hotel Mock API，根据规范化后的预算、人数、区域、旅行类型、标签和适用人群等条件筛选候选酒店，并返回匹配得分、匹配原因及酒店完整结构化数据。
+        headers: Content-Type:application/json
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 2
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        ssl_verify: true
+        timeout:
+          connect: 5
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+          read: 20
+          write: 10
+        title: 候选酒店搜索
+        type: http-request
+        url: https://travel-stay-agent-git-feat-mock-api-bagekyl.vercel.app/api/hotels/search
+        variables: []
+      height: 244
+      id: '1783221399421'
+      position:
+        x: 4875
+        y: 1037.3
+      positionAbsolute:
+        x: 4875
+        y: 1037.3
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "import json\n\n\ndef main(hotels_body: str) -> dict:\n    \"\"\"\n\
+          \    Parse and normalize the Hotel Mock API response.\n\n    Outputs:\n\
+          \    1. Candidate hotel data for downstream reasoning.\n    2. Lightweight\
+          \ route origins for Google Routes.\n    3. Validation and debugging information.\n\
+          \    \"\"\"\n\n    def empty_result(summary: str) -> dict:\n        return\
+          \ {\n            \"candidate_hotels_json\": \"[]\",\n            \"route_origins_json\"\
+          : \"[]\",\n            \"candidate_hotel_ids\": [],\n            \"candidate_hotel_names\"\
+          : [],\n            \"candidate_hotel_count\": 0,\n            \"total_candidates\"\
+          : 0,\n            \"applied_filters_json\": \"{}\",\n            \"route_ready_count\"\
+          : 0,\n            \"hotel_search_valid\": False,\n            \"all_hotels_route_ready\"\
+          : False,\n            \"hotel_search_summary\": summary,\n        }\n\n\
+          \    try:\n        payload = json.loads(hotels_body)\n    except Exception:\n\
+          \        return empty_result(\n            \"Hotel API 响应无法解析为合法 JSON。\"\
+          \n        )\n\n    if not isinstance(payload, dict):\n        return empty_result(\n\
+          \            \"Hotel API 响应结构无效。\"\n        )\n\n    api_ok = payload.get(\"\
+          ok\") is True\n    data = payload.get(\"data\", [])\n    applied_filters\
+          \ = payload.get(\"applied_filters\", {})\n\n    if not isinstance(data,\
+          \ list):\n        data = []\n\n    if not isinstance(applied_filters, dict):\n\
+          \        applied_filters = {}\n\n    try:\n        total_candidates = int(\n\
+          \            payload.get(\"total_candidates\", 0)\n        )\n    except\
+          \ (TypeError, ValueError):\n        total_candidates = 0\n\n    candidate_hotels\
+          \ = []\n    route_origins = []\n    candidate_hotel_ids = []\n    candidate_hotel_names\
+          \ = []\n\n    for hotel in data:\n        if not isinstance(hotel, dict):\n\
+          \            continue\n\n        hotel_id = hotel.get(\"hotel_id\")\n  \
+          \      name = hotel.get(\"name\")\n\n        if not hotel_id or not name:\n\
+          \            continue\n\n        # Keep the fields needed for final decision\
+          \ and explanation.\n        compact_hotel = {\n            \"hotel_id\"\
+          : hotel_id,\n            \"name\": name,\n            \"brand\": hotel.get(\"\
+          brand\"),\n            \"area\": hotel.get(\"area\"),\n            \"sub_area\"\
+          : hotel.get(\"sub_area\"),\n            \"address\": hotel.get(\"address\"\
+          ),\n            \"google_place_id\": hotel.get(\"google_place_id\"),\n \
+          \           \"location\": hotel.get(\"location\", {}),\n            \"hotel_type\"\
+          : hotel.get(\"hotel_type\"),\n            \"star_rating\": hotel.get(\"\
+          star_rating\"),\n            \"review\": hotel.get(\"review\", {}),\n  \
+          \          \"mock_price_per_night\": hotel.get(\n                \"mock_price_per_night\"\
+          \n            ),\n            \"price_range_cny\": hotel.get(\n        \
+          \        \"price_range_cny\", {}\n            ),\n            \"room_types\"\
+          : hotel.get(\"room_types\", []),\n            \"breakfast\": hotel.get(\"\
+          breakfast\", {}),\n            \"cancellation\": hotel.get(\n          \
+          \      \"cancellation\", {}\n            ),\n            \"availability\"\
+          : hotel.get(\n                \"availability\", {}\n            ),\n   \
+          \         \"parking\": hotel.get(\"parking\", {}),\n            \"facilities\"\
+          : hotel.get(\"facilities\", []),\n            \"tags\": hotel.get(\"tags\"\
+          , []),\n            \"target_users\": hotel.get(\n                \"target_users\"\
+          , []\n            ),\n            \"trip_styles\": hotel.get(\n        \
+          \        \"trip_styles\", []\n            ),\n            \"summary\": hotel.get(\"\
+          summary\", \"\"),\n            \"match_score\": hotel.get(\n           \
+          \     \"match_score\", 0\n            ),\n            \"match_reasons\"\
+          : hotel.get(\n                \"match_reasons\", []\n            ),\n  \
+          \          \"mock_note\": hotel.get(\n                \"mock_note\", \"\"\
+          \n            ),\n        }\n\n        candidate_hotels.append(compact_hotel)\n\
+          \        candidate_hotel_ids.append(hotel_id)\n        candidate_hotel_names.append(name)\n\
+          \n        location = hotel.get(\"location\", {})\n        google_place_id\
+          \ = hotel.get(\"google_place_id\")\n\n        latitude = None\n        longitude\
+          \ = None\n\n        if isinstance(location, dict):\n            latitude\
+          \ = location.get(\"latitude\")\n            longitude = location.get(\"\
+          longitude\")\n\n        has_coordinates = (\n            isinstance(latitude,\
+          \ (int, float))\n            and isinstance(longitude, (int, float))\n \
+          \       )\n\n        has_route_identity = (\n            bool(google_place_id)\n\
+          \            or has_coordinates\n        )\n\n        if has_route_identity:\n\
+          \            route_origins.append({\n                \"hotel_id\": hotel_id,\n\
+          \                \"name\": name,\n                \"google_place_id\": google_place_id,\n\
+          \                \"location\": {\n                    \"latitude\": latitude,\n\
+          \                    \"longitude\": longitude,\n                },\n   \
+          \         })\n\n    candidate_hotel_count = len(candidate_hotels)\n    route_ready_count\
+          \ = len(route_origins)\n\n    hotel_search_valid = (\n        api_ok\n \
+          \       and candidate_hotel_count > 0\n    )\n\n    all_hotels_route_ready\
+          \ = (\n        candidate_hotel_count > 0\n        and route_ready_count\n\
+          \        == candidate_hotel_count\n    )\n\n    summary_parts = [\n    \
+          \    f\"Hotel API 返回 {candidate_hotel_count} 家候选酒店\",\n        f\"硬过滤后的候选总数为\
+          \ {total_candidates}\",\n        f\"其中 {route_ready_count} 家具备路线计算所需的位置标识\"\
+          ,\n    ]\n\n    if not api_ok:\n        summary_parts.append(\n        \
+          \    \"API ok 状态为 false\"\n        )\n\n    if candidate_hotel_count ==\
+          \ 0:\n        summary_parts.append(\n            \"当前筛选条件下没有可用候选酒店\"\n \
+          \       )\n\n    return {\n        \"candidate_hotels_json\": json.dumps(\n\
+          \            candidate_hotels,\n            ensure_ascii=False\n       \
+          \ ),\n        \"route_origins_json\": json.dumps(\n            route_origins,\n\
+          \            ensure_ascii=False\n        ),\n        \"candidate_hotel_ids\"\
+          : candidate_hotel_ids,\n        \"candidate_hotel_names\": candidate_hotel_names,\n\
+          \        \"candidate_hotel_count\": candidate_hotel_count,\n        \"total_candidates\"\
+          : total_candidates,\n        \"applied_filters_json\": json.dumps(\n   \
+          \         applied_filters,\n            ensure_ascii=False\n        ),\n\
+          \        \"route_ready_count\": route_ready_count,\n        \"hotel_search_valid\"\
+          : hotel_search_valid,\n        \"all_hotels_route_ready\": (\n         \
+          \   all_hotels_route_ready\n        ),\n        \"hotel_search_summary\"\
+          : \"；\".join(\n            summary_parts\n        ),\n    }"
+        code_language: python3
+        desc: 解析 Hotel Mock API 返回结果，验证候选酒店数据，提取供后续综合决策使用的酒店信息和 Routes 路线计算所需的酒店起点数据，并保留筛选条件、匹配得分和匹配原因等决策依据。
+        outputs:
+          all_hotels_route_ready:
+            children: null
+            type: boolean
+          applied_filters_json:
+            children: null
+            type: string
+          candidate_hotel_count:
+            children: null
+            type: number
+          candidate_hotel_ids:
+            children: null
+            type: array[string]
+          candidate_hotel_names:
+            children: null
+            type: array[string]
+          candidate_hotels_json:
+            children: null
+            type: string
+          hotel_search_summary:
+            children: null
+            type: string
+          hotel_search_valid:
+            children: null
+            type: boolean
+          route_origins_json:
+            children: null
+            type: string
+          route_ready_count:
+            children: null
+            type: number
+          total_candidates:
+            children: null
+            type: number
+        selected: false
+        title: 候选酒店结果整理
+        type: code
+        variables:
+        - value_selector:
+          - '1783221399421'
+          - body
+          value_type: string
+          variable: hotels_body
+      height: 143
+      id: '1783232136509'
+      position:
+        x: 5216
+        y: 1128.4666666666667
+      positionAbsolute:
+        x: 5216
+        y: 1128.4666666666667
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "import json\n\n\ndef main(\n    route_origins_json: str,\n    selected_places_json:\
+          \ str,\n) -> dict:\n    \"\"\"\n    Build a Google Routes Compute Route\
+          \ Matrix request body.\n\n    Preferred waypoint identity:\n    1. Google\
+          \ Place ID\n    2. Latitude / longitude fallback\n\n    Also preserve origin\
+          \ and destination index mappings,\n    because Route Matrix responses are\
+          \ identified by indices.\n    \"\"\"\n\n    def empty_result(summary: str)\
+          \ -> dict:\n        return {\n            \"route_matrix_body\": \"{}\"\
+          ,\n            \"origin_index_map_json\": \"[]\",\n            \"destination_index_map_json\"\
+          : \"[]\",\n            \"origin_count\": 0,\n            \"destination_count\"\
+          : 0,\n            \"matrix_element_count\": 0,\n            \"route_matrix_ready\"\
+          : False,\n            \"route_request_summary\": summary,\n        }\n\n\
+          \    def parse_json_list(value):\n        try:\n            data = json.loads(value)\n\
+          \        except Exception:\n            return []\n\n        return data\
+          \ if isinstance(data, list) else []\n\n    def build_waypoint(item):\n \
+          \       \"\"\"\n        Prefer placeId.\n        Fall back to latLng.\n\
+          \        \"\"\"\n\n        place_id = item.get(\"google_place_id\")\n\n\
+          \        if isinstance(place_id, str) and place_id.strip():\n          \
+          \  return {\n                \"waypoint\": {\n                    \"placeId\"\
+          : place_id.strip()\n                }\n            }\n\n        location\
+          \ = item.get(\"location\", {})\n\n        if not isinstance(location, dict):\n\
+          \            return None\n\n        latitude = location.get(\"latitude\"\
+          )\n        longitude = location.get(\"longitude\")\n\n        if (\n   \
+          \         isinstance(latitude, (int, float))\n            and isinstance(longitude,\
+          \ (int, float))\n        ):\n            return {\n                \"waypoint\"\
+          : {\n                    \"location\": {\n                        \"latLng\"\
+          : {\n                            \"latitude\": latitude,\n             \
+          \               \"longitude\": longitude,\n                        }\n \
+          \                   }\n                }\n            }\n\n        return\
+          \ None\n\n    route_origins = parse_json_list(\n        route_origins_json\n\
+          \    )\n\n    selected_places = parse_json_list(\n        selected_places_json\n\
+          \    )\n\n    if not route_origins:\n        return empty_result(\n    \
+          \        \"没有可用于 Routes 计算的候选酒店起点。\"\n        )\n\n    if not selected_places:\n\
+          \        return empty_result(\n            \"没有可用于 Routes 计算的目标地点终点。\"\n\
+          \        )\n\n    origins = []\n    destinations = []\n\n    origin_index_map\
+          \ = []\n    destination_index_map = []\n\n    # -----------------------------\n\
+          \    # Origins: hotels\n    # -----------------------------\n\n    for hotel\
+          \ in route_origins:\n        if not isinstance(hotel, dict):\n         \
+          \   continue\n\n        waypoint = build_waypoint(hotel)\n\n        if waypoint\
+          \ is None:\n            continue\n\n        origin_index = len(origins)\n\
+          \n        origins.append(waypoint)\n\n        origin_index_map.append({\n\
+          \            \"origin_index\": origin_index,\n            \"hotel_id\":\
+          \ hotel.get(\"hotel_id\"),\n            \"hotel_name\": hotel.get(\"name\"\
+          ),\n            \"google_place_id\": hotel.get(\n                \"google_place_id\"\
+          \n            ),\n        })\n\n    # -----------------------------\n  \
+          \  # Destinations: selected places\n    # -----------------------------\n\
+          \n    for place in selected_places:\n        if not isinstance(place, dict):\n\
+          \            continue\n\n        waypoint = build_waypoint(place)\n\n  \
+          \      if waypoint is None:\n            continue\n\n        destination_index\
+          \ = len(destinations)\n\n        destinations.append(waypoint)\n\n     \
+          \   destination_index_map.append({\n            \"destination_index\": destination_index,\n\
+          \            \"place_id\": place.get(\"place_id\"),\n            \"place_name\"\
+          : place.get(\"name\"),\n            \"category\": place.get(\"category\"\
+          ),\n            \"area\": place.get(\"area\"),\n            \"route_priority\"\
+          : place.get(\n                \"route_priority\"\n            ),\n     \
+          \   })\n\n    origin_count = len(origins)\n    destination_count = len(destinations)\n\
+          \n    matrix_element_count = (\n        origin_count * destination_count\n\
+          \    )\n\n    route_matrix_ready = (\n        origin_count > 0\n       \
+          \ and destination_count > 0\n        and matrix_element_count > 0\n    )\n\
+          \n    if not route_matrix_ready:\n        return empty_result(\n       \
+          \     \"Routes 请求起点或终点构造失败。\"\n        )\n\n    request_body = {\n     \
+          \   \"origins\": origins,\n        \"destinations\": destinations,\n   \
+          \     \"travelMode\": \"DRIVE\",\n        \"routingPreference\": \"TRAFFIC_AWARE\"\
+          ,\n    }\n\n    summary = (\n        f\"已构造 {origin_count} 个酒店起点和 \"\n \
+          \       f\"{destination_count} 个目标地点终点，\"\n        f\"共 {matrix_element_count}\
+          \ 个路线矩阵元素。\"\n    )\n\n    return {\n        \"route_matrix_body\": json.dumps(\n\
+          \            request_body,\n            ensure_ascii=False\n        ),\n\
+          \        \"origin_index_map_json\": json.dumps(\n            origin_index_map,\n\
+          \            ensure_ascii=False\n        ),\n        \"destination_index_map_json\"\
+          : json.dumps(\n            destination_index_map,\n            ensure_ascii=False\n\
+          \        ),\n        \"origin_count\": origin_count,\n        \"destination_count\"\
+          : destination_count,\n        \"matrix_element_count\": matrix_element_count,\n\
+          \        \"route_matrix_ready\": route_matrix_ready,\n        \"route_request_summary\"\
+          : summary,\n    }"
+        code_language: python3
+        desc: 将候选酒店起点和已选目标地点终点转换为 Google Routes API Compute Route Matrix 所需的标准请求结构，并生成起点、终点索引映射及矩阵规模信息，为后续路线矩阵请求和结果解析提供可靠输入。
+        outputs:
+          destination_count:
+            children: null
+            type: number
+          destination_index_map_json:
+            children: null
+            type: string
+          matrix_element_count:
+            children: null
+            type: number
+          origin_count:
+            children: null
+            type: number
+          origin_index_map_json:
+            children: null
+            type: string
+          route_matrix_body:
+            children: null
+            type: string
+          route_matrix_ready:
+            children: null
+            type: boolean
+          route_request_summary:
+            children: null
+            type: string
+        selected: false
+        title: Routes 请求数据构造
+        type: code
+        variables:
+        - value_selector:
+          - '1783232136509'
+          - route_origins_json
+          value_type: string
+          variable: route_origins_json
+        - value_selector:
+          - '1783219513343'
+          - selected_places_json
+          value_type: string
+          variable: selected_places_json
+      height: 159
+      id: '1783232534636'
+      position:
+        x: 5918
+        y: 927.5
+      positionAbsolute:
+        x: 5918
+        y: 927.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-249
+            key: ''
+            type: text
+            value: '{{#1783232534636.route_matrix_body#}}'
+          type: raw-text
+        desc: 调用 Google Routes API 的 Compute Route Matrix 接口，计算候选酒店与已选目标地点之间的驾车距离和预计通行时间，为后续路线结果解析和住宿综合决策提供真实交通依据。
+        headers: 'Content-Type:application/json
+
+          X-Goog-Api-Key:{{#env.GOOGLE_MAPS_API_KEY#}}
+
+          X-Goog-FieldMask:originIndex,destinationIndex,status,condition,distanceMeters,duration'
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 1
+          retry_enabled: true
+          retry_interval: 1500
+        selected: false
+        ssl_verify: true
+        timeout:
+          connect: 10
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+          read: 60
+          write: 10
+        title: Google Routes 路线矩阵获取
+        type: http-request
+        url: https://routes.googleapis.com/distanceMatrix/v2:computeRouteMatrix
+        variables: []
+      height: 244
+      id: '1783232813560'
+      position:
+        x: 6620
+        y: 811.2484848484848
+      positionAbsolute:
+        x: 6620
+        y: 811.2484848484848
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "import json\nimport re\n\n\ndef main(\n    routes_body: str,\n    origin_index_map_json:\
+          \ str,\n    destination_index_map_json: str,\n) -> dict:\n    \"\"\"\n \
+          \   Parse Google Routes Compute Route Matrix response.\n\n    Reconstruct\
+          \ route relations using originIndex and destinationIndex,\n    then calculate\
+          \ per-hotel route statistics.\n    \"\"\"\n\n    def empty_result(summary:\
+          \ str) -> dict:\n        return {\n            \"route_pairs_json\": \"\
+          []\",\n            \"hotel_route_stats_json\": \"[]\",\n            \"successful_route_count\"\
+          : 0,\n            \"failed_route_count\": 0,\n            \"hotel_route_count\"\
+          : 0,\n            \"route_matrix_valid\": False,\n            \"route_analysis_summary\"\
+          : summary,\n        }\n\n    def parse_json(value, expected_type):\n   \
+          \     try:\n            data = json.loads(value)\n        except Exception:\n\
+          \            return expected_type()\n\n        return data if isinstance(data,\
+          \ expected_type) else expected_type()\n\n    def parse_duration_seconds(duration):\n\
+          \        \"\"\"\n        Google Duration format examples:\n        1869s\n\
+          \        123.45s\n        \"\"\"\n        if not isinstance(duration, str):\n\
+          \            return None\n\n        match = re.fullmatch(\n            r\"\
+          ([0-9]+(?:\\.[0-9]+)?)s\",\n            duration.strip()\n        )\n\n\
+          \        if not match:\n            return None\n\n        return float(match.group(1))\n\
+          \n    # -----------------------------\n    # Parse inputs\n    # -----------------------------\n\
+          \n    route_elements = parse_json(routes_body, list)\n    origin_map_list\
+          \ = parse_json(\n        origin_index_map_json,\n        list\n    )\n \
+          \   destination_map_list = parse_json(\n        destination_index_map_json,\n\
+          \        list\n    )\n\n    if not route_elements:\n        return empty_result(\n\
+          \            \"Google Routes 未返回可解析的路线矩阵元素。\"\n        )\n\n    origin_map\
+          \ = {\n        item.get(\"origin_index\"): item\n        for item in origin_map_list\n\
+          \        if isinstance(item, dict)\n        and isinstance(item.get(\"origin_index\"\
+          ), int)\n    }\n\n    destination_map = {\n        item.get(\"destination_index\"\
+          ): item\n        for item in destination_map_list\n        if isinstance(item,\
+          \ dict)\n        and isinstance(\n            item.get(\"destination_index\"\
+          ),\n            int\n        )\n    }\n\n    if not origin_map or not destination_map:\n\
+          \        return empty_result(\n            \"起点或终点索引映射无效。\"\n        )\n\
+          \n    # -----------------------------\n    # Parse matrix elements\n   \
+          \ # -----------------------------\n\n    route_pairs = []\n    failed_routes\
+          \ = []\n\n    for element in route_elements:\n        if not isinstance(element,\
+          \ dict):\n            continue\n\n        origin_index = element.get(\"\
+          originIndex\")\n        destination_index = element.get(\n            \"\
+          destinationIndex\"\n        )\n\n        origin = origin_map.get(origin_index)\n\
+          \        destination = destination_map.get(\n            destination_index\n\
+          \        )\n\n        if origin is None or destination is None:\n      \
+          \      failed_routes.append({\n                \"origin_index\": origin_index,\n\
+          \                \"destination_index\": destination_index,\n           \
+          \     \"reason\": \"索引无法映射\",\n            })\n            continue\n\n\
+          \        status = element.get(\"status\", {})\n        condition = element.get(\"\
+          condition\")\n\n        status_code = 0\n\n        if isinstance(status,\
+          \ dict):\n            status_code = status.get(\"code\", 0) or 0\n\n   \
+          \     distance_meters = element.get(\n            \"distanceMeters\"\n \
+          \       )\n\n        duration_seconds = parse_duration_seconds(\n      \
+          \      element.get(\"duration\")\n        )\n\n        route_ok = (\n  \
+          \          status_code == 0\n            and condition == \"ROUTE_EXISTS\"\
+          \n            and isinstance(\n                distance_meters,\n      \
+          \          (int, float)\n            )\n            and duration_seconds\
+          \ is not None\n        )\n\n        if not route_ok:\n            failed_routes.append({\n\
+          \                \"origin_index\": origin_index,\n                \"destination_index\"\
+          : destination_index,\n                \"hotel_id\": origin.get(\"hotel_id\"\
+          ),\n                \"hotel_name\": origin.get(\"hotel_name\"),\n      \
+          \          \"place_id\": destination.get(\"place_id\"),\n              \
+          \  \"place_name\": destination.get(\n                    \"place_name\"\n\
+          \                ),\n                \"condition\": condition,\n       \
+          \         \"status\": status,\n            })\n            continue\n\n\
+          \        distance_km = round(\n            distance_meters / 1000,\n   \
+          \         2\n        )\n\n        duration_minutes = round(\n          \
+          \  duration_seconds / 60,\n            1\n        )\n\n        route_pairs.append({\n\
+          \            \"origin_index\": origin_index,\n            \"destination_index\"\
+          : destination_index,\n\n            \"hotel_id\": origin.get(\"hotel_id\"\
+          ),\n            \"hotel_name\": origin.get(\"hotel_name\"),\n\n        \
+          \    \"place_id\": destination.get(\"place_id\"),\n            \"place_name\"\
+          : destination.get(\n                \"place_name\"\n            ),\n   \
+          \         \"place_category\": destination.get(\n                \"category\"\
+          \n            ),\n            \"place_area\": destination.get(\"area\"),\n\
+          \            \"route_priority\": destination.get(\n                \"route_priority\"\
+          \n            ),\n\n            \"distance_meters\": distance_meters,\n\
+          \            \"distance_km\": distance_km,\n\n            \"duration_seconds\"\
+          : round(\n                duration_seconds,\n                1\n       \
+          \     ),\n            \"duration_minutes\": duration_minutes,\n\n      \
+          \      \"condition\": condition,\n        })\n\n    if not route_pairs:\n\
+          \        return empty_result(\n            \"没有成功解析出有效路线。\"\n        )\n\
+          \n    # -----------------------------\n    # Group routes by hotel\n   \
+          \ # -----------------------------\n\n    hotel_groups = {}\n\n    for route\
+          \ in route_pairs:\n        hotel_id = route[\"hotel_id\"]\n\n        if\
+          \ hotel_id not in hotel_groups:\n            hotel_groups[hotel_id] = {\n\
+          \                \"hotel_id\": hotel_id,\n                \"hotel_name\"\
+          : route[\"hotel_name\"],\n                \"routes\": [],\n            }\n\
+          \n        hotel_groups[hotel_id][\"routes\"].append(\n            route\n\
+          \        )\n\n    hotel_stats = []\n\n    for hotel in hotel_groups.values():\n\
+          \        routes = hotel[\"routes\"]\n\n        durations = [\n         \
+          \   route[\"duration_minutes\"]\n            for route in routes\n     \
+          \   ]\n\n        distances = [\n            route[\"distance_km\"]\n   \
+          \         for route in routes\n        ]\n\n        average_duration = round(\n\
+          \            sum(durations) / len(durations),\n            1\n        )\n\
+          \n        average_distance = round(\n            sum(distances) / len(distances),\n\
+          \            2\n        )\n\n        fastest_route = min(\n            routes,\n\
+          \            key=lambda x: x[\"duration_minutes\"]\n        )\n\n      \
+          \  slowest_route = max(\n            routes,\n            key=lambda x:\
+          \ x[\"duration_minutes\"]\n        )\n\n        high_priority_routes = [\n\
+          \            route\n            for route in routes\n            if route.get(\"\
+          route_priority\") == \"high\"\n        ]\n\n        if high_priority_routes:\n\
+          \            high_priority_avg = round(\n                sum(\n        \
+          \            route[\"duration_minutes\"]\n                    for route\
+          \ in high_priority_routes\n                )\n                / len(high_priority_routes),\n\
+          \                1\n            )\n        else:\n            high_priority_avg\
+          \ = None\n\n        hotel_stats.append({\n            \"hotel_id\": hotel[\"\
+          hotel_id\"],\n            \"hotel_name\": hotel[\"hotel_name\"],\n\n   \
+          \         \"route_count\": len(routes),\n\n            \"average_duration_minutes\"\
+          : (\n                average_duration\n            ),\n\n            \"\
+          average_distance_km\": (\n                average_distance\n           \
+          \ ),\n\n            \"high_priority_average_duration_minutes\": (\n    \
+          \            high_priority_avg\n            ),\n\n            \"fastest_route\"\
+          : {\n                \"place_id\": fastest_route[\n                    \"\
+          place_id\"\n                ],\n                \"place_name\": fastest_route[\n\
+          \                    \"place_name\"\n                ],\n              \
+          \  \"distance_km\": fastest_route[\n                    \"distance_km\"\n\
+          \                ],\n                \"duration_minutes\": fastest_route[\n\
+          \                    \"duration_minutes\"\n                ],\n        \
+          \    },\n\n            \"slowest_route\": {\n                \"place_id\"\
+          : slowest_route[\n                    \"place_id\"\n                ],\n\
+          \                \"place_name\": slowest_route[\n                    \"\
+          place_name\"\n                ],\n                \"distance_km\": slowest_route[\n\
+          \                    \"distance_km\"\n                ],\n             \
+          \   \"duration_minutes\": slowest_route[\n                    \"duration_minutes\"\
+          \n                ],\n            },\n\n            \"routes\": [\n    \
+          \            {\n                    \"place_id\": route[\"place_id\"],\n\
+          \                    \"place_name\": route[\n                        \"\
+          place_name\"\n                    ],\n                    \"route_priority\"\
+          : route[\n                        \"route_priority\"\n                 \
+          \   ],\n                    \"distance_km\": route[\n                  \
+          \      \"distance_km\"\n                    ],\n                    \"duration_minutes\"\
+          : route[\n                        \"duration_minutes\"\n               \
+          \     ],\n                }\n                for route in routes\n     \
+          \       ],\n        })\n\n    # -----------------------------\n    # Rank\
+          \ hotels by average duration\n    # -----------------------------\n\n  \
+          \  hotel_stats.sort(\n        key=lambda x: x[\n            \"average_duration_minutes\"\
+          \n        ]\n    )\n\n    for rank, hotel in enumerate(\n        hotel_stats,\n\
+          \        start=1\n    ):\n        hotel[\"route_rank\"] = rank\n\n    #\
+          \ -----------------------------\n    # Summary\n    # -----------------------------\n\
+          \n    best_hotel = hotel_stats[0]\n\n    summary = (\n        f\"成功解析 {len(route_pairs)}\
+          \ 条路线，\"\n        f\"失败 {len(failed_routes)} 条；\"\n        f\"共形成 {len(hotel_stats)}\
+          \ 家酒店的路线统计。\"\n        f\"按平均驾车时间排序，\"\n        f\"当前路线表现最佳的是\"\n      \
+          \  f\"{best_hotel['hotel_name']}，\"\n        f\"平均约 \"\n        f\"{best_hotel['average_duration_minutes']}\
+          \ 分钟。\"\n    )\n\n    return {\n        \"route_pairs_json\": json.dumps(\n\
+          \            route_pairs,\n            ensure_ascii=False\n        ),\n\n\
+          \        \"hotel_route_stats_json\": json.dumps(\n            hotel_stats,\n\
+          \            ensure_ascii=False\n        ),\n\n        \"successful_route_count\"\
+          : len(\n            route_pairs\n        ),\n\n        \"failed_route_count\"\
+          : len(\n            failed_routes\n        ),\n\n        \"hotel_route_count\"\
+          : len(\n            hotel_stats\n        ),\n\n        \"route_matrix_valid\"\
+          : True,\n\n        \"route_analysis_summary\": summary,\n    }"
+        code_language: python3
+        desc: 解析 Google Routes 路线矩阵响应，根据起点与终点索引映射还原酒店到目标地点的真实路线关系，并计算每家候选酒店的平均距离、平均通行时间、最快路线、最慢路线和路线表现排名，为后续综合决策提供结构化交通证据。
+        outputs:
+          failed_route_count:
+            children: null
+            type: number
+          hotel_route_count:
+            children: null
+            type: number
+          hotel_route_stats_json:
+            children: null
+            type: string
+          route_analysis_summary:
+            children: null
+            type: string
+          route_matrix_valid:
+            children: null
+            type: boolean
+          route_pairs_json:
+            children: null
+            type: string
+          successful_route_count:
+            children: null
+            type: number
+        selected: false
+        title: 路线矩阵结果解析
+        type: code
+        variables:
+        - value_selector:
+          - '1783232813560'
+          - body
+          value_type: string
+          variable: routes_body
+        - value_selector:
+          - '1783232534636'
+          - origin_index_map_json
+          value_type: string
+          variable: origin_index_map_json
+        - value_selector:
+          - '1783232534636'
+          - destination_index_map_json
+          value_type: string
+          variable: destination_index_map_json
+      height: 159
+      id: '1783234122521'
+      position:
+        x: 6961
+        y: 894.4151515151515
+      positionAbsolute:
+        x: 6961
+        y: 894.4151515151515
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        desc: 汇总标准旅行需求、目标地点选择结果、天气上下文、候选酒店属性、Hotel API 匹配依据和 Google Routes 路线统计，形成结构清晰的决策证据包，为最终推荐模型提供统一事实输入。
+        selected: false
+        template: "【决策证据包】\r\n\r\n====================\r\n一、标准旅行需求\r\n====================\r\
+          \n\r\n{{ trip_request }}\r\n\r\n\r\n====================\r\n二、目标地点选择\r\n\
+          ====================\r\n\r\n目标地点选择理由：\r\n\r\n{{ target_selection_reason\
+          \ }}\r\n\r\n已选目标地点完整数据：\r\n\r\n{{ selected_places_json }}\r\n\r\n\r\n====================\r\
+          \n三、天气上下文\r\n====================\r\n\r\n{{ weather_context }}\r\n\r\n\r\
+          \n====================\r\n四、候选酒店筛选结果\r\n====================\r\n\r\n酒店搜索摘要：\r\
+          \n\r\n{{ hotel_search_summary }}\r\n\r\nHotel API 实际筛选条件：\r\n\r\n{{ applied_filters_json\
+          \ }}\r\n\r\n候选酒店数据：\r\n\r\n{{ candidate_hotels_json }}\r\n\r\n\r\n====================\r\
+          \n五、真实路线分析\r\n====================\r\n\r\n路线分析摘要：\r\n\r\n{{ route_analysis_summary\
+          \ }}\r\n\r\n各候选酒店路线统计：\r\n\r\n{{ hotel_route_stats_json }}\r\n\r\n\r\n====================\r\
+          \n六、数据口径与决策约束\r\n====================\r\n\r\n1. 酒店价格、早餐政策、取消政策和房态属于课程演示\
+          \ Mock 数据，只能作为当前项目内部决策依据，不得描述为真实可预订信息。\r\n\r\n2. 酒店的 match_score 和 match_reasons\
+          \ 来自 Hotel Mock API，用于表示酒店与当前需求的结构化匹配程度，但不是最终推荐结论。\r\n\r\n3. 路线距离和预计驾车时间来自\
+          \ Google Routes API，应作为候选酒店交通便利性的事实依据。\r\n\r\n4. route_rank 仅表示在当前所选目标地点条件下的平均路线表现排名，不代表酒店整体质量排名。\r\
+          \n\r\n5. 天气上下文有具体预报数据时可以据此调整推荐和行程；天气不可用时，不得生成具体温度、降雨概率、降水量或风速。\r\n\r\n6.\
+          \ 最终推荐必须综合考虑：\r\n   - 用户预算与人数；\r\n   - 用户偏好和旅行类型；\r\n   - 目标地点的重要性；\r\n\
+          \   - Hotel API 匹配结果；\r\n   - Routes 路线事实；\r\n   - 天气条件；\r\n   - RAG 住宿决策规则。\r\
+          \n\r\n7. 不得创造证据包中不存在的酒店、地点、价格、路线时间、天气数据或酒店政策。\r\n\r\n8. 最终应给出明确的主推荐和备选方案，而不是简单重复候选酒店列表。"
+        title: 决策证据包构造
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1783170208303'
+          - output
+          value_type: string
+          variable: trip_request
+        - value_selector:
+          - '1783217575028'
+          - structured_output
+          - selection_reason
+          value_type: object
+          variable: target_selection_reason
+        - value_selector:
+          - '1783219513343'
+          - selected_places_json
+          value_type: string
+          variable: selected_places_json
+        - value_selector:
+          - '1783216078012'
+          - output
+          value_type: string
+          variable: weather_context
+        - value_selector:
+          - '1783232136509'
+          - candidate_hotels_json
+          value_type: string
+          variable: candidate_hotels_json
+        - value_selector:
+          - '1783232136509'
+          - hotel_search_summary
+          value_type: string
+          variable: hotel_search_summary
+        - value_selector:
+          - '1783232136509'
+          - applied_filters_json
+          value_type: string
+          variable: applied_filters_json
+        - value_selector:
+          - '1783240265219'
+          - hotel_route_stats_json
+          value_type: object
+          variable: hotel_route_stats_json
+        - value_selector:
+          - '1783240265219'
+          - route_analysis_summary
+          value_type: object
+          variable: route_analysis_summary
+      height: 143
+      id: '1783234744010'
+      position:
+        x: 7663
+        y: 1178.5333333333333
+      positionAbsolute:
+        x: 7663
+        y: 1178.5333333333333
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1783187943837'
+          - result
+        desc: 基于 RAG 住宿决策知识和统一决策证据包，综合分析用户需求、候选酒店匹配结果、真实路线、天气条件与预算约束，生成明确、可解释且不超出证据范围的住宿推荐结果。
+        model:
+          completion_params:
+            max_output_tokens: 65501
+          mode: chat
+          name: gemini-3.5-flash
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 898ca2e2-72bf-44d7-8ee3-f8b72a7190df
+          role: system
+          text: "你是“旅策”住宿决策智能体的最终决策模块。\n\n你的任务是基于系统提供的住宿决策知识和本次旅行的决策证据包，对候选酒店进行综合比较，并生成清晰、可靠、可解释的住宿建议。\n\
+            \n【住宿决策知识】\n\n{{#context#}}\n\n你必须严格遵守以下规则：\n\n一、证据边界\n\n1. 只能依据住宿决策知识和决策证据包中的事实进行判断。\n\
+            2. 不得创造不存在的酒店、地点、价格、路线距离、路线时间、天气数据、设施、早餐权益、会员权益、取消政策或房态。\n3. 酒店候选数据中的价格、早餐、取消政策和房态属于课程项目\
+            \ Mock 数据，只能作为当前演示系统中的决策依据，不得描述为实时酒店报价或真实可预订信息。\n4. Google Routes 路线距离和预计驾车时间属于路线事实，可以用于比较交通便利性。\n\
+            5. 天气只有在证据包提供具体数据时才能引用具体温度、降雨概率、降水量或风速。\n6. 天气数据部分覆盖时，只能讨论已覆盖日期；天气不可用时必须明确说明无法进行具体天气判断。\n\
+            7. 不得把 Hotel API 的 match_score 或 route_rank 单独视为最终酒店质量排名。\n8. 严禁把证据中的属性扩大解释为更具体的属性。\n\
+            \n例如：\n- “近海边”不能推导为“海景房”“拥有开阔海景”或“可直接看到海景”；\n- “高空无边泳池”不能推导为“室内泳池”；\n\
+            - “全日餐厅”不能自动推导为“中西餐厅”或具体菜系；\n- “设施丰富”不能推导出证据中没有列出的具体设施；\n- 酒店位于某片区，不能自动推导其拥有该片区的全部景观、娱乐或商业资源。\n\
+            \n只有证据明确出现的属性才能作为事实陈述。\n\n9. 酒店政策和权益必须严格按证据原文理解。\n\n例如：\n- “包含早餐”不等于“双人早餐”；\n\
+            - 用户为 2 人入住，不能据此推导早餐包含 2 份；\n- “免费停车”不等于“车位充足”；\n- “免费取消”不得推导具体取消截止时间，除非证据明确提供。\n\
+            \n不得根据人数、房型、品牌常识或酒店行业惯例补全权益细节。\n\n10. 不得根据常识、地址或地图印象补充具体道路交通事实。\n\n除非证据明确提供，否则不得声称：\n\
+            - 某一具体道路在早晚高峰拥堵；\n- 某路线容易堵车或不容易堵车；\n- 某酒店更不容易误车；\n- 某道路应被避开；\n- 某交通方式必然更稳定。\n\
+            \n可以依据 Routes 数据比较路线时间和距离，但不得自行补充道路名称、拥堵原因或交通可靠性结论。\n\n11. 对预算只能进行基于证据的直接比较和简单算术，不得推导外部消费项目是否“足够覆盖”。\n\
+            \n例如：\n可以说：\n“按当前演示房价计算，两晚住宿后仍剩余约 700 元预算空间。”\n\n不得说：\n“剩余预算完全可以覆盖租车、油费、高尔夫或餐饮消费。”\n\
+            \n除非证据包中同时提供这些外部消费项目的真实价格依据。\n\n12. 不得把概率或风险描述升级为更严重的事实。\n\n例如：\n- 高降雨概率不等于必然降雨；\n\
+            - 有降水不等于暴雨；\n- 较高降水量不得擅自描述为极端天气；\n- 天气可能影响户外活动，不等于活动一定取消。\n\n应使用“可能影响”“建议关注”“建议提前确认”等审慎表达。\n\
+            \n13. 不得通过品牌常识补充证据包之外的信息。\n\n即使你知道某酒店品牌通常提供某种服务、会员权益、早餐政策、酒廊待遇、房型配置或品牌定位，也不得使用，除非本次证据包明确提供。\n\
+            \n14. 不得将推荐判断写成绝对事实。\n\n避免使用：\n- 完美契合\n- 绝对最佳\n- 毫无疑问\n- 各方面都领先\n- 极致选择\n\
+            \n应使用：\n- 更适合\n- 相对匹配\n- 在当前需求下更有优势\n- 更好地平衡\n- 主要优势在于\n\n15. 在生成每个事件前，应检查其中的酒店属性、路线数字、天气数字、政策信息和地点信息是否能够在证据包中找到直接依据。\n\
+            \n如果无法确认，应删除该具体事实或改写为更保守的解释，不得补充猜测。\n\n二、综合决策原则\n\n综合考虑：\n\n- 用户预算和住宿晚数；\n\
+            - 出行人数；\n- 用户偏好；\n- 旅行类型；\n- 目标地点的重要性；\n- 酒店区域与用户需求的匹配程度；\n- Hotel API\
+            \ 的 match_score 和 match_reasons；\n- 酒店到目标地点的真实路线距离和通行时间；\n- route_priority；\n\
+            - 天气对活动安排的影响；\n- RAG 知识中的区域、交通、预算、旅行节奏和天气策略。\n\n不要机械选择 match_score 第一名，也不要机械选择\
+            \ route_rank 第一名。\n\n必须解释不同证据之间的取舍。\n\n例如：\n\n- 某酒店路线最优，但价格或旅行风格不匹配；\n\
+            - 某酒店路线平均时间稍高，但区域体验更符合用户主要需求；\n- 某酒店适合作为主推荐，而另一家更适合预算优先或交通优先用户。\n\n三、推荐要求\n\
+            \n1. 给出一个明确的主推荐。\n2. 根据候选情况提供 1 至 2 个有实际差异的备选。\n3. 不要简单罗列全部候选酒店。\n4. 推荐理由必须与本次用户需求直接相关。\n\
+            5. 对路线数据进行自然语言解释，不要只是复制 JSON。\n6. 对酒店之间的差异进行明确比较。\n7. 如天气会改变活动安排，应提出简洁的调整建议。\n\
+            8. 如用户需求本身存在明显矛盾，应说明主要取舍。\n9. 如果所有候选都存在明显问题，应诚实说明，不得强行制造“完美选择”。\n\n四、路线数据解释\n\
+            \n1. route_rank 只表示当前所选目标地点下的平均路线表现。\n2. fastest_route 和 slowest_route\
+            \ 用于解释酒店交通优势与短板。\n3. 高优先级地点应比普通地点获得更多关注。\n4. 不要把不足 1 至 2 分钟的微小时间差描述为决定性优势。\n\
+            5. 路线时间使用“约 X 分钟”的自然语言表达。\n6. 距离一般保留一位小数即可。\n7. 引用具体路线时间或距离时，必须直接使用决策证据包中的已有数值。\n\
+            \n允许：\n- 在数字前加“约”；\n- 删除没有实际意义的末尾 .0。\n\n不允许：\n- 自行重新计算路线时间；\n- 自行换算出证据包中不存在的新路线数字；\n\
+            - 擅自四舍五入成明显不同的数字；\n- 根据两个路线数据推导一个未经证据提供的新路线时间；\n- 将路线时间差扩大解释成交通可靠性、拥堵概率或误车风险。\n\
+            \n8. 对路线差异的描述必须与实际差距相匹配。\n\n不足 1 至 2 分钟的差异只能描述为“接近”或“差异有限”。\n\n明显差异可以描述为：\n\
+            - 更方便\n- 通勤时间更短\n- 对该目标地点更有交通优势\n\n不得使用：\n- 碾压\n- 极大优势\n- 完全不堵\n- 最不容易误车\n\
+            - 交通绝对可靠\n\n9. 不得把“当前 Routes 预计时间”写成固定通勤时间。\n\n应使用：\n“预计约 X 分钟”\n“当前路线数据约\
+            \ X 分钟”\n“从本次路线比较看”\n\n不得暗示未来任何时段都固定保持该时间。\n\n五、表达要求\n\n使用简体中文。\n\n语气应专业、自然、直接，像一位真正了解用户需求的旅行顾问。\n\
+            \n不要展示内部推理过程，不要讨论 Prompt、节点、JSON、变量名或工作流实现。\n\n不要说“根据 Evidence Pack”“根据\
+            \ route_rank”“根据 Mock API”。\n\n可以说：\n\n- 从交通便利性看\n- 从预算角度看\n- 从区域体验看\n\
+            - 结合本次主要活动地点\n- 当前演示数据中\n\n知识库内容如需要引用，应使用系统提供的知识库引用机制，不得自行创造引用编号。\n\n\
+            输出应清晰但不要过长。\n\n表达应保持克制、专业和可信，避免广告文案式夸张表达。\n\n避免频繁使用：\n- 完美\n- 绝佳\n- 绝妙\n\
+            - 顶级\n- 极致\n- 无与伦比\n- 仪式感拉满\n- 毫无疑问\n\n推荐理由应优先使用：\n- 更符合当前需求\n- 主要优势在于\n\
+            - 相比其他候选\n- 在交通方面更有优势\n- 在度假体验方面更匹配\n- 需要接受的主要取舍是\n- 如果更重视某项因素，可以选择\n\n\
+            不要把酒店介绍写成宣传文案。\n\n不要为了增强说服力而加入证据中不存在的形容词、设施、景观或服务。\n\n推荐内容应突出“证据 → 判断\
+            \ → 取舍”的关系，而不是堆叠赞美词。\n\n六、前端流式事件输出协议\n\n你的输出不是直接供用户阅读的 Markdown 文本，而是供前端程序增量解析和渲染的\
+            \ NDJSON 风格语义事件流。\n\n必须严格遵守以下协议。\n\n【基本格式】\n\n1. 每一物理行必须是一个独立、完整、合法的 JSON\
+            \ 对象。\n2. 每个事件统一采用以下基本结构：\n\n{\"type\":\"事件类型\",\"payload\":{...}}\n\n\
+            3. 每个 JSON 对象输出完成后立即换行，然后开始下一个事件。\n4. 禁止使用 Markdown 标题、Markdown 列表、代码块、XML\
+            \ 标签、注释、前言、结语或任何 JSON 对象之外的文字。\n5. 禁止输出空白行。\n6. 不得把多个事件放入一个 JSON 数组。\n\
+            7. 不得输出一个覆盖全部回答内容的大型 JSON 对象。\n8. JSON 字符串必须正确转义。\n9. payload 中的文本字段必须使用正常字符串，不得包含未经转义的物理换行。\n\
+            10. 不得输出 seq、timestamp、protocol_version 等传输层字段，这些字段由服务端添加。\n\n【事件输出顺序】\n\
+            \n必须按照以下顺序生成：\n\n1. primary_recommendation\n2. recommendation_reason，共\
+            \ 3 至 4 个\n3. alternative_recommendation，共 1 至 2 个\n4. route_advice\n\
+            5. weather_advice，仅在天气信息确实具有决策价值时输出\n6. data_notice\n7. done\n\n除 weather_advice\
+            \ 外，其余规定事件不得省略。\n\ndone 必须是最后一个事件。\n\n不得在 done 之后输出任何内容。\n\n\n【事件一：主推荐】\n\
+            \n必须输出且只能输出一次。\n\n格式：\n\n{\"type\":\"primary_recommendation\",\"payload\"\
+            :{\"hotel_id\":\"候选酒店中的真实 hotel_id\",\"summary\":\"对主推荐的简洁结论\",\"tradeoff\"\
+            :\"主推荐仍然存在的主要取舍或限制\"}}\n\n规则：\n\n- hotel_id 必须来自候选酒店数据。\n- summary 用 2\
+            \ 至 4 句自然语言说明为什么该酒店最适合当前用户。\n- tradeoff 必须诚实说明该选择相对于其他候选方案的主要不足。\n- 不得声称该酒店在所有方面都是最佳选择。\n\
+            \n\n【事件二：推荐理由】\n\n输出 3 至 4 个。\n\n格式：\n\n{\"type\":\"recommendation_reason\"\
+            ,\"payload\":{\"dimension\":\"维度\",\"title\":\"简短标题\",\"content\":\"解释内容\"\
+            ,\"related_hotel_ids\":[\"相关酒店ID\"],\"related_place_ids\":[\"相关地点ID\"\
+            ]}}\n\ndimension 只能使用以下值之一：\n\narea\nbudget\nstyle\nroute\nweather\npolicy\n\
+            overall\n\n规则：\n\n- 每个事件只解释一个主要判断维度。\n- content 必须解释证据与推荐结论之间的关系，而不是重复数据列表。\n\
+            - related_hotel_ids 只能引用候选酒店中的真实 hotel_id。\n- related_place_ids 只能引用已选目标地点中的真实\
+            \ place_id。\n- 如果某项理由与具体地点无关，related_place_ids 使用空数组。\n- 不要为了凑数量重复表达同一理由。\n\
+            \n\n【事件三：备选方案】\n\n输出 1 至 2 个。\n\n格式：\n\n{\"type\":\"alternative_recommendation\"\
+            ,\"payload\":{\"hotel_id\":\"候选酒店中的真实 hotel_id\",\"label\":\"备选定位\",\"\
+            fit_for\":\"更适合哪类取舍\",\"reason\":\"为什么它值得作为备选\",\"tradeoff\":\"为什么它没有成为主推荐\"\
+            }}\n\n规则：\n\n- hotel_id 不得与主推荐重复。\n- 不同备选之间必须具有明确不同的适用条件。\n- label 应简洁，例如：\n\
+            \  交通优先\n  预算优先\n  区域体验优先\n  度假体验优先\n- 不得为了填满两个备选而推荐明显不适合用户的酒店。\n\n\n\
+            【事件四：交通建议】\n\n必须输出且只能输出一次。\n\n格式：\n\n{\"type\":\"route_advice\",\"payload\"\
+            :{\"content\":\"结合路线事实给出的交通与行程安排建议\",\"related_hotel_ids\":[\"相关酒店ID\"\
+            ],\"related_place_ids\":[\"相关地点ID\"]}}\n\n规则：\n\n- 必须基于 Google Routes\
+            \ 路线事实进行解释。\n- 应关注真正影响住宿选择的路线差异。\n- 不得把不足 1 至 2 分钟的微小差异描述为决定性优势。\n- 不得自行重新计算路线数据。\n\
+            - 如需引用具体时间、距离，只能直接使用证据包中存在的数据，不得估算或修改。\n\n\n【事件五：天气建议】\n\n只有当天气信息确实影响住宿选择或活动安排时才输出。\n\
+            \n格式：\n\n{\"type\":\"weather_advice\",\"payload\":{\"content\":\"天气对住宿决策或行程安排的影响和建议\"\
+            ,\"related_place_ids\":[\"相关地点ID\"]}}\n\n规则：\n\n- 只能使用天气上下文中真实存在的信息。\n\
+            - 天气仅部分覆盖时，只能讨论已覆盖日期。\n- 天气不可用时不得编造具体天气条件。\n- 不得因为天气上下文存在就强行输出没有实际价值的建议。\n\
+            \n\n【事件六：数据说明】\n\n必须输出且只能输出一次。\n\n格式：\n\n{\"type\":\"data_notice\",\"\
+            payload\":{\"content\":\"当前酒店价格、房态和部分酒店政策属于演示数据，实际预订前仍需通过正式预订渠道确认。\"}}\n\
+            \n不得改变该说明的基本事实含义。\n\n\n【事件七：结束】\n\n必须作为最后一个事件输出：\n\n{\"type\":\"done\"\
+            ,\"payload\":{}}\n\n\n【事实与解释的职责边界】\n\n1. hotel_id、place_id 等实体标识必须严格来自决策证据包中的候选酒店和已选目标地点，不得自行创造、改写、缩写或猜测。\n\
+            \n2. 精确价格、路线距离、路线时间、天气数值、早餐政策、取消政策、停车条件、房态和设施信息等事实，必须直接来自决策证据包中的明确数据。\n\
+            \n3. 你的核心职责是：\n   - 判断主推荐；\n   - 解释为什么该酒店更适合当前用户；\n   - 说明主要优势与取舍；\n \
+            \  - 提供具有明确差异的备选方案；\n   - 对已有路线、天气、区域和预算事实进行语义解释。\n\n4. 不得为了让回答显得完整、丰富或更有说服力而补充证据中不存在的事实。\n\
+            \n5. 不得把推测、常识或品牌经验写成事实。\n\n例如：\n- “近海边”不能推导为“海景房”“拥有开阔海景”或“可直接看到海景”；\n\
+            - “高空无边泳池”不能推导为“室内泳池”；\n- “包含早餐”不能因为用户为 2 人入住而推导为“包含双人早餐”；\n- “免费停车”不能推导为“车位充足”；\n\
+            - 酒店位于某片区，不能推导其自动拥有该片区全部景观、餐饮、娱乐或商业资源。\n\n6. recommendation_reason 的职责是解释已有事实为什么支持推荐，不是补充新的酒店事实。\n\
+            \n7. alternative_recommendation 的 reason 和 tradeoff 同样只能使用决策证据包中的事实，不得为了让备选方案显得更有区别而创造新的差异。\n\
+            \n8. primary_recommendation 的 summary 和 tradeoff 必须分别说明：\n   - 为什么该酒店在当前需求下更合适；\n\
+            \   - 该选择仍需要接受什么真实存在的限制或取舍。\n   不得把主推荐描述成“所有方面都最佳”。\n\n9. payload 中的所有自然语言字段都必须遵守事实边界。\n\
+            \n这包括但不限于：\n- summary\n- tradeoff\n- title\n- content\n- fit_for\n- reason\n\
+            - label\n\n不能因为字段属于解释性文本，就允许加入证据之外的信息。\n\n10. 路线数据的职责边界：\n\n- route_advice\
+            \ 只能解释已有 Google Routes 路线事实；\n- 不得自行重新计算路线时间或距离；\n- 不得加入具体道路拥堵规律；\n- 不得声称某酒店“最不容易误车”；\n\
+            - 不得根据地址、地图印象或常识补充道路名称和交通高峰规律；\n- 不得把当前预计路线时间写成所有时段都固定成立的通勤时间。\n\n可以使用：\n\
+            “当前路线数据显示”\n“预计约 X 分钟”\n“从本次路线比较看”\n\n11. 天气数据的职责边界：\n\n- weather_advice\
+            \ 只能解释天气上下文对已有活动地点和旅行安排的潜在影响；\n- 不得创造新的天气事实；\n- 高降雨概率不等于一定降雨；\n- 有降水不等于暴雨；\n\
+            - 天气可能影响户外活动，不等于活动一定取消；\n- 不得因为天气不好，就创造酒店不存在的室内设施作为替代方案。\n\n例如：\n如果证据只写“高空无边泳池”，不得因为下雨就将其描述为“室内泳池”。\n\
+            \n12. 预算解释的职责边界：\n\n允许进行证据支持的简单算术，例如：\n- 用户总住宿预算；\n- 演示房价 × 入住晚数；\n- 两者之间的剩余预算空间。\n\
+            \n但不得根据剩余预算自行判断其足以支付：\n- 租车；\n- 油费；\n- 高尔夫费用；\n- 餐饮；\n- 门票；\n- 其他外部消费。\n\
+            \n除非决策证据包中同时提供这些项目的明确价格依据。\n\n13. 酒店政策和权益必须严格按证据原文理解。\n\n例如：\n- “包含早餐”不等于“双人早餐”；\n\
+            - “免费取消”不得推导具体截止时间；\n- “停车可用”不等于“停车位充足”；\n- “房态可用”只代表当前演示数据中的模拟状态，不得描述为真实实时库存。\n\
+            \n14. 不得通过品牌常识补充本次证据之外的信息。\n\n即使你知道某个酒店品牌通常具有某些：\n- 会员权益；\n- 早餐待遇；\n-\
+            \ 酒廊政策；\n- 房型配置；\n- 品牌服务标准；\n\n也不得写入回答，除非决策证据包明确提供。\n\n15. 对所有事实引用执行“最小充分解释”原则：\n\
+            \n如果已有事实足以支持推荐，只解释它为什么重要，不额外增加新事实。\n\n例如：\n证据是：\n“到海口东站预计约 13 分钟。”\n\n\
+            可以解释：\n“对需要乘高铁离开的行程更方便。”\n\n不得扩写为：\n“可以有效避开拥堵并显著降低误车风险。”\n\n16. 在生成每一个事件前，应检查其中涉及的：\n\
+            - 酒店属性；\n- 路线数字；\n- 天气数字；\n- 酒店政策；\n- 预算数字；\n- 地点信息；\n\n是否都能在决策证据包中找到直接依据。\n\
+            \n如果无法确认，应：\n- 删除该具体事实；\n- 或改写为更保守的解释。\n\n不得补充猜测。\n\n17. 严禁把多个分别真实存在的属性、设施或数据字段重新组合成证据中不存在的新关系。\n\
+            \n例如，证据分别写有：\n- 高空无边泳池\n- 英式下午茶\n- 大堂酒廊\n\n不得组合推导为：\n- 高空大堂\n- 在高空大堂享用下午茶\n\
+            - 在无边泳池旁享用下午茶\n\n除非证据明确说明这些设施之间的位置、服务或使用关系。\n\n多个事实分别真实，不代表它们之间的关系也真实。\n\
+            \n18. 不得将“证据中未列出某项设施或服务”直接表达为“酒店没有或缺乏该设施”。\n\n如果需要比较，只能使用：\n- 当前候选数据未显示……\n\
+            - 在当前提供的设施信息中，另一酒店的度假设施更加丰富\n- 当前数据更能明确支持某酒店在某项体验上的优势\n\n不得仅根据字段列表中没有出现某项内容，就断言酒店实际不存在该设施或服务。\n\
+            \n19. 使用“最优”“最高”“最快”“最低”“唯一”等最高级或唯一性结论时，必须有当前证据中的明确比较结果支持，并且必须限定比较范围。\n\
+            \n例如：\n可以说：\n“从本次候选酒店到当前所选目标地点的路线比较看，该酒店平均通行时间最短。”\n\n不得泛化为：\n“该酒店交通效率最高。”\n\
+            \n除非证据确实支持更广泛的结论。\n\n20. related_hotel_ids 和 related_place_ids 应与当前事件解释内容真正相关。\n\
+            \n不要为了增加关联信息而加入与当前理由没有直接关系的地点或酒店 ID。\n\n例如，某 recommendation_reason 仅讨论酒店设施和度假风格时，不应因为用户计划前往某个地点，就自动将该地点\
+            \ ID 加入 related_place_ids。\n\n【流式生成要求】\n\n必须按照规定顺序逐事件生成。\n\n完成一个 JSON\
+            \ 事件后立即输出换行，不要等待全部内容构思完成后再统一输出。\n\n主推荐事件应尽早生成。\n\n每个 recommendation_reason\
+            \ 应独立完成后立即输出。\n\n不得回头修改已经输出的事件。\n\n如果后续发现某个候选方案存在限制，应在后续 tradeoff 或 advice\
+            \ 事件中诚实补充，不得输出互相矛盾的结论。\n\n【面向用户的术语限制】\n\n所有输出内容必须面向普通旅行用户。\n\n禁止在 recommendation_reason、route_advice、weather_advice\
+            \ 及其他用户可见文本中出现以下技术或实现术语：\n\nRoutes\nGoogle Routes\nroute_matrix\nOpen-Meteo\
+            \ API\nAPI\nRAG\nMock\n节点\n业务事件\n协议\nJSON\nNDJSON\nSSE\n工作流\n\n路线建议应使用自然语言表达，例如：\n\
+            \n“从路线数据来看……”\n“结合各酒店前往主要目的地的通行时间……”\n“从交通便利性来看……”\n“综合前往主要活动地点的车程……”\n\
+            \n不要解释数据如何通过 API、节点、协议或事件产生。\n\n【NDJSON 严格序列化规则】\n\n你的最终输出将被程序逐行解析，因此必须严格遵守以下规则：\n\
+            \n1. 输出只能由 NDJSON 业务事件组成。\n2. 每一个物理行必须是一个独立、完整、合法的 JSON Object。\n3. 每一行必须：\n\
+            \   - 以 { 开始；\n   - 以 } 结束；\n   - 所有 { }、[ ]、引号必须完整配对。\n4. 禁止将同一个 JSON\
+            \ Object 拆到多行。\n5. 禁止在两个 JSON Object 之间输出解释文字、Markdown、代码围栏或空白说明。\n6.\
+            \ JSON 字符串内部如需表达换行，必须使用转义字符 \\n，不得产生真实换行。\n7. 每生成一条事件时，必须先完整构造该 JSON Object，再输出整行，不得边生成字段边提前结束该行。\n\
+            8. 输出 recommendation_reason 时尤其检查：\n   - payload 对象完整闭合；\n   - 外层事件对象完整闭合；\n\
+            \   - related_hotel_ids 和 related_place_ids 数组完整闭合。\n   - 特别注意：recommendation_reason\
+            \ 的完整结构必须同时闭合 payload 对象和最外层事件对象。不得遗漏最后一个 }。\n9. 在输出每一行前，内部检查：\n   - JSON\
+            \ 是否可独立解析；\n   - 顶层对象是否完整闭合；\n   - type 和 payload 是否存在。\n10. 最后一条必须为：\n\
+            {\"type\":\"done\",\"payload\":{}}\n\n严格输出协议事件，不要输出任何协议之外的文字。"
+        - id: 0a34214a-b120-4fa1-8c07-7f2d4204ac03
+          role: user
+          text: '请根据以下本次旅行决策证据，生成最终住宿建议。
+
+
+            {{#1783234744010.output#}}
+
+
+            请完成综合判断并严格按照系统规定的流式事件协议输出。'
+        retry_config:
+          max_retries: 2
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        title: 住宿综合决策生成
+        type: llm
+        vision:
+          enabled: false
+      height: 208
+      id: '1783235118783'
+      position:
+        x: 8345
+        y: 1196.3666666666668
+      positionAbsolute:
+        x: 8345
+        y: 1196.3666666666668
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        answer: '{{#1783254024385.output#}}
+
+          {{#1783235118783.text#}}'
+        desc: 按顺序输出确定性的前端事实帧与住宿综合决策模型生成的 NDJSON 语义事件流，为前端提供酒店、地点、路线和天气的结构化事实基准，并持续输出主推荐、推荐理由、备选方案、路线建议、天气建议及数据说明，支持按事件类型进行增量解析与流式组件渲染。
+        selected: false
+        title: 住宿决策结果输出
+        type: answer
+        variables: []
+      height: 243
+      id: '1783236963949'
+      position:
+        x: 8686
+        y: 1212.5333333333333
+      positionAbsolute:
+        x: 8686
+        y: 1212.5333333333333
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 06823096-d8ab-4b75-9a24-9dd034229da5
+            value: true
+            varType: boolean
+            variable_selector:
+            - '1783232534636'
+            - route_matrix_ready
+          id: 'true'
+          logical_operator: and
+        desc: 根据 Routes 请求数据构造结果判断是否具备有效酒店起点和目标地点终点。仅在 route_matrix_ready 为 true 时调用
+          Google Routes API，否则进入路线分析降级分支。
+        selected: false
+        title: Routes 请求可用性判断
+        type: if-else
+      height: 239
+      id: '1783240066707'
+      position:
+        x: 6259
+        y: 914
+      positionAbsolute:
+        x: 6259
+        y: 914
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "def main(route_request_summary: str) -> dict:\n    reason = (\n   \
+          \     route_request_summary.strip()\n        if isinstance(route_request_summary,\
+          \ str)\n        and route_request_summary.strip()\n        else \"Routes\
+          \ 请求缺少有效起点或终点。\"\n    )\n\n    summary = (\n        f\"{reason}\"\n    \
+          \    \"因此本次未调用 Google Routes API，\"\n        \"当前没有可用的真实路线距离与预计通行时间数据。\"\
+          \n        \"后续决策不得编造路线距离、路线时间或路线排名，\"\n        \"应基于用户需求、酒店匹配结果、区域策略、天气信息\"\
+          \n        \"及其他已有证据进行判断。\"\n    )\n\n    return {\n        \"hotel_route_stats_json\"\
+          : \"[]\",\n        \"route_analysis_summary\": summary,\n        \"route_matrix_valid\"\
+          : False,\n    }"
+        code_language: python3
+        desc: 当候选酒店起点或目标地点终点不足，无法安全调用 Google Routes 时，生成统一的空路线结果和降级说明，使后续 Evidence
+          Pack 与最终决策仍可继续执行，同时禁止模型编造路线距离与时间。
+        outputs:
+          hotel_route_stats_json:
+            children: null
+            type: string
+          route_analysis_summary:
+            children: null
+            type: string
+          route_matrix_valid:
+            children: null
+            type: boolean
+        selected: false
+        title: 路线分析降级结果
+        type: code
+        variables:
+        - value_selector:
+          - '1783232534636'
+          - route_request_summary
+          value_type: string
+          variable: route_request_summary
+      height: 159
+      id: '1783240172798'
+      position:
+        x: 6620
+        y: 1133.4151515151516
+      positionAbsolute:
+        x: 6620
+        y: 1133.4151515151516
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        advanced_settings:
+          group_enabled: true
+          groups:
+          - groupId: 20415273-28d8-40ec-a3f5-0ba69972b2dc
+            group_name: hotel_route_stats_json
+            output_type: string
+            variables:
+            - - '1783234122521'
+              - hotel_route_stats_json
+            - - '1783240172798'
+              - hotel_route_stats_json
+          - groupId: 717445f0-536c-4f84-8614-854609a28d23
+            group_name: route_analysis_summary
+            output_type: string
+            variables:
+            - - '1783234122521'
+              - route_analysis_summary
+            - - '1783240172798'
+              - route_analysis_summary
+          - groupId: be5de3ff-c167-4d3c-a817-5247fba80fb7
+            group_name: route_matrix_valid
+            output_type: boolean
+            variables:
+            - - '1783234122521'
+              - route_matrix_valid
+            - - '1783240172798'
+              - route_matrix_valid
+        desc: 聚合正常 Routes 分析结果与路线不可用时的降级结果，为后续决策证据包提供统一的路线数据接口。
+        output_type: any
+        selected: false
+        title: 路线分析结果聚合
+        type: variable-aggregator
+        variables: []
+      height: 359
+      id: '1783240265219'
+      position:
+        x: 7322
+        y: 1013.3666666666668
+      positionAbsolute:
+        x: 7322
+        y: 1013.3666666666668
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: '>'
+            id: eeda45f8-4975-4f3b-9b48-bb5c2561de84
+            value: '0'
+            varType: number
+            variable_selector:
+            - '1783232136509'
+            - candidate_hotel_count
+          id: 'true'
+          logical_operator: and
+        desc: 根据候选酒店搜索整理结果判断是否存在可用于住宿决策的候选酒店。有候选时进入 Routes 与综合决策流程；零候选时进入显式候选不足响应分支，不调用
+          Routes 或最终推荐模型。
+        selected: false
+        title: 候选酒店可用性判断
+        type: if-else
+      height: 239
+      id: '1783242302810'
+      position:
+        x: 5557
+        y: 1104.3000000000002
+      positionAbsolute:
+        x: 5557
+        y: 1104.3000000000002
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "import json\n\n\ndef main(\n    hotel_search_summary: str,\n    applied_filters_json:\
+          \ str,\n) -> dict:\n\n    # ----------------------------------------\n \
+          \   # Helpers\n    # ----------------------------------------\n\n    def\
+          \ parse_object(value):\n        if not isinstance(value, str):\n       \
+          \     return {}\n\n        try:\n            data = json.loads(value)\n\
+          \        except Exception:\n            return {}\n\n        return data\
+          \ if isinstance(data, dict) else {}\n\n    def add_suggestion(\n       \
+          \ suggestions,\n        field,\n        label,\n        content,\n    ):\n\
+          \        suggestions.append({\n            \"field\": field,\n         \
+          \   \"label\": label,\n            \"content\": content,\n        })\n\n\
+          \    # ----------------------------------------\n    # 1. Parse applied\
+          \ query\n    # ----------------------------------------\n\n    applied_query\
+          \ = parse_object(\n        applied_filters_json\n    )\n\n    # Hotel API\
+          \ currently keeps the complete query\n    # inside applied_filters for compatibility.\n\
+          \    # Only these fields are true hard constraints.\n\n    hard_filter_keys\
+          \ = [\n        \"budget\",\n        \"guests\",\n        \"availability_only\"\
+          ,\n        \"parking_required\",\n        \"free_cancellation_required\"\
+          ,\n        \"areas\",\n        \"sub_areas\",\n    ]\n\n    active_constraints\
+          \ = {}\n\n    for key in hard_filter_keys:\n        if key in applied_query:\n\
+          \            active_constraints[key] = (\n                applied_query[key]\n\
+          \            )\n\n    # ----------------------------------------\n    #\
+          \ 2. Build user-controlled suggestions\n    # ----------------------------------------\n\
+          \n    suggestions = []\n\n    budget = active_constraints.get(\n       \
+          \ \"budget\"\n    )\n\n    if isinstance(budget, dict):\n        budget_max\
+          \ = budget.get(\"max\")\n\n        if isinstance(\n            budget_max,\n\
+          \            (int, float)\n        ) and budget_max > 0:\n\n           \
+          \ add_suggestion(\n                suggestions,\n                \"budget\"\
+          ,\n                \"预算范围\",\n                (\n                    f\"\
+          当前每晚预算上限为 \"\n                    f\"{budget_max:g} 元。\"\n             \
+          \       \"如预算具有弹性，可以提高上限后重新查询。\"\n                ),\n            )\n\n\
+          \    areas = active_constraints.get(\n        \"areas\"\n    )\n\n    if\
+          \ isinstance(areas, list) and areas:\n        add_suggestion(\n        \
+          \    suggestions,\n            \"areas\",\n            \"住宿区域\",\n     \
+          \       (\n                \"当前设置了明确的行政区域限制。\"\n                \"如区域要求并非必须，可以扩大住宿范围后重新查询。\"\
+          \n            ),\n        )\n\n    sub_areas = active_constraints.get(\n\
+          \        \"sub_areas\"\n    )\n\n    if (\n        isinstance(sub_areas,\
+          \ list)\n        and sub_areas\n    ):\n        add_suggestion(\n      \
+          \      suggestions,\n            \"sub_areas\",\n            \"住宿片区\",\n\
+          \            (\n                \"当前设置了明确的住宿片区限制。\"\n                \"\
+          如片区要求具有弹性，可以扩大候选片区后重新查询。\"\n            ),\n        )\n\n    if active_constraints.get(\n\
+          \        \"parking_required\"\n    ) is True:\n        add_suggestion(\n\
+          \            suggestions,\n            \"parking_required\",\n         \
+          \   \"停车要求\",\n            (\n                \"当前要求酒店必须提供停车条件。\"\n    \
+          \            \"如果停车不是硬性需求，可以放宽该条件后重新查询。\"\n            ),\n        )\n\n\
+          \    if active_constraints.get(\n        \"free_cancellation_required\"\n\
+          \    ) is True:\n        add_suggestion(\n            suggestions,\n   \
+          \         \"free_cancellation_required\",\n            \"取消政策\",\n     \
+          \       (\n                \"当前要求免费取消政策。\"\n                \"如果行程已经确定，可以考虑放宽该条件后重新查询。\"\
+          \n            ),\n        )\n\n    guests = active_constraints.get(\n  \
+          \      \"guests\"\n    )\n\n    if (\n        isinstance(guests, (int, float))\n\
+          \        and guests > 2\n    ):\n        add_suggestion(\n            suggestions,\n\
+          \            \"guests\",\n            \"入住人数\",\n            (\n       \
+          \         \"当前入住人数可能限制可用房型。\"\n                \"可以考虑分房方案或重新确认房型人数配置。\"\n\
+          \            ),\n        )\n\n    if not suggestions:\n        add_suggestion(\n\
+          \            suggestions,\n            \"general\",\n            \"调整条件\"\
+          ,\n            (\n                \"当前条件组合下没有匹配候选。\"\n                \"\
+          可以调整预算、明确住宿区域要求或其他硬性条件后重新查询。\"\n            ),\n        )\n\n    # ----------------------------------------\n\
+          \    # 3. Build NDJSON semantic events\n    # ----------------------------------------\n\
+          \n    summary = (\n        \"当前演示酒店数据中没有满足全部硬性条件的候选方案。\"\n        \"系统不会自动提高预算，也不会擅自删除用户明确提出的硬性要求。\"\
+          \n    )\n\n    detail = (\n        hotel_search_summary.strip()\n      \
+          \  if isinstance(\n            hotel_search_summary,\n            str\n\
+          \        )\n        and hotel_search_summary.strip()\n        else \"当前搜索未返回可用候选酒店。\"\
+          \n    )\n\n    events = [\n        {\n            \"type\": \"no_candidate\"\
+          ,\n            \"payload\": {\n                \"summary\": summary,\n \
+          \               \"detail\": detail,\n                \"active_constraints\"\
+          : (\n                    active_constraints\n                ),\n      \
+          \          \"suggestions\": suggestions,\n            },\n        },\n \
+          \       {\n            \"type\": \"data_notice\",\n            \"payload\"\
+          : {\n                \"content\": (\n                    \"当前酒店价格、房态和部分酒店政策属于演示数据，\"\
+          \n                    \"实际预订前仍需通过正式预订渠道确认。\"\n                )\n      \
+          \      },\n        },\n        {\n            \"type\": \"done\",\n    \
+          \        \"payload\": {},\n        },\n    ]\n\n    output = \"\\n\".join(\n\
+          \        json.dumps(\n            event,\n            ensure_ascii=False,\n\
+          \            separators=(\",\", \":\"),\n        )\n        for event in\
+          \ events\n    )\n\n    return {\n        \"output\": output,\n        \"\
+          suggestion_count\": len(\n            suggestions\n        ),\n        \"\
+          zero_candidate_handled\": True,\n    }"
+        code_language: python3
+        desc: 当 Hotel API 返回零候选时，根据实际硬筛选条件构造确定性的 NDJSON 协议响应，明确说明当前无满足条件的候选方案，并给出可以由用户主动考虑的条件调整方向，不自动修改预算或其他硬约束。
+        outputs:
+          output:
+            children: null
+            type: string
+          suggestion_count:
+            children: null
+            type: number
+          zero_candidate_handled:
+            children: null
+            type: boolean
+        selected: false
+        title: 零候选响应构造
+        type: code
+        variables:
+        - value_selector:
+          - '1783232136509'
+          - hotel_search_summary
+          value_type: string
+          variable: hotel_search_summary
+        - value_selector:
+          - '1783232136509'
+          - applied_filters_json
+          value_type: string
+          variable: applied_filters_json
+      height: 159
+      id: '1783242366403'
+      position:
+        x: 5918
+        y: 1216
+      positionAbsolute:
+        x: 5918
+        y: 1216
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        answer: '{{#1783242366403.output#}}'
+        desc: 输出零候选场景下的协议化 NDJSON 响应，将候选不足说明、可调整条件建议和数据说明返回给用户或前端，不进入 Routes 与最终推荐模型。
+        selected: false
+        title: 零候选输出
+        type: answer
+        variables: []
+      height: 177
+      id: '1783242514377'
+      position:
+        x: 6259
+        y: 1233
+      positionAbsolute:
+        x: 6259
+        y: 1233
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "import json\nfrom typing import Any\n\n\ndef main(\n    candidate_hotels_json:\
+          \ str,\n    selected_places_json: str,\n    hotel_route_stats_json: str,\n\
+          \    route_matrix_valid: bool,\n    weather_context: str,\n) -> dict:\n\n\
+          \    # ----------------------------------------\n    # Helpers\n    # ----------------------------------------\n\
+          \n    def unwrap_output(value: Any) -> Any:\n        \"\"\"\n        Unwrap\
+          \ Variable Aggregator group outputs such as:\n        {\"output\": actual_value}\n\
+          \        \"\"\"\n        current = value\n\n        while (\n          \
+          \  isinstance(current, dict)\n            and \"output\" in current\n  \
+          \          and len(current) == 1\n        ):\n            current = current[\"\
+          output\"]\n\n        return current\n\n    def parse_json(\n        value:\
+          \ Any,\n        default: Any,\n    ) -> Any:\n        \"\"\"\n        Parse\
+          \ JSON strings after unwrapping Variable Aggregator output.\n        Existing\
+          \ list or dict values are returned directly.\n        \"\"\"\n        value\
+          \ = unwrap_output(value)\n\n        if isinstance(value, (list, dict)):\n\
+          \            return value\n\n        if not isinstance(value, str):\n  \
+          \          return default\n\n        value = value.strip()\n\n        if\
+          \ not value:\n            return default\n\n        try:\n            return\
+          \ json.loads(value)\n        except Exception:\n            return default\n\
+          \n    def as_list(\n        value: Any,\n    ) -> list:\n        \"\"\"\n\
+          \        Normalize parsed values into a list.\n        \"\"\"\n        if\
+          \ isinstance(value, list):\n            return value\n\n        if isinstance(value,\
+          \ dict):\n            data = value.get(\"data\")\n\n            if isinstance(data,\
+          \ list):\n                return data\n\n        return []\n\n    def safe_dict(\n\
+          \        value: Any,\n    ) -> dict:\n        return (\n            value\n\
+          \            if isinstance(value, dict)\n            else {}\n        )\n\
+          \n    def safe_list(\n        value: Any,\n    ) -> list:\n        return\
+          \ (\n            value\n            if isinstance(value, list)\n       \
+          \     else []\n        )\n\n    def normalize_boolean(\n        value: Any,\n\
+          \    ) -> bool:\n        \"\"\"\n        Normalize Boolean values after\
+          \ Variable Aggregator unwrapping.\n        \"\"\"\n        value = unwrap_output(value)\n\
+          \n        if isinstance(value, bool):\n            return value\n\n    \
+          \    if isinstance(value, str):\n            normalized = value.strip().lower()\n\
+          \n            if normalized == \"true\":\n                return True\n\n\
+          \            if normalized == \"false\":\n                return False\n\
+          \n        if isinstance(value, (int, float)):\n            return value\
+          \ != 0\n\n        return False\n\n    def detect_weather_mode(\n       \
+          \ context: str,\n    ) -> str:\n        \"\"\"\n        Detect normalized\
+          \ weather coverage mode from\n        aggregated weather context.\n    \
+          \    \"\"\"\n        if not isinstance(context, str):\n            return\
+          \ \"unavailable\"\n\n        for line in context.splitlines():\n       \
+          \     normalized_line = line.strip()\n\n            if normalized_line.startswith(\n\
+          \                \"天气覆盖模式：\"\n            ):\n                mode = normalized_line.split(\n\
+          \                    \"：\",\n                    1,\n                )[1].strip().lower()\n\
+          \n                if mode in {\n                    \"full\",\n        \
+          \            \"partial\",\n                    \"unavailable\",\n      \
+          \          }:\n                    return mode\n\n            if normalized_line.startswith(\n\
+          \                \"天气覆盖模式:\"\n            ):\n                mode = normalized_line.split(\n\
+          \                    \":\",\n                    1,\n                )[1].strip().lower()\n\
+          \n                if mode in {\n                    \"full\",\n        \
+          \            \"partial\",\n                    \"unavailable\",\n      \
+          \          }:\n                    return mode\n\n        # Unknown or malformed\
+          \ context must not be\n        # treated as confirmed weather data.\n  \
+          \      return \"unavailable\"\n\n    # ----------------------------------------\n\
+          \    # 1. Parse upstream facts\n    # ----------------------------------------\n\
+          \n    raw_hotels = as_list(\n        parse_json(\n            candidate_hotels_json,\n\
+          \            [],\n        )\n    )\n\n    raw_places = as_list(\n      \
+          \  parse_json(\n            selected_places_json,\n            [],\n   \
+          \     )\n    )\n\n    raw_route_stats = as_list(\n        parse_json(\n\
+          \            hotel_route_stats_json,\n            [],\n        )\n    )\n\
+          \n    normalized_route_matrix_valid = (\n        normalize_boolean(\n  \
+          \          route_matrix_valid\n        )\n    )\n\n    # ----------------------------------------\n\
+          \    # 2. Normalize hotel fact cards\n    # ----------------------------------------\n\
+          \n    hotels = []\n\n    for raw_hotel in raw_hotels:\n        if not isinstance(raw_hotel,\
+          \ dict):\n            continue\n\n        breakfast = safe_dict(\n     \
+          \       raw_hotel.get(\"breakfast\")\n        )\n\n        cancellation\
+          \ = safe_dict(\n            raw_hotel.get(\"cancellation\")\n        )\n\
+          \n        availability = safe_dict(\n            raw_hotel.get(\"availability\"\
+          )\n        )\n\n        parking = safe_dict(\n            raw_hotel.get(\"\
+          parking\")\n        )\n\n        review = safe_dict(\n            raw_hotel.get(\"\
+          review\")\n        )\n\n        hotel = {\n            \"hotel_id\": raw_hotel.get(\n\
+          \                \"hotel_id\"\n            ),\n            \"name\": raw_hotel.get(\n\
+          \                \"name\"\n            ),\n            \"brand\": raw_hotel.get(\n\
+          \                \"brand\"\n            ),\n            \"area\": raw_hotel.get(\n\
+          \                \"area\"\n            ),\n            \"sub_area\": raw_hotel.get(\n\
+          \                \"sub_area\"\n            ),\n            \"address\":\
+          \ raw_hotel.get(\n                \"address\"\n            ),\n        \
+          \    \"hotel_type\": raw_hotel.get(\n                \"hotel_type\"\n  \
+          \          ),\n            \"star_rating\": raw_hotel.get(\n           \
+          \     \"star_rating\"\n            ),\n            \"price\": {\n      \
+          \          \"amount_cny\": raw_hotel.get(\n                    \"mock_price_per_night\"\
+          \n                ),\n                \"currency\": raw_hotel.get(\n   \
+          \                 \"currency\",\n                    \"CNY\",\n        \
+          \        ),\n                \"basis\": \"per_night\",\n               \
+          \ \"data_mode\": \"mock_demo\",\n            },\n            \"breakfast\"\
+          : {\n                \"included\": breakfast.get(\n                    \"\
+          included\"\n                ),\n                \"price_cny\": breakfast.get(\n\
+          \                    \"price_cny\"\n                ),\n               \
+          \ \"type\": breakfast.get(\n                    \"type\"\n             \
+          \   ),\n            },\n            \"parking\": {\n                \"available\"\
+          : parking.get(\n                    \"available\"\n                ),\n\
+          \                \"fee_note\": parking.get(\n                    \"fee_note\"\
+          \n                ),\n            },\n            \"cancellation\": {\n\
+          \                \"free_cancellation\": (\n                    cancellation.get(\n\
+          \                        \"free_cancellation\"\n                    )\n\
+          \                ),\n                \"deadline_note\": (\n            \
+          \        cancellation.get(\n                        \"deadline_note\"\n\
+          \                    )\n                ),\n            },\n           \
+          \ \"availability\": {\n                \"available\": availability.get(\n\
+          \                    \"available\"\n                ),\n               \
+          \ \"status_note\": availability.get(\n                    \"status_note\"\
+          \n                ),\n            },\n            \"facilities\": safe_list(\n\
+          \                raw_hotel.get(\"facilities\")\n            ),\n       \
+          \     \"tags\": safe_list(\n                raw_hotel.get(\"tags\")\n  \
+          \          ),\n            \"trip_styles\": safe_list(\n               \
+          \ raw_hotel.get(\"trip_styles\")\n            ),\n            \"review\"\
+          : {\n                \"score\": review.get(\n                    \"score\"\
+          \n                ),\n                \"count\": review.get(\n         \
+          \           \"count\"\n                ),\n                \"source_note\"\
+          : review.get(\n                    \"source_note\"\n                ),\n\
+          \            },\n            \"match_score\": raw_hotel.get(\n         \
+          \       \"match_score\"\n            ),\n            \"match_reasons\":\
+          \ safe_list(\n                raw_hotel.get(\n                    \"match_reasons\"\
+          \n                )\n            ),\n        }\n\n        hotels.append(hotel)\n\
+          \n    # ----------------------------------------\n    # 3. Normalize selected\
+          \ place facts\n    # ----------------------------------------\n\n    target_places\
+          \ = []\n\n    for raw_place in raw_places:\n        if not isinstance(raw_place,\
+          \ dict):\n            continue\n\n        place = {\n            \"place_id\"\
+          : raw_place.get(\n                \"place_id\"\n            ),\n       \
+          \     \"name\": raw_place.get(\n                \"name\"\n            ),\n\
+          \            \"category\": raw_place.get(\n                \"category\"\n\
+          \            ),\n            \"area\": raw_place.get(\n                \"\
+          area\"\n            ),\n            \"sub_area\": raw_place.get(\n     \
+          \           \"sub_area\"\n            ),\n            \"address\": raw_place.get(\n\
+          \                \"address\"\n            ),\n            \"priority\":\
+          \ raw_place.get(\n                \"priority\"\n            ),\n       \
+          \ }\n\n        # Remove fields that are entirely absent\n        place =\
+          \ {\n            key: value\n            for key, value in place.items()\n\
+          \            if value is not None\n        }\n\n        target_places.append(place)\n\
+          \n    # ----------------------------------------\n    # 4. Weather context\n\
+          \    # ----------------------------------------\n\n    raw_weather_context\
+          \ = unwrap_output(\n        weather_context\n    )\n\n    normalized_weather_context\
+          \ = (\n        raw_weather_context.strip()\n        if isinstance(\n   \
+          \         raw_weather_context,\n            str,\n        )\n        else\
+          \ \"\"\n    )\n\n    weather_mode = detect_weather_mode(\n        normalized_weather_context\n\
+          \    )\n\n    weather_available = (\n        weather_mode in {\n       \
+          \     \"full\",\n            \"partial\",\n        }\n    )\n\n    weather\
+          \ = {\n        \"available\": weather_available,\n        \"coverage_mode\"\
+          : weather_mode,\n        \"context\": (\n            normalized_weather_context\n\
+          \        ),\n        \"source\": (\n            \"open_meteo\"\n       \
+          \     if weather_available\n            else \"degraded_context\"\n    \
+          \    ),\n    }\n\n    # ----------------------------------------\n    #\
+          \ 5. Build deterministic fact frame\n    # ----------------------------------------\n\
+          \n    payload = {\n        \"schema_version\": \"1.0\",\n        \"scope\"\
+          : \"normal_recommendation\",\n        \"hotel_data_mode\": \"mock_demo\"\
+          ,\n        \"route_data_mode\": (\n            \"google_routes\"\n     \
+          \       if normalized_route_matrix_valid\n            else \"unavailable\"\
+          \n        ),\n        \"candidate_count\": len(\n            hotels\n  \
+          \      ),\n        \"selected_place_count\": len(\n            target_places\n\
+          \        ),\n        \"hotels\": hotels,\n        \"target_places\": target_places,\n\
+          \        \"route_matrix\": {\n            \"valid\": (\n               \
+          \ normalized_route_matrix_valid\n            ),\n            \"hotel_route_stats\"\
+          : (\n                raw_route_stats\n            ),\n        },\n     \
+          \   \"weather\": weather,\n    }\n\n    event = {\n        \"type\": \"\
+          fact_frame\",\n        \"payload\": payload,\n    }\n\n    # Compact NDJSON\
+          \ physical line\n    output = json.dumps(\n        event,\n        ensure_ascii=False,\n\
+          \        separators=(\",\", \":\"),\n    )\n\n    fact_frame_json = json.dumps(\n\
+          \        payload,\n        ensure_ascii=False,\n        separators=(\",\"\
+          , \":\"),\n    )\n\n    return {\n        \"output\": output,\n        \"\
+          fact_frame_json\": (\n            fact_frame_json\n        ),\n        \"\
+          hotel_fact_count\": len(\n            hotels\n        ),\n        \"route_fact_count\"\
+          : len(\n            raw_route_stats\n        ),\n        \"fact_frame_valid\"\
+          : (\n            len(hotels) > 0\n        ),\n    }"
+        code_language: python3
+        desc: 根据候选酒店、目标地点、真实路线统计和天气上下文，确定性构造前端事实基准帧，以 NDJSON 事件形式先于 LLM 推荐事件输出。该节点只整理已有结构化事实，不执行推荐判断，不生成新的事实或推测。
+        outputs:
+          fact_frame_json:
+            children: null
+            type: string
+          fact_frame_valid:
+            children: null
+            type: boolean
+          hotel_fact_count:
+            children: null
+            type: number
+          output:
+            children: null
+            type: string
+          route_fact_count:
+            children: null
+            type: number
+        selected: false
+        title: 前端事实帧构造
+        type: code
+        variables:
+        - value_selector:
+          - '1783232136509'
+          - candidate_hotels_json
+          value_type: string
+          variable: candidate_hotels_json
+        - value_selector:
+          - '1783219513343'
+          - selected_places_json
+          value_type: string
+          variable: selected_places_json
+        - value_selector:
+          - '1783240265219'
+          - hotel_route_stats_json
+          value_type: object
+          variable: hotel_route_stats_json
+        - value_selector:
+          - '1783240265219'
+          - route_matrix_valid
+          value_type: object
+          variable: route_matrix_valid
+        - value_selector:
+          - '1783216078012'
+          - output
+          value_type: string
+          variable: weather_context
+      height: 159
+      id: '1783254024385'
+      position:
+        x: 8004
+        y: 1194.3666666666668
+      positionAbsolute:
+        x: 8004
+        y: 1194.3666666666668
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "import json\n\n\ndef main(destination_city: str) -> dict:\n    city\
+          \ = (\n        destination_city.strip()\n        if isinstance(destination_city,\
+          \ str)\n        and destination_city.strip()\n        else \"当前目的地\"\n \
+          \   )\n\n    events = [\n        {\n            \"type\": \"unsupported_city\"\
+          ,\n            \"payload\": {\n                \"city\": city,\n       \
+          \         \"supported_cities\": [\"海口\"],\n                \"message\":\
+          \ (\n                    f\"当前演示版本暂不支持 {city} 的住宿决策，\"\n               \
+          \     \"目前可用的酒店、地点与路线数据范围为海口。\"\n                ),\n            },\n  \
+          \      },\n        {\n            \"type\": \"done\",\n            \"payload\"\
+          : {},\n        },\n    ]\n\n    output = \"\\n\".join(\n        json.dumps(\n\
+          \            event,\n            ensure_ascii=False,\n            separators=(\"\
+          ,\", \":\"),\n        )\n        for event in events\n    )\n\n    return\
+          \ {\n        \"output\": output,\n        \"unsupported_city_handled\":\
+          \ True,\n    }"
+        code_language: python3
+        desc: 根据用户请求中的目的地城市构造确定性的 unsupported_city NDJSON 响应，说明当前版本支持范围，并结束本轮响应。
+        outputs:
+          output:
+            children: null
+            type: string
+          unsupported_city_handled:
+            children: null
+            type: boolean
+        selected: false
+        title: 城市不支持响应构造
+        type: code
+        variables:
+        - value_selector:
+          - '1783165904516'
+          - destination_city
+          value_type: string
+          variable: destination_city
+      height: 127
+      id: '1783260593454'
+      position:
+        x: 2067
+        y: 9.598484848484873
+      positionAbsolute:
+        x: 2067
+        y: 9.598484848484873
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "import json\n\n\ndef main() -> dict:\n    events = [\n        {\n \
+          \           \"type\": \"invalid_trip_date\",\n            \"payload\": {\n\
+          \                \"message\": (\n                    \"当前旅行日期已过期或日期范围无效。\"\
+          \n                    \"请提供有效的未来旅行日期，并确保结束日期不早于开始日期。\"\n               \
+          \ )\n            },\n        },\n        {\n            \"type\": \"done\"\
+          ,\n            \"payload\": {},\n        },\n    ]\n\n    output = \"\\\
+          n\".join(\n        json.dumps(\n            event,\n            ensure_ascii=False,\n\
+          \            separators=(\",\", \":\"),\n        )\n        for event in\
+          \ events\n    )\n\n    return {\n        \"output\": output,\n        \"\
+          invalid_trip_date_handled\": True,\n    }"
+        code_language: python3
+        desc: 为已过去、顺序错误或无法形成有效旅行区间的日期请求构造确定性的 invalid_trip_date NDJSON 响应，并结束本轮处理。
+        outputs:
+          invalid_trip_date_handled:
+            children: null
+            type: boolean
+          output:
+            children: null
+            type: string
+        selected: false
+        title: 日期错误响应构造
+        type: code
+        variables: []
+      height: 127
+      id: '1783261043421'
+      position:
+        x: 2067
+        y: 251.59848484848487
+      positionAbsolute:
+        x: 2067
+        y: 251.59848484848487
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    - data:
+        code: "import json\n\n\ndef main(clarification_text: str) -> dict:\n    message\
+          \ = (\n        clarification_text.strip()\n        if isinstance(clarification_text,\
+          \ str)\n        and clarification_text.strip()\n        else \"请补充本次旅行所需的关键信息。\"\
+          \n    )\n\n    events = [\n        {\n            \"type\": \"clarification_required\"\
+          ,\n            \"payload\": {\n                \"message\": message,\n \
+          \               \"awaiting_user_input\": True,\n            },\n       \
+          \ },\n        {\n            \"type\": \"done\",\n            \"payload\"\
+          : {},\n        },\n    ]\n\n    output = \"\\n\".join(\n        json.dumps(\n\
+          \            event,\n            ensure_ascii=False,\n            separators=(\"\
+          ,\", \":\"),\n        )\n        for event in events\n    )\n\n    return\
+          \ {\n        \"output\": output,\n        \"clarification_handled\": True,\n\
+          \    }"
+        code_language: python3
+        desc: 将缺失信息追问模型生成的自然语言问题包装为 clarification_required NDJSON 事件，供前端展示并等待用户继续补充信息。
+        outputs:
+          clarification_handled:
+            children: null
+            type: boolean
+          output:
+            children: null
+            type: string
+        selected: false
+        title: 追问响应构造
+        type: code
+        variables:
+        - value_selector:
+          - '1783169414130'
+          - text
+          value_type: string
+          variable: clarification_text
+      height: 127
+      id: '1783261384992'
+      position:
+        x: 2408
+        y: 523.0984848484849
+      positionAbsolute:
+        x: 2408
+        y: 523.0984848484849
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 241
+      zIndex: 0
+    viewport:
+      x: -2408.81136529965
+      y: -109.9088757926778
+      zoom: 0.5307116044748986
+  rag_pipeline_variables: []

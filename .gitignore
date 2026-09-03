@@ -6,11 +6,15 @@
 # Local backup/output artifacts
 backups/
 *.log
+*.tmp
+npm-debug.log*
 
 # Python
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.coverage
+htmlcov/
 
 # Node/Vercel artifacts, if added later
 node_modules/
@@ -18,3 +22,11 @@ node_modules/
 .vercel/
 dist/
 build/
+coverage/
+
+# Editor and operating-system files
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

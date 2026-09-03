@@ -36,7 +36,7 @@ Do not expose these variables to browser code. Local `.env` files are ignored by
 
 - `query` is required.
 - `conversation_id` may be empty on the first turn and should be sent back on later turns.
-- `user` is a stable lightweight user identifier. This stage does not implement a user system.
+- `user` is a stable lightweight browser identifier. The prototype does not implement accounts or authentication.
 - `inputs` is optional and defaults to `{}`.
 
 ## Streaming Behavior
@@ -51,17 +51,26 @@ The proxy calls Dify with:
 
 It forwards the Dify SSE stream directly to the browser as chunks arrive. It does not parse Dify SSE and does not parse project NDJSON business events.
 
-The later browser layer should:
+The browser layer in `lib/client/`:
 
 1. read Dify SSE;
 2. extract incremental `answer` content;
 3. buffer by newline;
 4. parse complete NDJSON lines;
-5. update React state from `event.type`.
+5. reduce each `event.type` into framework-neutral chat state;
+6. update the static JavaScript UI incrementally.
 
-That browser parser and UI are not implemented in this stage.
+The proxy deliberately does not parse either protocol. This keeps the server-side secret boundary small and preserves Dify's streaming response without buffering it.
 
 ## Local Verification
+
+Run the project with Vercel CLI so the static files and functions share one origin:
+
+```bash
+npx vercel dev
+```
+
+The commands below assume Vercel selected port `3000`. Use the port printed by the CLI if it differs.
 
 Missing query:
 

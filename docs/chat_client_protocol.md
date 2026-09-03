@@ -1,8 +1,8 @@
 # Chat Client Stream Protocol
 
-This document describes the browser-side protocol layer for stage C.
+This document describes the browser-side protocol layer used by the current static interface.
 
-The repository still does not implement a final UI. These modules are plain JavaScript utilities that a later UI can call.
+The parsers and state reducer are framework-neutral CommonJS modules. `lib/client/chat_ui_app.js` connects them to the browser UI, and `scripts/build_client_bundle.js` packages the client modules into `app.bundle.js`.
 
 ## Two Protocol Layers
 
@@ -100,9 +100,9 @@ Unknown future event types do not crash the client. They are recorded in `protoc
 
 `clarification_required` sets `awaitingUserInput` from `payload.awaiting_user_input`. A later `done` event marks the current response stream complete but does not clear `awaitingUserInput`.
 
-## Future UI Integration
+## Current UI Integration
 
-A later UI can call:
+The current UI calls:
 
 ```js
 streamChat({
@@ -124,19 +124,9 @@ The client calls only local `/api/chat`. It does not read or expose `DIFY_API_KE
 
 When a Dify SSE event includes a non-empty `conversation_id`, `streamChat` stores it in state and calls `onConversationId`. The browser should pass that ID back as `conversation_id` on later turns.
 
-## Known Issues Outside Stage C
+## Runtime Boundaries
 
-- The Dify workflow may occasionally emit target place IDs outside the current catalog. This is not fixed in the browser parser.
-- Current Dify multi-turn state restore may hit Number / integer compatibility issues. Stage C still preserves `conversation_id` because the protocol is designed for multi-turn use.
-
-## Current Non-Goals
-
-Stage C does not include:
-
-- React components;
-- final UI;
-- hotel cards;
-- route or weather visualizations;
-- Dify workflow changes;
-- fixes for upstream place ID hallucination;
-- fixes for Dify integer compatibility.
+- The browser validates event shapes but does not generate recommendations or repair semantically incorrect workflow output.
+- The Dify Chatflow owns clarification, retrieval, tool calls, evidence assembly, and business-event generation.
+- The interface is static, framework-free JavaScript rather than React.
+- The browser retains only a lightweight user ID and the current Dify `conversation_id`; it does not provide accounts or durable cross-device history.

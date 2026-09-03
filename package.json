@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "build:client": "node scripts/build_client_bundle.js",
-    "test": "node --test"
+    "test": "node --test",
+    "validate:data": "python3 scripts/validate_data.py",
+    "test:data-prep": "python3 -m unittest discover -s scripts/data_prep -p 'test_*.py'",
+    "verify": "npm run build:client && npm test && npm run validate:data && npm run test:data-prep"
   },
   "engines": {
     "node": ">=20"
