@@ -10,7 +10,7 @@ dependencies:
 - current_identifier: null
   type: marketplace
   value:
-    marketplace_plugin_unique_identifier: langgenius/gemini:0.9.7@c6aacc0e8fe8a9e2b3622c094370c16c2bb2e5bb53b287f532644a4f27af862f
+    marketplace_plugin_unique_identifier: langgenius/gemini:0.9.8@a58c0ab2f20e421e80752a26c8e1621586606db37431b66c875bb9a093993ebc
     version: null
 kind: app
 version: 0.7.0
@@ -1693,9 +1693,9 @@ workflow:
           write: 5
         title: 关键地点目录获取
         type: http-request
-        url: https://travel-stay-agent-1wbgwsa8k-bagekyl.vercel.app/api/places/search
+        url: https://travel-stay-agent.vercel.app/api/places/search
         variables: []
-      height: 260
+      height: 244
       id: '1783188421380'
       position:
         x: 3431
@@ -2444,7 +2444,7 @@ workflow:
           max_retries: 2
           retry_enabled: true
           retry_interval: 1000
-        selected: false
+        selected: true
         ssl_verify: true
         timeout:
           connect: 5
@@ -2455,9 +2455,9 @@ workflow:
           write: 10
         title: 候选酒店搜索
         type: http-request
-        url: https://travel-stay-agent-git-feat-mock-api-bagekyl.vercel.app/api/hotels/search
+        url: https://travel-stay-agent.vercel.app/api/hotels/search
         variables: []
-      height: 244
+      height: 228
       id: '1783221399421'
       position:
         x: 4875
@@ -2465,7 +2465,7 @@ workflow:
       positionAbsolute:
         x: 4875
         y: 1037.3
-      selected: false
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -3941,7 +3941,7 @@ workflow:
       width: 241
       zIndex: 0
     viewport:
-      x: -2408.81136529965
-      y: -109.9088757926778
-      zoom: 0.5307116044748986
+      x: -3278.320108730434
+      y: -450.03375897994033
+      zoom: 0.8044083709419181
   rag_pipeline_variables: []

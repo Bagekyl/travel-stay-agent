@@ -4,6 +4,8 @@ An explainable accommodation decision prototype that combines structured travel 
 
 TravelStay Agent was developed as a four-person course project. The current MVP focuses on accommodation decisions in Haikou, China. It is a reproducible prototype, not a booking platform, a live inventory service, or a production system for arbitrary cities.
 
+[Deterministic interface demo](https://travel-stay-agent.vercel.app/?demo) - renders versioned fixtures without invoking Dify, Google Routes, or a live recommendation request.
+
 ## Problem And Motivation
 
 Hotel lists sorted only by price or review score do not capture why a stay fits a particular trip. A traveler may care about a nightly or total budget, group size, trip dates, transport hubs, specific attractions, driving access, business needs, or a resort-oriented experience. These constraints can conflict.
@@ -203,9 +205,15 @@ These variables are server-side or tool-side secrets. Do not expose them through
 
 ## Dify Import And Configuration
 
-Import [`dify/travelstay-chatflow.yml`](dify/travelstay-chatflow.yml), then rebind the LLM provider, knowledge dataset, secrets, and deployment-specific Mock API URLs. Detailed instructions and an import checklist are in [`docs/dify_setup.md`](docs/dify_setup.md).
+Import [`dify/travelstay-chatflow.yml`](dify/travelstay-chatflow.yml), then rebind the LLM provider, knowledge dataset, and secrets. The checked-in export points its two Mock API nodes to this project's stable Vercel production origin; forks should replace that origin with their own deployment. Detailed instructions and an import checklist are in [`docs/dify_setup.md`](docs/dify_setup.md).
 
 The export references one Dify dataset. The repository includes the source Markdown, not a portable copy of the source workspace's indexed dataset. Recreate or select the dataset in the destination workspace and bind it to the knowledge-retrieval node.
+
+## Deployment Posture
+
+The existing Vercel production deployment hosts the static interface and the two deterministic Mock APIs. The Dify export uses the stable production origin rather than branch or commit Preview URLs. This public deployment is maintained on a best-effort basis and is not an availability commitment.
+
+The `?demo` interface mode uses repository fixtures and does not require provider credentials. A live `/api/chat` response requires an operator-configured server-side `DIFY_API_KEY` and a working Dify application; public availability of that credential-dependent path is not guaranteed. This separation keeps the portfolio demonstration inspectable without representing fixture output as a live agent run.
 
 ## Run Locally
 
@@ -250,7 +258,7 @@ Audited on 2026-09-03:
 | Hotel/place schema and internal consistency | Passed; 24 hotels, 24 places, 48 populated Place IDs |
 | Python data-preparation tests | Passed; 29 tests |
 | Dify DSL static parse and graph reachability | Passed; 39/39 nodes reachable, 44 edges |
-| Deployed Mock API smoke requests | Passed for both endpoints configured in the DSL |
+| Vercel production interface and Mock API smoke requests | Passed for the homepage, `?demo`, and both endpoints configured in the DSL |
 | Fresh Dify import | Not verified; requires a destination Dify workspace |
 | Live `/api/chat` agent response | Not rerun in this audit; requires a configured Dify app key |
 | Live Google Routes call | Not rerun in this audit; the repository retains a dated report under `reports/` |
@@ -268,19 +276,21 @@ Credential-dependent checks must be rerun in the reader's own environment. Repos
 - The place-extraction node filters and reports catalog IDs invented by the LLM, but the current graph does not retry or branch on `extraction_valid: false`.
 - Route and weather availability depends on third-party services and configured credentials.
 - HTTP nodes retry failed requests, but the exported workflow does not define explicit node error strategies; upstream failures after retries are not verified to degrade gracefully.
-- The exported Mock API URLs are prototype deployment endpoints and should be replaced for a fork or independent deployment.
+- The exported Mock API URLs use this project's public Vercel production origin; availability is best-effort, and forks should replace the origin with their own deployment.
 - Hotel and place records carry `last_verified: 2026-07`; the 2026-09-03 release audit checked structure and internal consistency, not renewed real-world accuracy.
 - This is an educational prototype, not travel, safety, financial, or booking advice.
 
-## Team Project And My Role
+## Team Context And Individual Contribution
 
-TravelStay Agent was developed by a four-person course team. Bowen Xing (English name: Bryce Xing) served as project lead and primary engineer, with responsibility for system architecture, module contracts, the principal Dify workflow, API integration, frontend/backend integration, testing, and demonstration preparation. Other team members contributed to product and requirements research, initial data preparation, early workflow exploration, and testing.
+TravelStay Agent was developed as a four-person course project through primarily in-person collaboration. Bowen Xing served as project lead, sole Git repository maintainer, and primary engineer, coordinating version control and integrating the team's work into the public codebase. His implementation responsibilities included system architecture, module interfaces, the core Dify workflow, API integration, frontend/backend integration, testing, and demonstration preparation.
+
+Other team members contributed to requirements and product research, initial data preparation, early workflow exploration, and selected testing activities. Because these contributions were coordinated in person and integrated through a single repository maintainer, commit attribution does not fully represent the team's collaboration.
 
 ## Responsible Use And Data Disclaimer
 
 The repository distinguishes stable entity information from simulated commercial data through `source`, `mock_fields`, `mock_note`, and related schema documentation. Users should independently verify hotel identity, location, price, availability, cancellation policy, transport conditions, and weather before making travel decisions.
 
-No API keys or provider credentials are included. Public deployment endpoints present in the workflow are integration references, not an uptime commitment or public booking service.
+No API keys or provider credentials are included. Public deployment endpoints present in the workflow support reproducibility and the controlled-data prototype; they are not an uptime commitment, a guaranteed live agent service, or a public booking service.
 
 ## License
 

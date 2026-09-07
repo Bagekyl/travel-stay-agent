@@ -14,7 +14,7 @@ The export's internal Dify application name is `旅游决策`. The repository-fa
 
 1. In Dify, create an application by importing `dify/travelstay-chatflow.yml`.
 2. Review the imported nodes before publishing. Dify provider, dataset, and credential bindings are workspace-specific and may not transfer automatically.
-3. Configure the Google Gemini provider used by the three LLM nodes. The export references `gemini-3.5-flash`; model availability depends on the connected provider and Dify version. Any model substitution should be revalidated.
+3. Configure the Google Gemini provider used by the three LLM nodes. The export references the `langgenius/gemini` plugin at version `0.9.8` and model `gemini-3.5-flash`; availability depends on the connected provider and Dify version. Any provider or model substitution should be revalidated.
 4. Create or select a Dify knowledge base, upload the eight Markdown files in `knowledge_base/`, and bind it to the `住宿决策知识检索` node. The dataset identifier in an export belongs to the source Dify workspace.
 5. Add `GOOGLE_MAPS_API_KEY` as a secret environment variable in the Chatflow. It is used by the `Google Routes 路线矩阵获取` node and must never be placed in browser code or committed files.
 
@@ -29,7 +29,14 @@ The workflow contains four HTTP request nodes:
 | `候选酒店搜索` | Calls `POST /api/hotels/search` | None |
 | `Google Routes 路线矩阵获取` | Calls Google Routes matrix API | `GOOGLE_MAPS_API_KEY` |
 
-The exported Mock API URLs are the endpoints used by the audited prototype and were reachable on 2026-09-03. They are not a guaranteed public service. After deploying a fork, update the two Mock API nodes to that deployment's HTTPS origin while preserving the paths above.
+The checked-in export uses the project's stable Vercel production origin:
+
+```text
+https://travel-stay-agent.vercel.app/api/places/search
+https://travel-stay-agent.vercel.app/api/hotels/search
+```
+
+Both endpoints were reachable during the 2026-09-03 release audit and again while validating the updated workflow export. They are maintained on a best-effort basis rather than offered as a guaranteed public service. A fork should update both Mock API nodes to its own HTTPS origin while preserving the paths above; branch and commit Preview URLs should not be used as long-term workflow dependencies.
 
 All four HTTP nodes enable retries, but the export does not define explicit Dify node error strategies. The existing weather and route branches cover date-coverage and route-input conditions; they should not be described as verified fallbacks for every upstream HTTP failure.
 
